@@ -1,0 +1,55 @@
+@use '../abstracts/variables' as v;
+
+.hidden {
+    display: none;
+}
+
+img, embed, object, video, picture {
+    max-width: 100%; 
+}
+  
+html, body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font-size: v.$base-font-size;
+    font-weight: v.$base-font-weight;
+    box-sizing: border-box; 
+    background-color: #F5F5F5;
+    scroll-behavior: smooth;
+    line-height: 1.5;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.mobile-break {
+    display: block;
+}
+
+@media screen and (min-width: 768px) {
+
+html, body {
+    font-size: 16px;
+}
+
+.mobile-break {
+    display: none;
+}
+
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    html, body {
+        font-size: 18px;
+    }
+
+    .desktop-break {
+        display: block;
+    }
+    
+    
+    }

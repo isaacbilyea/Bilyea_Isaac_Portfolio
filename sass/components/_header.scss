@@ -1,0 +1,161 @@
+@use '../abstracts' as a;
+
+#main-header {
+    
+    margin: 4rem 4rem 1rem 4rem;
+
+    .logo {
+        height: 3.25rem;
+    }
+
+    #hamburger-menu {
+        cursor: pointer;
+        width: 1.75rem;
+        height: 1.5rem;
+        position: absolute;
+        top: 5rem;
+        right: 4rem;
+        z-index: 3;
+
+            div {
+                width: 100%;
+                height: 0.25rem;
+                background-color: a.$secondary-color;
+                position: absolute;
+                transition: 0.3s ease;
+                border-radius: 1rem;
+            }
+            
+            #line1 { 
+                margin: 0;
+                left: 25%;
+            }
+            
+            #line2 { 
+                width: 2.5rem;
+                margin-top: 0.625rem;
+                transform-origin: center;
+                transform: scaleX(1);
+            }
+            
+            #line3 { 
+                margin-top: 1.25rem;
+                left: 25%; 
+            }
+            
+            &.activate #line1 {
+                transform: rotate(45deg) translate(0.4375rem, 0.4375rem);
+                width: 2.5rem;
+                left: 0;
+            }
+            
+            &.activate #line2 {
+                transform: scaleX(0);
+                opacity: 0;
+                transition: 0.2s ease-in-out;
+            }
+            
+            &.activate #line3 {
+                transform: rotate(-45deg) translate(0.4375rem, -0.4375rem);
+                width: 2.5rem;
+                left: 0;
+            }
+    }
+
+    #main-nav {
+
+        display: none;
+        
+        .show {
+            display: block;
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    #main-header {
+        margin-bottom: 1.5rem;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    #hamburger-menu {
+        display: none;
+    }
+
+    #main-header {
+    
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    
+        #main-nav {
+            
+            display: block;
+            position: relative;
+    
+            ul {
+                display: flex;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+    
+            li {
+                margin-left: 4rem;
+            }
+    
+            a {
+                text-decoration: none;
+                font-size: 1.6rem;
+                color: a.$secondary-color;
+                display: block;
+            }
+        
+            #menu-dot {
+                position: absolute;
+                bottom: -1.25rem;
+                width: .75rem;
+                height: .75rem;
+                background-color: a.$accent-color;
+                border-radius: 50%;
+                transition: left 0.3s ease;
+                left: calc(16.66% + 1.66rem);
+                transform: translateX(-50%);
+            }
+
+            ul li.active ~ #menu-dot {
+                left: calc(16.66% + 1.66rem);
+            }
+        
+            ul li:nth-child(2).active ~ #menu-dot {
+                left: calc(50% + 1.66rem); 
+            }
+        
+            ul li:nth-child(3).active ~ #menu-dot {
+                left: calc(83.33% + 1.66rem);
+            }
+
+            ul li:nth-child(1):hover ~ #menu-dot {
+                left: calc(16.66% + 1.66rem);
+            }
+    
+            ul li:nth-child(2):hover ~ #menu-dot {
+                left: calc(50% + 1.66rem);
+            }
+    
+            ul li:nth-child(3):hover ~ #menu-dot {
+                left: calc(83.33% + 1.66rem);
+            }
+    
+        }
+
+}
+
+}
