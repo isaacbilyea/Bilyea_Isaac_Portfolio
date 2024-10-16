@@ -1,0 +1,75 @@
+@use '../abstracts' as a;
+
+#contact-form {
+
+    margin-top: 4rem;
+
+    #form-text {
+
+        h2, h3, h4 {
+            margin: .75rem 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 400;
+        }
+        
+        h4 {
+            font-weight: 400;
+        }
+    }
+
+    #form-input {
+
+        margin-top: 1rem;
+
+        input[type="text"], textarea {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            font-size: .75rem;
+            margin-bottom: .5rem;
+            padding: .5rem 0rem .6rem .5rem;
+            border: 1px solid a.$secondary-color;
+            font-family: a.$body-font-family;
+            color: a.$secondary-color;
+            max-width: 100%;
+            background-color: transparent;
+        }
+        
+        textarea {
+            height: 5rem;
+            padding: .35rem 0rem 0rem .5rem;
+        }
+        
+        input[type="submit"] {
+            background-color: a.$secondary-color;
+            color: white;
+            border-color: a.$secondary-color;
+            font-family: a.$body-font-family;
+            padding: .4rem 1.5rem;
+            border: none;
+            font-size: .75rem;
+            margin-bottom: 5rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+        }
+
+        #name-input {
+            display: flex;
+            justify-content: space-between;
+
+            input  {
+                width: 49%;
+            }
+        }
+    }
+}
