@@ -4,40 +4,48 @@ footer {
 
     text-align: center;
     background-color: a.$secondary-color;
+    background-size: 100vw;
     color:white;
     padding: 3.25rem 4rem;
     font-size: 1.25rem;
 
-    .logo {
-        height: 3.25rem;
-    }
+    #footer-con {
 
-    .logo-letter {
-        fill: a.$primary-color;
-    }
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 4rem;
 
-    p {
-        margin: 0;
-        margin-top: 2rem;
-        line-height: 1.5;
-    }
+        .logo {
+            height: 3.25rem;
+        }
 
-    a {
-        color:white;
-    }
+        .logo-letter {
+            fill: a.$primary-color;
+        }
 
-    #sm-links {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-        margin-top: 2rem;
-    }
+        p {
+            margin: 0;
+            margin-top: 2rem;
+            line-height: 1.5;
+        }
 
-    #sm-links img {
-        width: 2rem;
-    }
+        a {
+            color:white;
+        }
 
+        #sm-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        #sm-links img {
+            width: 2rem;
+        }
+
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -48,20 +56,25 @@ footer {
 @media screen and (min-width: 1200px) {
     
     footer {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        text-align: left;
 
-        p, a {
-            line-height: 1;
-            margin-top: 0;
-        }
+    
+        #footer-con {
 
-        #sm-links {
+            display: flex;
             align-items: flex-end;
-            margin-top: 0;
-            margin-bottom: -.3rem;
+            justify-content: space-between;
+            text-align: left;
+
+            p, a {
+                line-height: 1;
+                margin-top: 0;
+            }
+
+            #sm-links {
+                align-items: flex-end;
+                margin-top: 0;
+                margin-bottom: -.3rem;
+            }
         }
     }
 
