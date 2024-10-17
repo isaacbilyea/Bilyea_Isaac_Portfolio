@@ -18,7 +18,7 @@
         position: absolute;
         top: 5rem;
         right: 4rem;
-        z-index: 3;
+        z-index: 5;
 
             div {
                 width: 100%;
@@ -50,27 +50,112 @@
                 transform: rotate(45deg) translate(0.4375rem, 0.4375rem);
                 width: 2.5rem;
                 left: 0;
+                background-color: white;
             }
             
             &.activate #line2 {
                 transform: scaleX(0);
                 opacity: 0;
                 transition: 0.2s ease-in-out;
+                background-color: white;
             }
             
             &.activate #line3 {
                 transform: rotate(-45deg) translate(0.4375rem, -0.4375rem);
                 width: 2.5rem;
                 left: 0;
+                background-color: white;
             }
     }
 
     #main-nav {
 
         display: none;
-        
-        .show {
-            display: block;
+        animation: slideIn 300ms ease-in-out;
+        height: 100vh;
+        position: absolute;
+        background-color: a.$secondary-color;
+        z-index: 4;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0; 
+        border-left: 5px solid white;
+
+        &.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            .menu-item  {
+                animation: fadeIn 0.5s ease-in-out forwards;
+                opacity: 0;
+
+                &:nth-of-type(1) { 
+                    animation-delay: 0.2s; 
+                }
+                
+                &:nth-of-type(2) { 
+                    animation-delay: 0.3s; 
+                }
+                
+                &:nth-of-type(3) { 
+                    animation-delay: 0.4s; 
+                }
+            }
+
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li.active::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4rem;
+            height: 4rem;
+            background-color: a.$accent-color;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        li {
+            margin: 1rem;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 3rem;
+        }
+
+        @keyframes slideIn {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { 
+                opacity: 0; 
+            }
+            100% { 
+                opacity: 1; 
+            }
         }
 
     }
@@ -86,41 +171,53 @@
 
 @media screen and (min-width: 1200px) {
 
-    #hamburger-menu {
-        display: none;
-    }
-
     #main-header {
-    
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 2rem;
-    
+
+        #hamburger-menu {
+            display: none;
+        }
+
         #main-nav {
-            
             display: block;
             position: relative;
-    
-            ul {
-                display: flex;
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-    
-            li {
-                margin-left: 4rem;
-            }
-    
-            a {
-                text-decoration: none;
-                font-size: 1.6rem;
-                color: a.$secondary-color;
+            height: auto;
+            background-color: transparent;
+            border-left: none;
+            animation: none;
+
+            &.show {
                 display: block;
             }
-        
+
+            ul {
+                flex-direction: row;
+            }
+
+            ul li.active::before {
+                display: none;
+            }
+
+            li {
+                margin: 0rem;
+                margin-left: 4rem;
+            }
+
+            a {
+                font-size: 1.6rem;
+                display: block;
+                color: a.$secondary-color;
+            }
+
+            .menu-item {
+                animation: none;
+                opacity: 1;
+            }
+
             #menu-dot {
                 position: absolute;
                 bottom: -1.25rem;
@@ -148,17 +245,16 @@
             ul li:nth-child(1):hover ~ #menu-dot {
                 left: calc(16.66% + 1.66rem);
             }
-    
+
             ul li:nth-child(2):hover ~ #menu-dot {
                 left: calc(50% + 1.66rem);
             }
-    
+
             ul li:nth-child(3):hover ~ #menu-dot {
                 left: calc(83.33% + 1.66rem);
             }
-    
         }
-
+    }
 }
 
-}
+
