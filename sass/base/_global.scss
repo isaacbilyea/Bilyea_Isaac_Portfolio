@@ -15,7 +15,7 @@ html, body {
     font-size: v.$base-font-size;
     font-weight: v.$base-font-weight;
     box-sizing: border-box; 
-    background-color: #F5F5F5;
+    background-color: v.$primary-color;
     scroll-behavior: smooth;
     line-height: 1.5;
 }
@@ -26,6 +26,10 @@ html, body {
 
 .mobile-break {
     display: block;
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {

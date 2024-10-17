@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
     <link href="css/grid.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,9 +43,9 @@
         
         <nav id="main-nav">
             <ul>
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li class="active menu-item"><a href="index.html">Home</a></li>
+                <li class="menu-item"><a href="about.html">About</a></li>
+                <li class="menu-item"><a href="contact.html">Contact</a></li>
                 <div id="menu-dot"></div>
             </ul>
         </nav>
@@ -59,7 +60,12 @@
     <p>You are now entering a bug free zone<br>(at least until the next browser update) </p>
   </div>
   <p id="welcome" class="col-span-full">Welcome to my portfolio, I'm Isaac</p>
-  <video class="player col-span-full m-col-start-2 m-col-end-12" preload="metadata" poster="images/video-poster.png"></video>
+  <div class="col-span-full m-col-start-2 m-col-end-12" id="video-con">
+  <video class="player" preload="metadata" poster="images/video-poster.png">
+    <source src="videos/test.mp4" type="video/mp4">
+    <p>Oops, something went wrong. You may be using an outdated browser or have javascript disabled.</p>
+  </video>
+  </div>
 
   </section>
 
@@ -129,6 +135,7 @@
     </div>
   </footer>
 
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="js/main.js"></script>
     
 </body>
