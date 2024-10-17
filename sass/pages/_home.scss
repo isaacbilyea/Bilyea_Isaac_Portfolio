@@ -1,0 +1,64 @@
+@use '../abstracts' as a;
+
+#intro-con {
+
+    #warning-intro {
+        text-align: center;
+        margin-top: 2rem;
+
+        :nth-child(2) {
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        :nth-child(3) {
+            font-size: 1.2rem;
+        }
+    }
+
+    #welcome {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    video {
+        border-radius: 1.5rem;
+        border: 2px solid a.$secondary-color;
+    }
+
+}
+
+#projects-con {
+
+    h2 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 3rem 0 0 0;
+    }
+
+    .project-card {
+
+        background-color: a.$accent-color;
+        margin-top: 2rem;
+        color: white;
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
+        border-radius: 1.5rem;
+
+        img {
+            width: 100%;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1.5rem;
+        }
+
+        h3 {
+            font-size: 2.25rem;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+    }
+}
