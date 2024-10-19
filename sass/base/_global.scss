@@ -17,7 +17,22 @@ html, body {
     box-sizing: border-box; 
     background-color: v.$primary-color;
     scroll-behavior: smooth;
+    position: relative;
     line-height: 1.5;
+    z-index: 0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/background.jpg');
+    background-size: cover;
+    opacity: 0.1; 
+    z-index: -1;
 }
 
 *, *::before, *::after {
