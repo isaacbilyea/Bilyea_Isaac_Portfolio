@@ -53,6 +53,10 @@ function changeAboutMe() {
 //EVENT LISTENERS
 
 hamburgerMenu.addEventListener('click', toggleMenu);
-aboutMeCon.addEventListener('click', changeAboutMe);
+
+//Only adds eventlistener if aboutMeCon exists (other pages would give errors)
+if (aboutMeCon) {
+    aboutMeCon.addEventListener('click', changeAboutMe);
+}
 
 })();
