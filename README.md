@@ -26,6 +26,7 @@ Open index.html in the browser of your choice.
 - October 17th, 2024
 - October 18th, 2024
 - October 19th, 2024
+- October 20th, 2024
 
 ## Credits
 
