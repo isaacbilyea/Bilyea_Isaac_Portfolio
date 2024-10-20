@@ -23,6 +23,7 @@ settings: [
 ]
 }); //Sets controls to remove defaults to get rid of settings
 
+//Array of images and captions for about me page
 const aboutMeContent = [
     {image: 'images/isaac-eatsfood.jpg', caption: 'ISAAC EATS FOOD'},
     {image: 'images/isaac-likestrees.jpeg', caption: 'ISAAC LIKES TREES'},
@@ -39,9 +40,10 @@ const aboutMeContent = [
 function toggleMenu() {
     hamburgerMenu.classList.toggle('activate');
     mainNav.classList.toggle('show');
-    body.classList.toggle('menu-open');
+    body.classList.toggle('menu-open'); //Used to set body to hide overflow when menu is open
 };
 
+//Changes image and caption for about me
 function changeAboutMe() {
     currentIndex = (currentIndex + 1) % aboutMeContent.length;
     aboutMeImage.src = aboutMeContent[currentIndex].image;
