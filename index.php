@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+//connect to the running database server and the specific database
+require_once('includes/connect.php');
+
+
+//create a query to run in SQL
+$query = 'SELECT projects.id AS project, title, description, cover_image AS image FROM projects';
+
+
+//run the query to get back the content
+$results = mysqli_query($connect,$query);
+
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +26,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" href="images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
-  <title>Contact | Isaac Bilyea</title>
+  <title>Home | Isaac Bilyea</title>
 </head>
 
 <body>
   <!--Header-->
-  <h1 class="hidden">Contact Isaac Bilyea</h1>
+  <h1 class=" hidden">Isaac Bilyea's Portfolio</h1>
   <header id="main-header">
     <a href="index.php"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.61 64.69">
+        <defs>
+        </defs>
         <g class="logo-elements" data-name="logo-shapes">
           <path class="logo-letter"
             d="M1.78,63.84c-1.18,0-1.78-.42-1.78-1.27v-.34c0-.51.52-1.24,1.57-2.2,1.04-.96,1.56-2.06,1.56-3.3v-22.18c0-1.3-.52-2.51-1.56-3.64-1.05-1.13-1.57-1.86-1.57-2.2v-.25c0-.45.51-.96,1.52-1.52l8.47-4.23c.96-.39,1.71-.44,2.25-.13.53.31.8.83.8,1.57v32.59c0,1.24.58,2.34,1.74,3.3,1.16.96,1.74,1.69,1.74,2.2v.34c0,.85-.62,1.27-1.86,1.27H1.78Z" />
@@ -40,9 +56,9 @@
     <nav id="main-nav">
       <h2 class="hidden">Main Navigation</h2>
       <ul>
-        <li class="menu-item"><a href="index.php">Home</a></li>
+        <li class="active menu-item"><a href="index.php">Home</a></li>
         <li class="menu-item"><a href="about.html">About</a></li>
-        <li class="active menu-item"><a href="contact.html">Contact</a></li>
+        <li class="menu-item"><a href="contact.html">Contact</a></li>
         <li id="menu-dot"></li>
       </ul>
     </nav>
@@ -51,49 +67,88 @@
 
   <!--Hue Slider-->
   <div class="dot-hue-slider">
-    <input type="range" value="0" min="0" max="360" step="0.1" />
+    <div class="slider-con">
+      <input id="hue-range" type="range" value="0" min="0" max="360" step="0.1" />
+    </div>
   </div>
 
-  <!--Contact Form-->
-  <section id="contact-form" class="grid-con">
-    <h2 class="hidden">Contact Form</h2>
-    <div id="form-text" class="col-span-full m-col-start-3 m-col-end-11">
-      <h3>CONTACT ME TO<br class="mobile-break"> GET THE BALL ROLLIN'</h3>
-      <h4>LIKE SERIOUSLY. THE BALL WILL ROLL. </h4>
-      <h5>I PROMISE.</h5>
+  <!--Intro-->
+  <section id="intro-con" class="grid-con">
+    <h2 class="hidden">Introduction</h2>
+    <div id="warning-intro" class="col-span-full">
+      <img src="images/warning.svg" alt="warning symbol">
+      <p>WARNING</p>
+      <p>You are now entering a bug free zone<br>(at least until the next browser update) </p>
+    </div>
+    <p id="welcome" class="col-span-full">Welcome to my portfolio, I'm Isaac</p>
+    <div class="col-span-full m-col-start-2 m-col-end-12" id="video-con">
+      <video class="player" preload="metadata" poster="images/video-poster.png">
+        <source src="videos/intro_wip.mp4" type="video/mp4">
+        <p>Oops, something went wrong. You may be using an outdated browser or have javascript disabled.</p>
+      </video>
     </div>
 
-    <div id="form-input" class="col-span-full m-col-start-3 m-col-end-11">
-      <form action="#" method="POST" enctype="text/plain">
-        <input name="name" type="text" placeholder="Name*">
-        <input name="contactInfo" type="text" required placeholder="Email*">
-        <textarea name="message" placeholder="Message*"></textarea>
-        <input name="submit" type="submit" value="Submit" id="submit-button">
-      </form>
-    </div>
   </section>
 
-  <!--Ball-->
-  <div id="ball-con">
-    <svg id="ball-path" viewBox="0 0 1200 172" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path id="path"
-        d="M1200 3C1144.42 13.6667 1052.5 24 844.502 123C636.502 222 522.203 123 292.002 123C194.442 123 46.3468 143.761 -0.496094 169.5"
-        stroke="#2D2D2D" stroke-width="5" />
-    </svg>
-    <svg id="ball-background" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1200 249">
-      <defs>
-      </defs>
-      <path fill="#2d2d2d"
-        d="M844.5,120c-208,99-322.3,0-552.5,0S46.3,140.8-.5,166.5c0,50.5,0,53.5,0,82.5h1200.5V0s-147.5,21-355.5,120Z" />
-    </svg>
-    <div id="ball"></div>
-  </div>
+  <!--Projects-->
+  <section id="projects-con" class="grid-con">
+    <h2 class="col-span-full">Projects</h2>
+
+    <?php
+
+    while($row = mysqli_fetch_array($results)) {
+    echo'<div class="project-card col-span-full">
+      <div class="project-image">
+      <a href="details.php?id='.$row['project'].'"><img src="images/'.$row['image'].'" alt=""></a>
+      </div>
+      <div class="project-text">
+        <h3>'.$row['title'].'</h3>
+        <p>'.$row['description'].'</p>
+      </div>
+    </div>';
+    }
+    ?>
+
+    <!-- <div class="project-card col-span-full m-col-start-7 m-col-end-12">
+      <div class="project-image">
+        <img src="images/stride.svg" alt="">
+      </div>
+      <div class="project-text">
+        <h3>Stride</h3>
+        <p>Web Development | Design</p>
+      </div>
+    </div>
+
+    <div class="project-card col-span-full m-col-start-2 m-col-end-7">
+      <div class="project-image">
+        <img src="images/industry-night.svg" alt="">
+      </div>
+      <div class="project-text">
+        <h3>Industry Night</h3>
+        <p>Web Development</p>
+      </div>
+    </div>
+
+    <div class="project-card col-span-full m-col-start-7 m-col-end-12">
+      <div class="project-image">
+        <img src="images/cardinal.svg" alt="">
+      </div>
+      <div class="project-text">
+        <h3>Cardinal</h3>
+        <p>Design</p>
+      </div>
+    </div> -->
+
+  </section>
+
 
   <!--Footer-->
   <footer>
-    <h2 class=" hidden">Footer</h2>
+    <h2 class="hidden">Footer</h2>
     <div id="footer-con">
       <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.61 64.69">
+        <defs>
+        </defs>
         <g class="logo-elements" data-name="logo-shapes">
           <path class="logo-letter"
             d="M1.78,63.84c-1.18,0-1.78-.42-1.78-1.27v-.34c0-.51.52-1.24,1.57-2.2,1.04-.96,1.56-2.06,1.56-3.3v-22.18c0-1.3-.52-2.51-1.56-3.64-1.05-1.13-1.57-1.86-1.57-2.2v-.25c0-.45.51-.96,1.52-1.52l8.47-4.23c.96-.39,1.71-.44,2.25-.13.53.31.8.83.8,1.57v32.59c0,1.24.58,2.34,1.74,3.3,1.16.96,1.74,1.69,1.74,2.2v.34c0,.85-.62,1.27-1.86,1.27H1.78Z" />
@@ -123,6 +178,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script src="js/main.js"></script>
+  
 
 </body>
 

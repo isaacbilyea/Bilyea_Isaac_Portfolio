@@ -47,6 +47,10 @@ body.menu-open {
     overflow: hidden;
 }
 
+.logo-dot {
+    fill: v.$dot-color;
+}
+
 @media screen and (min-width: 768px) {
 
 html, body {
