@@ -37,8 +37,9 @@
             width: 100%;
             font-size: .75rem;
             margin-bottom: .5rem;
-            padding: .5rem 0rem .6rem .5rem;
-            border: 1px solid a.$secondary-color;
+            padding: .5rem 0rem .25rem 0rem;
+            border: none;
+            border-bottom: 1px solid a.$secondary-color;
             font-family: a.$body-font-family;
             color: a.$secondary-color;
             max-width: 100%;
@@ -47,7 +48,7 @@
         
         textarea {
             height: 5rem;
-            padding: .35rem 0rem 0rem .5rem;
+            padding: .35rem 0rem 0rem 0rem;
         }
         
         input[type="submit"] {
@@ -68,9 +69,35 @@
     }
 }
 
+#ball-con {
+    position: relative;
+
+    #ball-path {
+        position: absolute;
+        margin-bottom: -1rem;
+    }
+
+    #ball-background {
+        margin-bottom: -1rem;
+    }
+
+    #ball {
+        position: absolute;
+        width: 5rem;
+        height: 5rem;
+        background: a.$dot-color;
+        border-radius: 50%;
+        top: -4.5rem;
+        right: 0;
+    }
+}
+
+
 @media screen and (min-width: 768px) {
 
     #contact-form {
+
+        margin-top: 7rem;
 
         #form-text {
             
@@ -92,7 +119,7 @@
                 font-size: 1rem;
                 margin-bottom: .75rem;
                 margin-top: 1rem;
-                border: 1.75px solid a.$secondary-color;
+                border-bottom: 1.75px solid a.$secondary-color;
             }
 
             input[type="submit"] {
@@ -107,6 +134,8 @@
 @media screen and (min-width: 1200px) {
 
     #contact-form {
+
+        margin-top: 10rem;
 
         #form-text {
             

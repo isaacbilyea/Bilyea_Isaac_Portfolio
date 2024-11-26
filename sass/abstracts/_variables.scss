@@ -1,9 +1,15 @@
 @use 'fonts';
 
+:root {
+    --dynamic-hue: 0;
+}
+
+$dynamic-hue: var(--dynamic-hue);
 $primary-color: #D9D9D9;
 $secondary-color: #2D2D2D;
 $accent-color: #DA5A2E;
 $body-text-color: #2D2D2D;
+$dot-color: oklch(62.56% 0.1709 #{$dynamic-hue});
 $heading-font-family: 'Recoleta', Georgia, serif;
 $body-font-family: 'Recoleta', Georgia, serif;
 $alt-body-font-family: 'Poppins', Georgia, sans-serif;

@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+
+require_once('includes/connect.php');
+
+$query = 'SELECT * FROM projects,media_files WHERE project_id = projects.id AND projects.id ='.$_GET['id'];
+
+$results = mysqli_query($connect,$query);
+
+$row = mysqli_fetch_assoc($results);
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,24 +23,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" href="images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
-  <title>Home | Isaac Bilyea</title>
+  <title>About | Isaac Bilyea</title>
 </head>
 
 <body>
   <!--Header-->
-  <h1 class=" hidden">Isaac Bilyea's Portfolio</h1>
+  <h1 class="hidden">About Isaac Bilyea</h1>
   <header id="main-header">
-    <a href="index.html"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.61 64.69">
+    <a href="index.php"><svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.61 64.69">
         <defs>
-          <style>
-            .logo-letter {
-              fill: #2d2d2d;
-            }
-
-            .logo-dot {
-              fill: #da5a2e;
-            }
-          </style>
         </defs>
         <g class="logo-elements" data-name="logo-shapes">
           <path class="logo-letter"
@@ -51,8 +53,8 @@
     <nav id="main-nav">
       <h2 class="hidden">Main Navigation</h2>
       <ul>
-        <li class="active menu-item"><a href="index.html">Home</a></li>
-        <li class="menu-item"><a href="about.html">About</a></li>
+        <li class="menu-item"><a href="index.php">Home</a></li>
+        <li class="active menu-item"><a href="about.html">About</a></li>
         <li class="menu-item"><a href="contact.html">Contact</a></li>
         <li id="menu-dot"></li>
       </ul>
@@ -60,67 +62,60 @@
 
   </header>
 
-  <!--Intro-->
-  <section id="intro-con" class="grid-con">
-    <h2 class="hidden">Introduction</h2>
-    <div id="warning-intro" class="col-span-full">
-      <img src="images/warning.svg" alt="warning symbol">
-      <p>WARNING</p>
-      <p>You are now entering a bug free zone<br>(at least until the next browser update) </p>
-    </div>
-    <p id="welcome" class="col-span-full">Welcome to my portfolio, I'm Isaac</p>
-    <div class="col-span-full m-col-start-2 m-col-end-12" id="video-con">
-      <video class="player" preload="metadata" poster="images/video-poster.png">
-        <source src="videos/intro_wip.mp4" type="video/mp4">
-        <p>Oops, something went wrong. You may be using an outdated browser or have javascript disabled.</p>
-      </video>
-    </div>
+  <!--Hue Slider-->
+  <div class="dot-hue-slider">
+    <input type="range" value="0" min="0" max="360" step="0.1" />
+  </div>
 
-  </section>
+  <section id="case-study-con">
 
-  <!--Projects-->
-  <section id="projects-con" class="grid-con">
+    <svg class="connections-svg">
+        <path class="connector" d="M 400,50 C 450,50 500,150 550,150" />
+        <path class="connector" d="M 400,250 C 450,250 500,350 550,350" />
+        <path class="connector" d="M 400,450 C 450,450 500,550 550,550" />
+    </svg>
 
-    <h2 class="col-span-full">Projects</h2>
-
-    <div class="project-card col-span-full m-col-start-2 m-col-end-7">
-      <div class="project-image">
-        <img src="images/quatro.svg" alt="">
-      </div>
-      <div class="project-text">
-        <h3>Quatro</h3>
-        <p>Web Development | Design</p>
-      </div>
+    <div id="case-study-title">
+        <h2><?php echo $row['title']; ?></h2>
+        <p><?php echo $row['description']; ?></p>
     </div>
 
-    <div class="project-card col-span-full m-col-start-7 m-col-end-12">
-      <div class="project-image">
-        <img src="images/stride.svg" alt="">
-      </div>
-      <div class="project-text">
-        <h3>Stride</h3>
-        <p>Web Development | Design</p>
-      </div>
+    <div id="case-study-text" class="grid-con">
+    <div id="overview" class="study-card col-span-full m-col-start-1 m-col-end-7">
+        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <h3>Overview</h3>
+        <p><?php echo $row['overview']; ?></p>
     </div>
 
-    <div class="project-card col-span-full m-col-start-2 m-col-end-7">
-      <div class="project-image">
-        <img src="images/industry-night.svg" alt="">
-      </div>
-      <div class="project-text">
-        <h3>Industry Night</h3>
-        <p>Web Development</p>
-      </div>
+    <div id="summary" class="study-card col-span-full m-col-start-7 m-col-end-13">
+        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <h3>Summary</h3>
+        <p><?php echo $row['summary']; ?></p>
     </div>
 
-    <div class="project-card col-span-full m-col-start-7 m-col-end-12">
-      <div class="project-image">
-        <img src="images/cardinal.svg" alt="">
-      </div>
-      <div class="project-text">
-        <h3>Cardinal</h3>
-        <p>Design</p>
-      </div>
+    <div id="research" class="study-card col-span-full m-col-start-1 m-col-end-7">
+        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <h3>Research</h3>   
+        <p><?php echo $row['research']; ?></p>
+    </div>
+
+    <div id="process" class="study-card col-span-full m-col-start-7 m-col-end-13">
+        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <h3>Process</h3>
+        <p><?php echo $row['process']; ?></p>
+    </div>
+
+    <div id="outcome" class="study-card col-span-full m-col-start-1 m-col-end-7">
+        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <h3>Outcome</h3>
+        <p><?php echo $row['outcome']; ?></p>
+    </div>
+
+    <div id="reflection" class="study-card col-span-full m-col-start-7 m-col-end-13">
+        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <h3>Reflection</h3>
+        <p><?php echo $row['reflection']; ?></p>
+    </div>
     </div>
 
   </section>
@@ -131,15 +126,6 @@
     <div id="footer-con">
       <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.61 64.69">
         <defs>
-          <style>
-            .logo-letter {
-              fill: #2d2d2d;
-            }
-
-            .logo-dot {
-              fill: #da5a2e;
-            }
-          </style>
         </defs>
         <g class="logo-elements" data-name="logo-shapes">
           <path class="logo-letter"
@@ -167,6 +153,8 @@
   </footer>
 
   <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script src="js/main.js"></script>
 
 </body>

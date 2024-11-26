@@ -3,29 +3,40 @@
 #about-me {
 
     #about-me-image {
-        min-width: 80%;
-        max-width: 80%;
+        min-width: 20rem;
+        max-width: 20rem;
         height: 30rem;
         margin: 0 auto;
         border-radius: 2rem;
-        background-color: a.$secondary-color;
-        padding: 1.5rem 1.5rem 4rem 1.5rem;
-        margin-top: 2rem;
+        margin-top: 3rem;
+        padding: 1.5rem 1.5rem 4.5rem 1.5rem;
+        position: relative;
 
         img {
             width: 100%;
             height: 100%;
-            border-radius: 1.5rem;
             object-fit: cover;
+            border-radius: 1rem 1rem 0 0;
+            border: 5px solid a.$secondary-color;
         }
 
         p {
             color: white;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin: 0;
-            margin-top: .5rem;
             font-weight: 500;
+            background-color: a.$secondary-color;
+            border-radius: 0 0 1rem 1rem;
+            padding: 0.75rem 0;
+            margin-top: -0.5rem;
+        }
+
+        svg {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            width: 6rem;
         }
             
     }
@@ -40,6 +51,10 @@
             font-size: 1.75rem;
             font-weight: 500;
             margin: 0;
+        }
+
+        p {
+            font-weight: 400;
         }
     }
 
@@ -62,15 +77,16 @@
     margin-top: 4rem;
 
     #about-me-image {
-        margin-top: 0rem;
-        min-width: 100%;
+        margin-top: -0.5rem;
         min-height: 100%;
+        max-height: 100%;
+        max-width: 50%;
     }
 
     #about-me-text {
         font-size: 1rem;
         margin-top: 0rem;
-        margin-left: 1rem;
+        margin-left: 0.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -95,6 +111,7 @@
         #about-me-text {
             font-size: 1.2rem;
             margin-top: 0rem;
+            margin-left: -3rem;
 
             h2 {
                 font-size: 2rem;
