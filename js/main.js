@@ -28,6 +28,53 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 //----------------------------------------------------------------------------------//
 
 
+//Logo Hover Animation
+(() => {
+  
+  //VARIABLES
+
+  const logoContainer = document.querySelector(".logo-container");
+  const initials = document.querySelector("#b-initial path");
+  const fullNameLetters = [...document.querySelectorAll("#full-name path")];
+
+  //FUNCTIONS
+
+  function typeFullName() {
+
+    gsap.to(initials, { opacity: 0, duration: 0.015 });
+
+    gsap.to(fullNameLetters, {
+      opacity: 1,
+      stagger: 0.025, 
+      duration: 0.1,
+      ease: "power1.inOut",
+    });
+  }
+
+  function untypeFullName() {
+
+    gsap.to(fullNameLetters.reverse(), {
+      opacity: 0,
+      stagger: 0.025,
+      duration: 0.1,
+      ease: "power1.inOut",
+      onComplete: () => {
+        fullNameLetters.reverse();
+        gsap.to(initials, { opacity: 1, duration: 0.015 });
+      },
+    });
+  }
+
+  //EVENT LISTENERS
+
+  logoContainer.addEventListener("mouseenter", typeFullName);
+  logoContainer.addEventListener("mouseleave", untypeFullName);
+
+})();
+
+//----------------------------------------------------------------------------------//
+
+
 //Plyr - Video Player
 (()=> {
 
@@ -132,39 +179,40 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 
 })();
 
-// //Motion Path
-// (() => {
+//Motion Path
+(() => {
 
-//     const form = document.querySelector('form');
+    const form = document.querySelector('form');
 
-//     gsap.registerPlugin(MotionPathPlugin);
+    gsap.registerPlugin(MotionPathPlugin);
 
-//     gsap.set("#ball", {
-//         x: 0,
-//         y: 0,
-//     });
+    gsap.set("#ball", {
+        x: 0,
+        y: 0,
+    });
 
-//     // FUNCTIONS
-//     function animateBall(e) {
-//         e.preventDefault();
+    // FUNCTIONS
+    function animateBall(e) {
+        e.preventDefault();
 
+        gsap.to("#ball", {
+            duration: 3,
+            ease: "power1.inOut",
+            motionPath: {
+                path: "#path",
+                align: "#path",
+                alignOrigin: [0, 0],
+                start: 0,
+                end: 1,
+                curviness: 2,
+                autoRotate: true
+            },
+        });
+    }
 
-//         gsap.to("#ball", {
-//             duration: 3,
-//             ease: "power1.inOut",
-//             motionPath: {
-//                 path: "#path",
-//                 align: "#path",
-//                 alignOrigin: [0, 0],
-//                 start: 0,
-//                 end: 1,
-//                 curviness: 2,
-//                 autoRotate: true
-//             },
-//         });
-//     }
+    // EVENT LISTENERS
+    if (form) {
+      form.addEventListener('submit', animateBall);
+    }
 
-//     // EVENT LISTENERS
-//     form.addEventListener('submit', animateBall);
-
-// })();
+})();

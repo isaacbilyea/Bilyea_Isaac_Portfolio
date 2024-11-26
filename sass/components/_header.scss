@@ -5,13 +5,29 @@
   padding: 0 4rem;
   max-width: 1200px;
   position: relative;
+  
+  .logo-container {
+    position: relative;
+    display: inline-block;
+    
+    .logo {
+      height: 4rem;
 
-  .logo {
-    height: 3.25rem;
+      .logo-letter {
+        fill: a.$secondary-color;
+      }
 
-    .logo-letter {
-      fill: a.$secondary-color;
+      #b-initial path {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
+      
+      #full-name path {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
     }
+
   }
 
   #hamburger-menu {
