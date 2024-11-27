@@ -9,9 +9,9 @@ Welcome to my portfolio repository! This project showcases the journey of my aca
 
 1. [About](#about)
 2. [Skills](#skills)
-3. [Languages](#languages)
-4. [Installation](#installation)
-5. [Contact](#contact)
+3. [Installation](#installation)
+4. [Contact](#contact)
+5. [License](#license)
 
 
 ## About 👨‍💻 <a name="about"></a>
@@ -41,3 +41,7 @@ Have a question or want to collaborate? I’d love to hear from you!
 - **LinkedIn**: [Isaac Bilyea](https://www.linkedin.com/in/isaac-bilyea-1751b315b/)  
 
 Thank you for visiting my portfolio! I hope you enjoy exploring my work as much as I enjoyed creating it.
+
+## License 📄 <a name="license"></a>
+
+This project is licensed under the MIT License. For more details, refer to the [LICENSE](LICENSE) file in the repository.
