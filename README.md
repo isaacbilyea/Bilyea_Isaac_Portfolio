@@ -1,37 +1,43 @@
-# Portfolio - Isaac Bilyea
+# The Portfolio of Isaac Bilyea - Front End Developer 💻
 
-Welcome to my portfolio repository. This project highlights my work in design and development, demonstrating the skills and knowledge I've gained throughout my academic journey. You'll find examples of my projects, creative designs, and technical contributions. Thank you for visiting!
+Welcome to my portfolio repository! This project showcases the journey of my academic and creative growth, featuring my work in design and development. Here, you'll find examples of projects that highlight my skills, passion for problem-solving, and dedication to creating user-friendly, innovative solutions. Thanks for stopping by!
 
-## Installation
 
-There is no installation required.
+## Table of Contents 📋
 
-## Usage
+1. [About](#about)
+2. [Skills](#skills)
+3. [Languages](#languages)
+4. [Installation](#installation)
+5. [Contact](#contact)
 
-Open index.html in the browser of your choice.
 
-## Contributing
+## About 👨‍💻
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+This portfolio was created to showcase my development skills and growth in front-end technologies. Each project highlights the tools, techniques, and problem-solving approaches I use to build responsive and engaging web experiences. I hope it gives you a clear view of my technical abilities and design process.
 
-## History
+![Portfolio Readme Photo](/images/readme.png)
 
-- September 12th, 2024
-- October 8th, 2024
-- October 15th, 2024
-- October 17th, 2024
-- October 18th, 2024
-- October 19th, 2024
-- October 20th, 2024
+## Skills 🛠️
 
-## Credits
+Here's what you'll find showcased in this portfolio:
 
-Isaac Bilyea
+- **Languages**: HTML5, CSS3, JavaScript
+- **Preprocessors**: Sass (SCSS)
+- **Frameworks and Libraries**: GreenSock (GSAP)
+- **Tools**: Git, VS Code
 
-## License
+## Installation 📦
 
-MIT - please see license file.
+To explore the portfolio locally:
+
+1. Clone this repository.  
+2. Navigate into the project folder.  
+3. Open `index.html` in your browser, or serve it locally using a development server.  
+
+## Contact 📱
+
+Have a question or want to collaborate? I’d love to hear from you!  
+- **LinkedIn**: [Isaac Bilyea](https://www.linkedin.com/in/isaac-bilyea-1751b315b/)  
+
+Thank you for visiting my portfolio! I hope you enjoy exploring my work as much as I enjoyed creating it.
