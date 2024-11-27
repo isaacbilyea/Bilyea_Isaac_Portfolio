@@ -1,0 +1,59 @@
+@use '../abstracts' as a;
+
+.dot-hue-slider {
+    width: 3rem;
+    height: 12rem;
+    background-color: #f4f4f4;
+    box-shadow: 5px 5px 7.5px 0px rgba(0,0,0,0.75);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    bottom: 2%;
+    left: 1.75%;
+    z-index: 2;
+
+    .slider-con {
+        transform: rotate(-90deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;   
+    }
+
+    .slider-con input[type="range"] {
+        appearance: none;
+        background-color: a.$dot-color;
+        border-radius: 0.5rem;
+        outline: none;
+    }
+    
+    .slider-con input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    .slider-con input[type="range"]::-webkit-slider-runnable-track {
+        height: 0.5rem;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+    }
+
+}
+
+
+@media screen and (min-width: 1200px) {
+
+    .dot-hue-slider {
+        width: 5rem;
+        left: 2.25%;
+    }
+
+
+}
