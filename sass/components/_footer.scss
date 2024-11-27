@@ -35,9 +35,7 @@ footer {
         }
 
         #sm-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include a.center;
             gap: 1.5rem;
             margin-top: 2rem;
         }
