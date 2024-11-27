@@ -26,6 +26,10 @@ $results = mysqli_query($connect,$query);
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" href="images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+  <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+  <script defer src="js/main.js"></script>
   <title>Home | Isaac Bilyea</title>
 </head>
 
@@ -226,13 +230,6 @@ $results = mysqli_query($connect,$query);
       </div>
     </div>
   </footer>
-
-  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
-  <script src="js/main.js"></script>
-  
-
 </body>
 
 </html>
