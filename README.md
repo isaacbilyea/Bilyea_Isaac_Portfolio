@@ -7,18 +7,18 @@ Welcome to my portfolio repository! This project showcases the journey of my aca
 
 ## Table of Contents 📋
 
-1. [About](#about-)
-2. [Skills](#skills-)
-3. [Languages](#languages-)
-4. [Installation](#installation-)
-5. [Contact](#contact-)
+1. [About](#about)
+2. [Skills](#skills)
+3. [Languages](#languages)
+4. [Installation](#installation)
+5. [Contact](#contact)
 
 
-## About 👨‍💻
+## About 👨‍💻 <a name="about"></a>
 
 This portfolio was created to showcase my development skills and growth in front-end technologies. Each project highlights the tools, techniques, and problem-solving approaches I use to build responsive and engaging web experiences. I hope it gives you a clear view of my technical abilities and design process.
 
-## Skills 🛠️
+## Skills 🛠️ <a name="skills"></a>
 
 Here's what you'll find showcased in this portfolio:
 
@@ -27,7 +27,7 @@ Here's what you'll find showcased in this portfolio:
 - **Frameworks and Libraries**: GreenSock (GSAP)
 - **Tools**: Git, VS Code
 
-## Installation 📦
+## Installation 📦 <a name="installation"></a>
 
 To explore the portfolio locally:
 
@@ -35,7 +35,7 @@ To explore the portfolio locally:
 2. Navigate into the project folder.  
 3. Open `index.html` in your browser, or serve it locally using a development server.  
 
-## Contact 📱
+## Contact 📱 <a name="contact"></a>
 
 Have a question or want to collaborate? I’d love to hear from you!  
 - **LinkedIn**: [Isaac Bilyea](https://www.linkedin.com/in/isaac-bilyea-1751b315b/)  
