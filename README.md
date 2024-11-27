@@ -1,5 +1,7 @@
 # The Portfolio of Isaac Bilyea - Front End Developer 💻
 
+![Portfolio Readme Photo](/images/readme.png)
+
 Welcome to my portfolio repository! This project showcases the journey of my academic and creative growth, featuring my work in design and development. Here, you'll find examples of projects that highlight my skills, passion for problem-solving, and dedication to creating user-friendly, innovative solutions. Thanks for stopping by!
 
 
@@ -15,8 +17,6 @@ Welcome to my portfolio repository! This project showcases the journey of my aca
 ## About 👨‍💻
 
 This portfolio was created to showcase my development skills and growth in front-end technologies. Each project highlights the tools, techniques, and problem-solving approaches I use to build responsive and engaging web experiences. I hope it gives you a clear view of my technical abilities and design process.
-
-![Portfolio Readme Photo](/images/readme.png)
 
 ## Skills 🛠️
 
