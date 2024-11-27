@@ -7,11 +7,11 @@ Welcome to my portfolio repository! This project showcases the journey of my aca
 
 ## Table of Contents 📋
 
-1. [About](#about)
-2. [Skills](#skills)
-3. [Languages](#languages)
-4. [Installation](#installation)
-5. [Contact](#contact)
+1. [About](#about-)
+2. [Skills](#skills-)
+3. [Languages](#languages-)
+4. [Installation](#installation-)
+5. [Contact](#contact-)
 
 
 ## About 👨‍💻
