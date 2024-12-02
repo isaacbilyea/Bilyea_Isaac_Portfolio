@@ -46,17 +46,19 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     gsap.to(fullNameLetters, {
       opacity: 1,
       stagger: 0.025, 
-      duration: 0.1,
+      duration: 0.015,
       ease: "power1.inOut",
     });
   }
 
   function untypeFullName() {
 
+    gsap.killTweensOf(fullNameLetters);
+
     gsap.to(fullNameLetters.reverse(), {
       opacity: 0,
       stagger: 0.025,
-      duration: 0.1,
+      duration: 0.015,
       ease: "power1.inOut",
       onComplete: () => {
         fullNameLetters.reverse();
@@ -102,6 +104,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     //VARIABLES
     const slider = document.querySelector('.dot-hue-slider input');
     const root = document.querySelector(':root');
+    const sliderContainer = document.querySelector('.dot-hue-slider');
 
     const savedHue = localStorage.getItem('dynamicHue');
     if (savedHue) {
@@ -129,6 +132,19 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     root.style.setProperty('--dynamic-hue', hue);
 
     })
+
+    sliderContainer.addEventListener('mouseenter', () => {
+      sliderContainer.classList.toggle('expanded');
+    });
+
+    
+    sliderContainer.addEventListener('mouseleave', () => {
+      sliderContainer.classList.toggle('expanded');
+    });
+
+    sliderContainer.addEventListener('click', () => {
+      sliderContainer.classList.toggle('expanded');
+    });
 
 })();
 
@@ -214,5 +230,145 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     if (form) {
       form.addEventListener('submit', animateBall);
     }
+
+})();
+
+
+//----------------------------------------------------------------------------------//
+
+//Cursor Dot
+(() => {
+
+const dotCursor = document.querySelector('.dot-cursor');
+const cursorSvg = 'images/cursor.svg'; // Replace with your SVG path
+
+document.addEventListener('mousemove', (e) => {
+  dotCursor.style.top = `${e.clientY}px`;
+  dotCursor.style.left = `${e.clientX}px`;
+});
+
+// Interactive elements that will trigger custom cursor
+const interactiveSelectors = [
+  'a', 
+  'button', 
+  'input', 
+  'select', 
+  'textarea', 
+  '[data-cursor-interact]'
+];
+
+interactiveSelectors.forEach(selector => {
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(selector)) {
+      // Change cursor to SVG
+      dotCursor.style.backgroundImage = `url(${cursorSvg})`;
+      dotCursor.style.backgroundSize = 'contain';
+      dotCursor.style.backgroundRepeat = 'no-repeat';
+      dotCursor.style.width = '1rem';  // Adjust size as needed
+      dotCursor.style.height = '1rem'; // Adjust size as needed
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(selector)) {
+      // Revert to default dot cursor
+      dotCursor.style.backgroundImage = 'none';
+      dotCursor.style.width = '1rem';
+      dotCursor.style.height = '1rem';
+    }
+  });
+});
+
+})();
+
+
+//----------------------------------------------------------------------------------//
+
+
+//Case Study Scroll
+(() => {
+
+document.addEventListener('DOMContentLoaded', () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const firstCard = document.getElementById('overview');
+  const lastCard = document.getElementById('reflection');
+  const scrollLine = document.getElementById('scroll-line-container');
+  const scrollBall = document.getElementById('scroll-ball');
+
+  function adjustLinePosition() {
+      const startTop = firstCard.getBoundingClientRect().top + window.scrollY;
+      const endTop = lastCard.getBoundingClientRect().top + window.scrollY;
+      const lineHeight = endTop - startTop;
+
+      scrollLine.style.top = `${startTop}px`;
+      scrollLine.style.height = `${lineHeight}px`;
+  }
+
+  adjustLinePosition();
+  window.addEventListener('resize', adjustLinePosition);
+
+  gsap.to(scrollBall, {
+      scrollTrigger: {
+          trigger: '#case-study-text',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true
+      },
+      y: () => scrollLine.offsetHeight - scrollBall.offsetHeight,
+      ease: 'none'
+  });
+});
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   gsap.registerPlugin(ScrollTrigger);
+//   const firstCard = document.getElementById('overview');
+//   const lastCard = document.getElementById('reflection');
+//   const scrollLine = document.getElementById('scroll-line-container');
+//   const scrollBall = document.getElementById('scroll-ball');
+//   const cards = document.querySelectorAll('.study-card');
+
+//   function adjustLinePosition() {
+//       const startTop = firstCard.getBoundingClientRect().top + window.scrollY;
+//       const endTop = lastCard.getBoundingClientRect().top + window.scrollY;
+//       const lineHeight = endTop - startTop;
+//       scrollLine.style.top = `${startTop}px`;
+//       scrollLine.style.height = `${lineHeight}px`;
+//   }
+
+//   adjustLinePosition();
+//   window.addEventListener('resize', adjustLinePosition);
+
+//   cards.forEach((card, index) => {
+//     ScrollTrigger.create({
+//       trigger: card,
+//       start: 'top center',
+//       end: 'bottom center',
+//       onEnter: () => {
+//         card.style.backgroundColor = '#FF7F50';  // Lighter orange on enter
+//       },
+//       onLeave: () => {
+//         card.style.backgroundColor = '#DA5A2E';  // Original color
+//       },
+//       onEnterBack: () => {
+//         card.style.backgroundColor = '#FF7F50';  // Lighter orange on enter back
+//       },
+//       onLeaveBack: () => {
+//         card.style.backgroundColor = '#DA5A2E';  // Original color
+//       }
+//     });
+//   });
+
+//   gsap.to(scrollBall, {
+//       scrollTrigger: {
+//           trigger: '#case-study-text',
+//           start: 'top top',
+//           end: 'bottom bottom',
+//           scrub: true
+//       },
+//       y: () => scrollLine.offsetHeight - scrollBall.offsetHeight,
+//       ease: 'none'
+//   });
+// });
 
 })();

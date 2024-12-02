@@ -26,6 +26,7 @@ $row = mysqli_fetch_assoc($results);
   <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script defer src="js/main.js"></script>
   <title>About | Isaac Bilyea</title>
 </head>
@@ -125,14 +126,15 @@ $row = mysqli_fetch_assoc($results);
       <input id="hue-range" type="range" value="0" min="0" max="360" step="0.1" />
     </div>
   </div>
+  
+  <!--Dot Cursor-->
+  <div class="dot-cursor"></div>
+
+  <div id="scroll-line-container">
+        <div id="scroll-ball"></div>
+    </div>
 
   <section id="case-study-con">
-
-    <svg class="connections-svg">
-        <path class="connector" d="M 400,50 C 450,50 500,150 550,150" />
-        <path class="connector" d="M 400,250 C 450,250 500,350 550,350" />
-        <path class="connector" d="M 400,450 C 450,450 500,550 550,550" />
-    </svg>
 
     <div id="case-study-title">
         <h2><?php echo $row['title']; ?></h2>
@@ -140,38 +142,36 @@ $row = mysqli_fetch_assoc($results);
     </div>
 
     <div id="case-study-text" class="grid-con">
-    <div id="overview" class="study-card col-span-full m-col-start-1 m-col-end-7">
+    <div id="overview" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
         <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
         <h3>Overview</h3>
         <p><?php echo $row['overview']; ?></p>
     </div>
 
-    <div id="summary" class="study-card col-span-full m-col-start-7 m-col-end-13">
-        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+    <div id="summary" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
         <h3>Summary</h3>
         <p><?php echo $row['summary']; ?></p>
     </div>
 
-    <div id="research" class="study-card col-span-full m-col-start-1 m-col-end-7">
+    <div id="research" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
         <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
         <h3>Research</h3>   
         <p><?php echo $row['research']; ?></p>
     </div>
 
-    <div id="process" class="study-card col-span-full m-col-start-7 m-col-end-13">
+    <div id="process" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
         <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
         <h3>Process</h3>
         <p><?php echo $row['process']; ?></p>
     </div>
 
-    <div id="outcome" class="study-card col-span-full m-col-start-1 m-col-end-7">
+    <div id="outcome" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
         <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
         <h3>Outcome</h3>
         <p><?php echo $row['outcome']; ?></p>
     </div>
 
-    <div id="reflection" class="study-card col-span-full m-col-start-7 m-col-end-13">
-        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+    <div id="reflection" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
         <h3>Reflection</h3>
         <p><?php echo $row['reflection']; ?></p>
     </div>
