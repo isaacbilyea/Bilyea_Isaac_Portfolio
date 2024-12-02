@@ -29,6 +29,7 @@ $results = mysqli_query($connect,$query);
   <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script defer src="js/main.js"></script>
   <title>Home | Isaac Bilyea</title>
 </head>
@@ -128,6 +129,9 @@ $results = mysqli_query($connect,$query);
       <input id="hue-range" type="range" value="0" min="0" max="360" step="0.1" />
     </div>
   </div>
+
+  <!--Dot Slider-->
+  <div class="dot-cursor"></div>
 
   <!--Intro-->
   <section id="intro-con" class="grid-con">
