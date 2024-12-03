@@ -98,6 +98,42 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 //----------------------------------------------------------------------------------//
 
 
+//Intro Scroll Ball
+(()=> {
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to("#seperator-ball", {
+  top: "100%", 
+  ease: "linear",
+  duration: 0.1,
+  onUpdate: function() {
+    const progress = this.progress(); 
+    const welcomeSpans = document.querySelectorAll("#welcome span");
+    
+    if (progress === 0) {
+      //top = 0%
+      welcomeSpans[0].style.color = "#DA5A2E";
+      welcomeSpans[1].style.color = "#2D2D2D";
+    } else if (progress === 1) {
+      //top = 100%
+      welcomeSpans[0].style.color = "#2D2D2D";
+      welcomeSpans[1].style.color = "#DA5A2E";
+    }
+  },
+  scrollTrigger: {
+    trigger: "#line-seperator",
+    start: "top center",
+    end: "bottom center",
+    scrub: true,
+  },
+});
+
+})();
+
+
+//----------------------------------------------------------------------------------//
+
+
 //Dot Colour Changer
 (()=> {
 
