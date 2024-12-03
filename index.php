@@ -141,7 +141,10 @@ $results = mysqli_query($connect,$query);
       <p>WARNING</p>
       <p>You are now entering a bug free zone<br>(at least until the next browser update) </p>
     </div>
-    <p id="welcome" class="col-span-full">Welcome to my portfolio, I'm Isaac</p>
+    <div id="line-seperator" class="col-span-full">
+      <div id="seperator-ball"></div>
+    </div>
+    <p id="welcome" class="col-span-full">I’m <span><a href="about.html">Isaac</a></span>, a <span>Front-End Web Developer.</span></p>
     <div class="col-span-full m-col-start-2 m-col-end-12" id="video-con">
       <video class="player" preload="metadata" poster="images/video-poster.png">
         <source src="videos/intro_wip.mp4" type="video/mp4">
