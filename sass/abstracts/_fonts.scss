@@ -1,5 +1,14 @@
 @font-face {
     font-family: 'Recoleta';
+    src: url('../fonts/Recoleta-Light.otf') format('opentype'),
+         url('../fonts/Recoleta-Light.woff2') format('woff2'),
+         url('../fonts/Recoleta-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Recoleta';
     src: url('../fonts/Recoleta-Regular.otf') format('opentype'),
          url('../fonts/Recoleta-Regular.woff2') format('woff2'),
          url('../fonts/Recoleta-Regular.woff') format('woff');
@@ -13,6 +22,15 @@
          url('../fonts/Recoleta-Medium.woff2') format('woff2'),
          url('../fonts/Recoleta-Medium.woff') format('woff');
     font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Recoleta';
+    src: url('../fonts/Recoleta-SemiBold.otf') format('opentype'),
+         url('../fonts/Recoleta-SemiBold.woff2') format('woff2'),
+         url('../fonts/Recoleta-SemiBold.woff') format('woff');
+    font-weight: 600;
     font-style: normal;
 }
 
