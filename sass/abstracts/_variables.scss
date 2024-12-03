@@ -2,6 +2,7 @@
 
 :root {
     --dynamic-hue: 0;
+    --dot-color: oklch(62.56% 0.1709 var(--dynamic-hue));
 }
 
 $dynamic-hue: var(--dynamic-hue);
