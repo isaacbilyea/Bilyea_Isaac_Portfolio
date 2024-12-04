@@ -111,11 +111,11 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     const progress = this.progress();
 
     if (progress === 0) {
-      // top = 0%
+      //top = 0%
       welcomeSpans[0].style.color = "var(--dot-color)";
       welcomeSpans[1].style.color = "#2D2D2D";
     } else if (progress === 1) {
-      // top = 100%
+      //top = 100%
       welcomeSpans[0].style.color = "#2D2D2D";
       welcomeSpans[1].style.color = "var(--dot-color)";
     }
@@ -153,7 +153,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     if (savedHue) {
         slider.value = savedHue;
         
-        // Update the CSS variable with the saved hue
+        //Updates the CSS variable with the saved hue
         let hue = savedHue;
         if (hue === '0') {
             hue = 38.55;
@@ -245,7 +245,11 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 //Motion Path
 (() => {
 
+   //VARIABLES
     const form = document.querySelector('form');
+    const urlParams = new URLSearchParams(window.location.search);
+    const popup = document.querySelector('#thank-you-popup');
+    const closeBtn = document.querySelector('#close-popup');
 
     gsap.registerPlugin(MotionPathPlugin);
 
@@ -254,12 +258,12 @@ hamburgerMenu.addEventListener('click', toggleMenu);
         y: 0,
     });
 
-    // FUNCTIONS
-    function animateBall(e) {
-        // e.preventDefault();
+    //FUNCTIONS
+    function animateBall() {
+
 
         gsap.to("#ball", {
-            duration: 3,
+            duration: 2,
             ease: "power1.inOut",
             motionPath: {
                 path: "#path",
@@ -273,10 +277,18 @@ hamburgerMenu.addEventListener('click', toggleMenu);
         });
     }
 
-    // EVENT LISTENERS
+    if (urlParams.get('submitted') === 'true') {
+      popup.classList.remove('hidden');
+    }
+    
+    //EVENT LISTENERS
     if (form) {
       form.addEventListener('submit', animateBall);
     }
+
+    closeBtn.addEventListener('click', () => {
+        popup.classList.add('hidden');
+    });
 
 })();
 
@@ -341,10 +353,10 @@ interactiveSelectors.forEach(selector => {
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
-  const firstCard = document.getElementById('overview');
-  const lastCard = document.getElementById('reflection');
-  const scrollLine = document.getElementById('scroll-line-container');
-  const scrollBall = document.getElementById('scroll-ball');
+  const firstCard = document.querySelector('#overview');
+  const lastCard = document.querySelector('#reflection');
+  const scrollLine = document.querySelector('#scroll-line-container');
+  const scrollBall = document.querySelector('#scroll-ball');
 
   function adjustLinePosition() {
       const startTop = firstCard.getBoundingClientRect().top + window.scrollY;
@@ -422,20 +434,3 @@ document.addEventListener('DOMContentLoaded', () => {
 // });
 
 })();
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Check if the form was successfully submitted
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('submitted') === 'true') {
-      const popup = document.getElementById('thank-you-popup');
-      popup.classList.remove('hidden');
-  }
-
-  // Close popup on button click
-  const closeBtn = document.getElementById('close-popup');
-  closeBtn.addEventListener('click', function () {
-      const popup = document.getElementById('thank-you-popup');
-      popup.classList.add('hidden');
-  });
-});
