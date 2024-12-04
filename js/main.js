@@ -422,3 +422,20 @@ document.addEventListener('DOMContentLoaded', () => {
 // });
 
 })();
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Check if the form was successfully submitted
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('submitted') === 'true') {
+      const popup = document.getElementById('thank-you-popup');
+      popup.classList.remove('hidden');
+  }
+
+  // Close popup on button click
+  const closeBtn = document.getElementById('close-popup');
+  closeBtn.addEventListener('click', function () {
+      const popup = document.getElementById('thank-you-popup');
+      popup.classList.add('hidden');
+  });
+});

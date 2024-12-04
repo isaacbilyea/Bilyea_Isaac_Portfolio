@@ -147,7 +147,7 @@ $results = mysqli_query($connect,$query);
     <p id="welcome" class="col-span-full">I’m <span><a href="about.html">Isaac</a></span>, a <span>Front-End Web Developer.</span></p>
     <div class="col-span-full m-col-start-2 m-col-end-12" id="video-con">
       <video class="player" preload="metadata" poster="images/video-poster.png">
-        <source src="videos/demo-reel.mp4" type="video/mp4">
+        <source src="videos/demo-reel.webm" type="video/webm">
         <p>Oops, something went wrong. You may be using an outdated browser or have javascript disabled.</p>
       </video>
     </div>

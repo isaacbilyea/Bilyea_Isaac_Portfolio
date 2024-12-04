@@ -129,7 +129,7 @@
     </div>
 
     <div id="form-input" class="col-span-full m-col-start-3 m-col-end-11">
-      <form method="post" action="sendmail.php">
+      <form name="submit" method="post" action="sendmail.php">
         <input name="name" type="text" placeholder="Name*">
         <input name="email" type="text" required placeholder="Email*">
         <textarea name="message" placeholder="Message*"></textarea>
@@ -137,6 +137,13 @@
       </form>
     </div>
   </section>
+
+  <div id="thank-you-popup" class="hidden">
+    <div class="popup-content">
+        <p>Thank you for contacting me! I'll get back to you soon.</p>
+        <button id="close-popup">Close</button>
+    </div>
+  </div>
 
   <!--Ball-->
   <div id="ball-con">

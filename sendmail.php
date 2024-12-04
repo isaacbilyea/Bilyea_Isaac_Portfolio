@@ -49,7 +49,7 @@ $message .= $msg;
 
 mail($to,$subject,$message);
 
-header('Location: index.php');
+header('Location: contact.php?submitted=true');
 
 }else{
     for($i=0; $i < count($errors); $i++) {
