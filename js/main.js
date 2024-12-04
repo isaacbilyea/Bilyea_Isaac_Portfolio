@@ -256,7 +256,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 
     // FUNCTIONS
     function animateBall(e) {
-        e.preventDefault();
+        // e.preventDefault();
 
         gsap.to("#ball", {
             duration: 3,
