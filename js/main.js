@@ -176,18 +176,15 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 
     })
 
-    sliderContainer.addEventListener('mouseenter', () => {
-      sliderContainer.classList.toggle('expanded');
-    });
-
-    
-    sliderContainer.addEventListener('mouseleave', () => {
-      sliderContainer.classList.toggle('expanded');
-    });
-
     sliderContainer.addEventListener('click', () => {
       sliderContainer.classList.toggle('expanded');
     });
+
+    if(window.innerWidth >= 1200) {
+      sliderContainer.addEventListener('mouseleave', () => {
+        sliderContainer.classList.toggle('expanded');
+      });
+    }
 
 })();
 
@@ -280,15 +277,16 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     if (urlParams.get('submitted') === 'true') {
       popup.classList.remove('hidden');
     }
-    
+
     //EVENT LISTENERS
     if (form) {
       form.addEventListener('submit', animateBall);
     }
 
-    closeBtn.addEventListener('click', () => {
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
         popup.classList.add('hidden');
-    });
+    })};
 
 })();
 
