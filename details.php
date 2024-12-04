@@ -5,11 +5,14 @@
 
 require_once('includes/connect.php');
 
-$query = 'SELECT * FROM projects,media_files WHERE project_id = projects.id AND projects.id ='.$_GET['id'];
+$query = 'SELECT * FROM projects, media_files WHERE project_id = projects.id AND projects.id ='.$_GET['id'];
 
 $results = mysqli_query($connect,$query);
 
 $row = mysqli_fetch_assoc($results);
+
+$link_query = 'SELECT id, title FROM projects WHERE id !='.$_GET['id'];
+$link_results = mysqli_query($connect, $link_query);
 ?>
 
 <head>
@@ -28,12 +31,12 @@ $row = mysqli_fetch_assoc($results);
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script defer src="js/main.js"></script>
-  <title>About | Isaac Bilyea</title>
+  <title><?php echo $row['title']; ?> | Isaac Bilyea</title>
 </head>
 
 <body>
   <!--Header-->
-  <h1 class="hidden">About Isaac Bilyea</h1>
+  <h1 class="hidden"><?php echo $row['title']; ?></h1>
   <header id="main-header">
   <a href="index.php">
       <div class="logo-container">
@@ -42,7 +45,7 @@ $row = mysqli_fetch_assoc($results);
             <g id="i-initial-con">
               <path class="logo-letter" id="i-initial"
                 d="M1.72,61.6c-1.14,0-1.72-.41-1.72-1.23v-.33c0-.49.5-1.2,1.51-2.12,1.01-.92,1.51-1.99,1.51-3.19v-21.4c0-1.25-.5-2.42-1.51-3.51-1.01-1.09-1.51-1.8-1.51-2.12v-.24c0-.44.49-.93,1.47-1.47l8.17-4.08c.93-.38,1.65-.42,2.16-.12.52.3.78.8.78,1.51v31.45c0,1.2.56,2.26,1.67,3.19,1.12.93,1.67,1.63,1.67,2.12v.33c0,.82-.6,1.23-1.8,1.23H1.72Z" />
-              <path class="logo-dot" id="i-initial-dot"
+              <path class="logo-dot" id="i-initial-dot" style="fill: <?php echo $row['colour']; ?>"
                 d="M7.76,15.61c-2.02,0-3.65-.57-4.9-1.71-1.25-1.14-1.88-2.61-1.88-4.41s.63-3.27,1.88-4.41c1.25-1.14,2.89-1.72,4.9-1.72s3.55.57,4.78,1.72,1.84,2.61,1.84,4.41-.61,3.27-1.84,4.41-2.82,1.71-4.78,1.71Z" />
             </g>
             <g id="b-initial" class="logo-letter" transform="translate(-182, 0)">
@@ -113,8 +116,8 @@ $row = mysqli_fetch_assoc($results);
       <ul>
         <li class="menu-item"><a href="index.php">Home</a></li>
         <li class="active menu-item"><a href="about.html">About</a></li>
-        <li class="menu-item"><a href="contact.html">Contact</a></li>
-        <li id="menu-dot"></li>
+        <li class="menu-item"><a href="contact.php">Contact</a></li>
+        <li id="menu-dot" style="background-color: <?php echo $row['colour']; ?>"></li>
       </ul>
     </nav>
 
@@ -131,7 +134,7 @@ $row = mysqli_fetch_assoc($results);
   <div class="dot-cursor"></div>
 
   <div id="scroll-line-container">
-        <div id="scroll-ball"></div>
+        <div id="scroll-ball" style="background-color: <?php echo $row['colour']; ?>"></div>
     </div>
 
   <section id="case-study-con">
@@ -176,7 +179,18 @@ $row = mysqli_fetch_assoc($results);
         <p><?php echo $row['reflection']; ?></p>
     </div>
     </div>
+  </section>
 
+  <section id="other-projects" class="grid-con">
+    <h3 class="hidden">Other Projects</h3>
+    <ul class="col-span-full">
+      <li><a href="index.php">All</a> 
+      <?php
+      while ($links = mysqli_fetch_assoc($link_results)) {
+          echo '<li><a href="details.php?id='.$links['id'].'">'.$links['title'].'</a></li>';
+      }
+      ?>
+    </ul>
   </section>
 
   <!--Footer-->
@@ -189,7 +203,7 @@ $row = mysqli_fetch_assoc($results);
         <g class="logo-elements" data-name="logo-shapes">
           <path class="logo-letter"
             d="M1.78,63.84c-1.18,0-1.78-.42-1.78-1.27v-.34c0-.51.52-1.24,1.57-2.2,1.04-.96,1.56-2.06,1.56-3.3v-22.18c0-1.3-.52-2.51-1.56-3.64-1.05-1.13-1.57-1.86-1.57-2.2v-.25c0-.45.51-.96,1.52-1.52l8.47-4.23c.96-.39,1.71-.44,2.25-.13.53.31.8.83.8,1.57v32.59c0,1.24.58,2.34,1.74,3.3,1.16.96,1.74,1.69,1.74,2.2v.34c0,.85-.62,1.27-1.86,1.27H1.78Z" />
-          <path class="logo-dot"
+          <path class="logo-dot" style="fill: <?php echo $row['colour']; ?>"
             d="M8.04,16.18c-2.09,0-3.78-.59-5.08-1.78s-1.95-2.71-1.95-4.57.65-3.39,1.95-4.57,2.99-1.78,5.08-1.78,3.68.59,4.95,1.78,1.91,2.71,1.91,4.57-.64,3.39-1.91,4.57-2.92,1.78-4.95,1.78Z" />
           <path class="logo-letter"
             d="M45.97,22.36c5.36,0,9.98,1.88,13.84,5.63,3.86,3.75,5.8,8.71,5.8,14.86s-1.91,11.54-5.72,15.66-8.42,6.18-13.84,6.18c-4.97,0-8.97-1.78-12.02-5.34l.09,3.05c0,1.07-.56,1.61-1.69,1.61l-9.14-.17c-1.02,0-1.52-.39-1.52-1.18v-.25c0-.45.53-1.2,1.61-2.24s1.61-2.19,1.61-3.43V12.28c0-1.02-.3-1.87-.89-2.58s-1.21-1.28-1.83-1.74-.93-.93-.93-1.44v-.25c0-.62.56-1.18,1.69-1.69L31.75.43c.9-.45,1.63-.55,2.2-.3.56.25.85.83.85,1.73v24.97c2.71-2.99,6.43-4.48,11.17-4.48ZM44.86,61.47c3.39,0,6.03-1.35,7.92-4.06,1.89-2.71,2.84-6.52,2.84-11.43,0-6.09-1.12-11.02-3.35-14.77-2.23-3.75-5.15-5.63-8.76-5.63-2.37,0-4.42.92-6.14,2.75-1.72,1.84-2.58,4.11-2.58,6.82v14.31c0,3.1,1.03,5.88,3.09,8.34,2.05,2.46,4.38,3.68,6.98,3.68Z" />

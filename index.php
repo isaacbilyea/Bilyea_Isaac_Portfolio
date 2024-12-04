@@ -116,7 +116,7 @@ $results = mysqli_query($connect,$query);
       <ul>
         <li class="active menu-item"><a href="index.php">Home</a></li>
         <li class="menu-item"><a href="about.html">About</a></li>
-        <li class="menu-item"><a href="contact.html">Contact</a></li>
+        <li class="menu-item"><a href="contact.php">Contact</a></li>
         <li id="menu-dot"></li>
       </ul>
     </nav>
@@ -147,7 +147,7 @@ $results = mysqli_query($connect,$query);
     <p id="welcome" class="col-span-full">I’m <span><a href="about.html">Isaac</a></span>, a <span>Front-End Web Developer.</span></p>
     <div class="col-span-full m-col-start-2 m-col-end-12" id="video-con">
       <video class="player" preload="metadata" poster="images/video-poster.png">
-        <source src="videos/intro_wip.mp4" type="video/mp4">
+        <source src="videos/demo-reel.mp4" type="video/mp4">
         <p>Oops, something went wrong. You may be using an outdated browser or have javascript disabled.</p>
       </video>
     </div>
