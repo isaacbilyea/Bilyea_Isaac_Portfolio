@@ -69,8 +69,10 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 
   //EVENT LISTENERS
 
-  logoContainer.addEventListener("mouseenter", typeFullName);
-  logoContainer.addEventListener("mouseleave", untypeFullName);
+  if(window.innerWidth >= 1200) {
+    logoContainer.addEventListener("mouseenter", typeFullName);
+    logoContainer.addEventListener("mouseleave", untypeFullName);
+  }
 
 })();
 
@@ -149,14 +151,10 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     const slider = document.querySelector('.dot-hue-slider input');
     const root = document.querySelector(':root');
     const sliderContainer = document.querySelector('.dot-hue-slider');
+    const savedHue = localStorage.getItem('dynamicHue');
 
     slider.disabled = true;
 
-    localStorage.removeItem('dynamicHue');
-    slider.value = 0;
-    root.style.setProperty('--dynamic-hue', '38.55');
-
-    const savedHue = localStorage.getItem('dynamicHue');
     if (savedHue) {
         slider.value = savedHue;
         
@@ -170,21 +168,18 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 
     //EVENT LISTENERS 
     slider.addEventListener('input', () => {
+      let hue = slider.value;
+      
+      if (hue === '0') {
+          hue = 38.55;
+      }
 
-    let hue = slider.value;
-    
-    if (hue === '0') {
-        hue = 38.55;
-    }
-
-    localStorage.setItem('dynamicHue', hue);
-
-    root.style.setProperty('--dynamic-hue', hue);
-
+      localStorage.setItem('dynamicHue', hue);
+      root.style.setProperty('--dynamic-hue', hue);
     })
 
     sliderContainer.addEventListener('click', () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1200) {
       sliderContainer.classList.toggle('expanded');
       slider.disabled = false;
       }
