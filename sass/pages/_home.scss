@@ -4,7 +4,7 @@
 
     #warning-intro {
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 4rem;
         color: a.$secondary-color;
 
         :nth-child(2) {
@@ -20,8 +20,8 @@
     #line-seperator {
         border-left: 2px solid a.$secondary-color;
         position: relative;
-        left: 50%;
         height: 15rem;
+        margin: 2rem auto;
 
         #seperator-ball {
             content: '';

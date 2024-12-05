@@ -121,18 +121,19 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     }
   }
 
-  gsap.to(scrollBall, {
-    top: "100%", 
-    ease: "linear",
-    duration: 0.1,
-    onUpdate: changeTextColour,
-    scrollTrigger: {
-      trigger: "#line-seperator",
-      start: "top center",
-      end: "bottom center",
-      scrub: true,
-    },
-  });
+    gsap.to(scrollBall, {
+      top: "100%", 
+      ease: "linear",
+      duration: 0.1,
+      onUpdate: changeTextColour,
+      scrollTrigger: {
+        trigger: "#line-seperator",
+        start: "top 40%",
+        end: "bottom 50%",
+        scrub: true,
+      },
+    });
+
 
 })();
 
@@ -148,6 +149,12 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     const slider = document.querySelector('.dot-hue-slider input');
     const root = document.querySelector(':root');
     const sliderContainer = document.querySelector('.dot-hue-slider');
+
+    slider.disabled = true;
+
+    localStorage.removeItem('dynamicHue');
+    slider.value = 0;
+    root.style.setProperty('--dynamic-hue', '38.55');
 
     const savedHue = localStorage.getItem('dynamicHue');
     if (savedHue) {
@@ -177,15 +184,15 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     })
 
     sliderContainer.addEventListener('click', () => {
+      if (window.innerWidth < 768) {
       sliderContainer.classList.toggle('expanded');
+      slider.disabled = false;
+      }
     });
 
-    if(window.innerWidth >= 1200) {
-      sliderContainer.addEventListener('mouseleave', () => {
-        sliderContainer.classList.toggle('expanded');
-      });
-    }
-
+    sliderContainer.addEventListener('mouseenter', () => {
+      slider.disabled = false;
+    });
 })();
 
 
