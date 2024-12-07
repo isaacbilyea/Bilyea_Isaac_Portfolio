@@ -159,9 +159,6 @@ hamburgerMenu.addEventListener('click', toggleMenu);
           
           //Updates the CSS variable with the saved hue
           let hue = savedHue;
-          if (hue === '0') {
-              hue = 38.55;
-          }
           root.style.setProperty('--dynamic-hue', hue);
       }
 
@@ -169,10 +166,6 @@ hamburgerMenu.addEventListener('click', toggleMenu);
       slider.addEventListener('input', () => {
         let hue = slider.value;
         
-        if (hue === '0') {
-            hue = 38.55;
-        }
-
         localStorage.setItem('dynamicHue', hue);
         root.style.setProperty('--dynamic-hue', hue);
       })
@@ -351,19 +344,16 @@ interactiveSelectors.forEach(selector => {
 
 //Case Study Scroll
 (() => {
-
+if (document.querySelector('#overview')) {
   const firstCard = document.querySelector('#overview');
   const lastCard = document.querySelector('#reflection');
   const scrollLine = document.querySelector('#scroll-line-container');
   const scrollBall = document.querySelector('#scroll-ball');
-  const cards = document.querySelectorAll('.study-card:not(#overview)');
+  const cards = document.querySelectorAll('.study-card');
 
   // Add grayscale to all cards except first one
   cards.forEach(card => {
     card.dataset.originalBackgroundColor = getComputedStyle(card).backgroundColor;
-    card.style.backgroundColor = '#2d2d2d';
-    card.style.filter = 'grayscale(100%)';
-    card.style.transition = 'filter 0.3s ease-in-out, transform 0.3s ease-in-out';
   });
 
   function adjustLinePosition() {
@@ -409,4 +399,203 @@ interactiveSelectors.forEach(selector => {
     y: () => scrollLine.offsetHeight - scrollBall.offsetHeight,
     ease: 'none'
   });
+}
+})();
+
+
+//----------------------------------------------------------------------------------//
+
+
+//GSAP - Home
+(() => {
+
+  //VARIABLES
+  const warningIntro = document.querySelector('#warning-intro');
+  const lineSeperator = document.querySelector('#line-seperator');
+  const welcome = document.querySelector('#welcome');
+
+  const animationDuration = 1;
+  const animationEase = 'power2.out';
+  const animationOffset = '-=0.4';
+
+  const tl = gsap.timeline();
+
+  tl.from(warningIntro, {
+    duration: animationDuration,
+    y: 200,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset)
+  .from(lineSeperator, {
+    duration: animationDuration,
+    y: 50,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset)
+  .from(welcome, {
+    duration: animationDuration,
+    y: 50,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset)
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // VARIABLES
+  const video = document.querySelector('#video-con');
+  const projectHeader = document.querySelector('#project-header');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  // Add scroll trigger for the video
+  gsap.from(video, {
+    scrollTrigger: {
+      trigger: video,
+      start: "top 90%",
+      end: "bottom 75%",
+      toggleActions: "play none none reverse",
+      scrub: 0.1,
+    },
+    duration: animationDuration,
+    y: 50,
+    opacity: 0,
+    ease: animationEase
+  });
+
+  gsap.from(projectHeader, {
+    scrollTrigger: {
+      trigger: projectHeader,
+      start: "top 90%",
+      end: "bottom 75%",
+      toggleActions: "play none none reverse",
+      scrub: 0.1,
+    },
+    duration: animationDuration,
+    y: 50,
+    opacity: 0,
+    ease: animationEase
+  });
+
+  projectCards.forEach(card => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 90%",
+        end: "bottom 75%",
+        toggleActions: "play none none reverse",
+        scrub: 0.1,
+      },
+      duration: animationDuration,
+      y: 50,
+      opacity: 0,
+      ease: animationEase
+    });
+  });
+
+})();
+
+
+//----------------------------------------------------------------------------------//
+
+
+//GSAP - Case Studies
+(() => {
+
+  //VARIABLES
+  const caseStudyTitle = document.querySelector('#case-study-title');
+  const caseStudyText = document.querySelector('#case-study-text');
+  const scrollLineCon = document.querySelector('#scroll-line-container');
+
+  const animationDuration = 1;
+  const animationEase = 'power2.out';
+  const animationOffset = '-=0.4';
+
+  const tl = gsap.timeline();
+
+  tl.from(caseStudyTitle, {
+    duration: animationDuration,
+    y: 200,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset)
+  .from(caseStudyText, {
+    duration: animationDuration,
+    y: 50,
+    ease: animationEase
+  }, animationOffset)
+  .from(scrollLineCon, {
+    duration: animationDuration,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset)
+
+})();
+
+//----------------------------------------------------------------------------------//
+
+
+//GSAP - About
+(() => {
+
+  //VARIABLES
+  const aboutMeImage = document.querySelector('#about-me-image');
+  const aboutMeText = document.querySelector('#about-me-text');
+  const aboutMeContact = document.querySelector('#about-me-contact');
+
+  const animationDuration = 1;
+  const animationEase = 'power2.out';
+  const animationOffset = '-=0.4';
+
+  const tl = gsap.timeline();
+
+  tl.from(aboutMeImage, {
+    duration: animationDuration,
+    y: 300,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset)
+  .from(aboutMeText, {
+    duration: animationDuration,
+    y: 50,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset)
+  .from(aboutMeContact, {
+    duration: animationDuration,
+    y: 50,
+    opacity: 0,
+    ease: animationEase
+  }, animationOffset);
+
+})();
+
+
+//----------------------------------------------------------------------------------//
+
+
+//GSAP - Contact
+(() => {
+
+    //VARIABLES
+    const formText = document.querySelector('#form-text');
+    const formInput = document.querySelector('#form-input');
+  
+    const animationDuration = 1;
+    const animationEase = 'power2.out';
+    const animationOffset = '-=0.4';
+  
+    const tl = gsap.timeline();
+
+    tl.from(formText, {
+      duration: animationDuration,
+      y: 200,
+      opacity: 0,
+      ease: animationEase
+    }, animationOffset)
+    .from(formInput, {
+      duration: animationDuration,
+      y: 50,
+      opacity: 0,
+      ease: animationEase
+    }, animationOffset)
+
 })();

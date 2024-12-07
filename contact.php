@@ -112,11 +112,11 @@
   <!--Hue Slider-->
   <div class="dot-hue-slider">
     <div class="slider-con">
-      <input id="hue-range" type="range" value="0" min="0" max="360" step="0.1" />
+      <input id="hue-range" type="range" value="38.55" min="38.55" max="360" step="0.1" />
     </div>
   </div>
 
-  <!--Dot Slider-->
+  <!--Cursor-->
   <div class="dot-cursor"></div>
 
   <!--Contact Form-->

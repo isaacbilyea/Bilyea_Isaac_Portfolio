@@ -123,7 +123,7 @@ $link_results = mysqli_query($connect, $link_query);
 
   </header>
   
-  <!--Dot Cursor-->
+  <!--Cursor-->
   <div class="dot-cursor" style="background-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>"></div>
 
   <div id="scroll-line-container">
@@ -153,7 +153,7 @@ $link_results = mysqli_query($connect, $link_query);
         <p><?php echo $row['overview']; ?></p>
     </div>
 
-    <div id="summary" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
+    <div id="summary" class="study-card col-span-full scroll-animation" style="background-color: <?php echo $row['colour']; ?>">
         <h3>Summary</h3>
         <p><?php echo $row['summary']; ?></p>
     </div>

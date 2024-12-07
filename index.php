@@ -126,11 +126,11 @@ $results = mysqli_query($connect,$query);
   <!--Hue Slider-->
   <div class="dot-hue-slider">
     <div class="slider-con">
-      <input id="hue-range" type="range" value="0" min="0" max="360" step="0.1" />
+      <input id="hue-range" type="range" value="38.55" min="38.55" max="360" step="0.1" />
     </div>
   </div>
 
-  <!--Dot Slider-->
+  <!--Cursor-->
   <div class="dot-cursor"></div>
 
   <!--Intro-->
@@ -156,7 +156,7 @@ $results = mysqli_query($connect,$query);
 
   <!--Projects-->
   <section id="projects-con" class="grid-con">
-    <h2 class="col-span-full">Projects</h2>
+    <h2 id="project-header" class="col-span-full">Projects</h2>
 
     <?php
 

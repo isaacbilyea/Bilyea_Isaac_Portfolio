@@ -36,6 +36,8 @@
             text-align: left;
             position: relative;
             z-index: 1;
+            background-color: #2d2d2d;
+            transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
 
             img {
                 width: 100%;
