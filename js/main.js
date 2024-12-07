@@ -350,87 +350,61 @@ interactiveSelectors.forEach(selector => {
 //Case Study Scroll
 (() => {
 
-document.addEventListener('DOMContentLoaded', () => {
-  gsap.registerPlugin(ScrollTrigger);
-
   const firstCard = document.querySelector('#overview');
   const lastCard = document.querySelector('#reflection');
   const scrollLine = document.querySelector('#scroll-line-container');
   const scrollBall = document.querySelector('#scroll-ball');
+  const cards = document.querySelectorAll('.study-card:not(#overview)');
+
+  // Add grayscale to all cards except first one
+  cards.forEach(card => {
+    card.dataset.originalBackgroundColor = getComputedStyle(card).backgroundColor;
+    card.style.backgroundColor = '#2d2d2d';
+    card.style.filter = 'grayscale(100%)';
+    card.style.transition = 'filter 0.3s ease-in-out, transform 0.3s ease-in-out';
+  });
 
   function adjustLinePosition() {
-      const startTop = firstCard.getBoundingClientRect().top + window.scrollY;
-      const endTop = lastCard.getBoundingClientRect().top + window.scrollY;
-      const lineHeight = endTop - startTop;
+    const startTop = firstCard.getBoundingClientRect().top + window.scrollY;
+    const endTop = lastCard.getBoundingClientRect().top + window.scrollY;
+    const lineHeight = endTop - startTop;
 
-      scrollLine.style.top = `${startTop}px`;
-      scrollLine.style.height = `${lineHeight}px`;
+    scrollLine.style.top = `${startTop}px`;
+    scrollLine.style.height = `${lineHeight}px`;
   }
 
   adjustLinePosition();
   window.addEventListener('resize', adjustLinePosition);
 
-  gsap.to(scrollBall, {
-      scrollTrigger: {
-          trigger: '#case-study-text',
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: true
+  // Create ScrollTrigger for ball movement
+  const ballAnimation = gsap.to(scrollBall, {
+    scrollTrigger: {
+      trigger: '#case-study-text',
+      start: 'top 50%',
+      end: 'bottom 50%',
+      scrub: true,
+      onUpdate: (self) => {
+        const ballRect = scrollBall.getBoundingClientRect();
+
+        // Check each card's position relative to ball
+        cards.forEach(card => {
+          const cardRect = card.getBoundingClientRect();
+          const cardTop = cardRect.top;
+          const cardBottom = cardRect.bottom;
+
+          if (ballRect.bottom >= cardTop && ballRect.top <= cardBottom) {
+            card.style.backgroundColor = card.dataset.originalBackgroundColor;
+            card.style.filter = 'grayscale(0%)';
+            card.style.transform = 'scale(1.05)';
+          } else {
+            card.style.backgroundColor = '#2d2d2d';
+            card.style.filter = 'grayscale(100%)';
+            card.style.transform = 'scale(1)';
+          }
+        });
       },
-      y: () => scrollLine.offsetHeight - scrollBall.offsetHeight,
-      ease: 'none'
+    },
+    y: () => scrollLine.offsetHeight - scrollBall.offsetHeight,
+    ease: 'none'
   });
-});
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   gsap.registerPlugin(ScrollTrigger);
-//   const firstCard = document.getElementById('overview');
-//   const lastCard = document.getElementById('reflection');
-//   const scrollLine = document.getElementById('scroll-line-container');
-//   const scrollBall = document.getElementById('scroll-ball');
-//   const cards = document.querySelectorAll('.study-card');
-
-//   function adjustLinePosition() {
-//       const startTop = firstCard.getBoundingClientRect().top + window.scrollY;
-//       const endTop = lastCard.getBoundingClientRect().top + window.scrollY;
-//       const lineHeight = endTop - startTop;
-//       scrollLine.style.top = `${startTop}px`;
-//       scrollLine.style.height = `${lineHeight}px`;
-//   }
-
-//   adjustLinePosition();
-//   window.addEventListener('resize', adjustLinePosition);
-
-//   cards.forEach((card, index) => {
-//     ScrollTrigger.create({
-//       trigger: card,
-//       start: 'top center',
-//       end: 'bottom center',
-//       onEnter: () => {
-//         card.style.backgroundColor = '#FF7F50';  // Lighter orange on enter
-//       },
-//       onLeave: () => {
-//         card.style.backgroundColor = '#DA5A2E';  // Original color
-//       },
-//       onEnterBack: () => {
-//         card.style.backgroundColor = '#FF7F50';  // Lighter orange on enter back
-//       },
-//       onLeaveBack: () => {
-//         card.style.backgroundColor = '#DA5A2E';  // Original color
-//       }
-//     });
-//   });
-
-//   gsap.to(scrollBall, {
-//       scrollTrigger: {
-//           trigger: '#case-study-text',
-//           start: 'top top',
-//           end: 'bottom bottom',
-//           scrub: true
-//       },
-//       y: () => scrollLine.offsetHeight - scrollBall.offsetHeight,
-//       ease: 'none'
-//   });
-// });
-
 })();

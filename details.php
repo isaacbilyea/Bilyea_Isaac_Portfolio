@@ -57,7 +57,7 @@ $link_results = mysqli_query($connect, $link_query);
             <g id="i-full">
               <path class="logo-letter"
                 d="M1.72,61.6c-1.14,0-1.72-.41-1.72-1.23v-.33c0-.49.5-1.2,1.51-2.12,1.01-.92,1.51-1.99,1.51-3.19v-21.4c0-1.25-.5-2.42-1.51-3.51-1.01-1.09-1.51-1.8-1.51-2.12v-.24c0-.44.49-.93,1.47-1.47l8.17-4.08c.93-.38,1.65-.42,2.16-.12.52.3.78.8.78,1.51v31.45c0,1.2.56,2.26,1.67,3.19,1.12.93,1.67,1.63,1.67,2.12v.33c0,.82-.6,1.23-1.8,1.23H1.72Z" />
-              <path class="logo-dot"
+              <path class="logo-dot" style="fill: <?php echo $row['colour']; ?>"
                 d="M7.76,15.61c-2.02,0-3.65-.57-4.9-1.71-1.25-1.14-1.88-2.61-1.88-4.41s.63-3.27,1.88-4.41c1.25-1.14,2.89-1.72,4.9-1.72s3.55.57,4.78,1.72,1.84,2.61,1.84,4.41-.61,3.27-1.84,4.41-2.82,1.71-4.78,1.71Z" />
             </g>
             <g id="s-full">
@@ -146,7 +146,7 @@ $link_results = mysqli_query($connect, $link_query);
 
     <div id="case-study-text" class="grid-con">
     <div id="overview" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <img src="images/<?php echo $row['filename']; ?>-overview.png" alt="<?php echo $row['alt']; ?> overview">
         <h3>Overview</h3>
         <p><?php echo $row['overview']; ?></p>
     </div>
@@ -156,22 +156,29 @@ $link_results = mysqli_query($connect, $link_query);
         <p><?php echo $row['summary']; ?></p>
     </div>
 
+    <div id="problems" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
+        <img src="images/<?php echo $row['filename']; ?>-problems.png" alt="<?php echo $row['alt']; ?> problems">
+        <h3>Problems</h3>
+        <p><?php echo $row['problems']; ?></p>
+    </div>
+
     <div id="research" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <img src="images/<?php echo $row['filename']; ?>-research.png" alt="<?php echo $row['alt']; ?> research">
         <h3>Research</h3>   
         <p><?php echo $row['research']; ?></p>
     </div>
 
     <div id="process" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
+        <img src="images/<?php echo $row['filename']; ?>-process.png" alt="<?php echo $row['alt']; ?> process">
         <h3>Process</h3>
         <p><?php echo $row['process']; ?></p>
     </div>
 
-    <div id="outcome" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-        <img src="images/<?php echo $row['filename']; ?>" alt="<?php echo $row['alt']; ?>">
-        <h3>Outcome</h3>
-        <p><?php echo $row['outcome']; ?></p>
+    <div id="final-product" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
+        <img src="images/<?php echo $row['filename']; ?>-finalproduct.png" alt="<?php echo $row['alt']; ?> final product">
+        <h3>Final Product</h3>
+        <a href="<?php echo $row['link']; ?>">View on Github</a>
+        <p><?php echo $row['final_product']; ?></p>
     </div>
 
     <div id="reflection" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">

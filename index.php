@@ -7,7 +7,7 @@ require_once('includes/connect.php');
 
 
 //create a query to run in SQL
-$query = 'SELECT projects.id AS project, title, description, cover_image AS image FROM projects';
+$query = 'SELECT projects.id AS project, title, description, cover_image AS image, colour FROM projects';
 
 
 //run the query to get back the content
@@ -161,9 +161,9 @@ $results = mysqli_query($connect,$query);
     <?php
 
     while($row = mysqli_fetch_array($results)) {
-    echo'<div class="project-card col-span-full">
+    echo'<div class="project-card" style="background-color:'.$row['colour'].'">
       <div class="project-image">
-      <a href="details.php?id='.$row['project'].'"><img src="images/'.$row['image'].'" alt=""></a>
+        <a href="details.php?id='.$row['project'].'"><img src="images/'.$row['image'].'" alt=""></a>
       </div>
       <div class="project-text">
         <h3>'.$row['title'].'</h3>
@@ -172,36 +172,6 @@ $results = mysqli_query($connect,$query);
     </div>';
     }
     ?>
-
-    <!-- <div class="project-card col-span-full m-col-start-7 m-col-end-12">
-      <div class="project-image">
-        <img src="images/stride.svg" alt="">
-      </div>
-      <div class="project-text">
-        <h3>Stride</h3>
-        <p>Web Development | Design</p>
-      </div>
-    </div>
-
-    <div class="project-card col-span-full m-col-start-2 m-col-end-7">
-      <div class="project-image">
-        <img src="images/industry-night.svg" alt="">
-      </div>
-      <div class="project-text">
-        <h3>Industry Night</h3>
-        <p>Web Development</p>
-      </div>
-    </div>
-
-    <div class="project-card col-span-full m-col-start-7 m-col-end-12">
-      <div class="project-image">
-        <img src="images/cardinal.svg" alt="">
-      </div>
-      <div class="project-text">
-        <h3>Cardinal</h3>
-        <p>Design</p>
-      </div>
-    </div> -->
 
   </section>
 
