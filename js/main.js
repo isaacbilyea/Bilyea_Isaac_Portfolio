@@ -261,8 +261,8 @@ hamburgerMenu.addEventListener('click', toggleMenu);
                 path: "#path",
                 align: "#path",
                 alignOrigin: [0, 0],
-                start: 0,
-                end: 1,
+                start: 1,
+                end: 0,
                 curviness: 2,
                 autoRotate: true
             },
