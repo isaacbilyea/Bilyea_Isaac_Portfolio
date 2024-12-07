@@ -67,7 +67,6 @@
     &.activate #line1 {
       transform: rotate(45deg) translate(0.4375rem, 0.4375rem);
       width: 2.5rem;
-      left: -1.25rem;
       background-color: white;
     }
 
@@ -81,7 +80,6 @@
     &.activate #line3 {
       transform: rotate(-45deg) translate(0.4375rem, -0.4375rem);
       width: 2.5rem;
-      left: -1.25rem;
       background-color: white;
     }
   }
