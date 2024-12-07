@@ -131,7 +131,7 @@
     <div id="form-input" class="col-span-full m-col-start-3 m-col-end-11">
       <form name="submit" method="post" action="sendmail.php">
         <input name="name" type="text" placeholder="Name*">
-        <input name="email" type="text" required placeholder="Email*">
+        <input name="email" type="text" placeholder="Email*">
         <textarea name="message" placeholder="Message*"></textarea>
         <input name="submit" type="submit" value="Submit" id="submit-button">
       </form>

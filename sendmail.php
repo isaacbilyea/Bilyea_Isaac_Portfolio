@@ -16,48 +16,48 @@ $email = trim($email);
 $msg = trim($msg);
 
 if(empty($name)) {
-    $errors['name'] = 'Name cant be empty';
+    $errors['name'] = 'Name input is required. You wouldn’t leave a title tag blank, would you?';
 }
 
 if(empty($msg)) {
-    $errors['message'] = 'Message field cant be empty';
+    $errors['message'] = 'A blank message? Bold strategy. Let’s see if it works out.';
 }
 
 if(empty($email)) {
-    $errors['email'] = 'You must provide an email';
+    $errors['email'] = 'An email address is kind of important. Unless you want me to send your message via carrier pigeon?';
 } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors['legit_email'] = 'You must provide a REAL email';
+    $errors['legit_email'] = 'Invalid email format. Did you miss a closing tag?';
 }
 
 if(empty($errors)) {
 
     //insert these values as a new row in the contacts table
 
-    $query = "INSERT INTO contacts (name, email, message) VALUES('.$name.','.$email.','.$msg.')";
+    $query = "INSERT INTO contacts (name, email, message) VALUES('$name','$email','$msg')";
 
     if(mysqli_query($connect, $query)) {
 
-//format and send these values in an email
+        //format and send these values in an email
 
-$to = 'isaacbilyea@gmail.com';
-$subject = 'Message from your Portfolio site!';
+        $to = 'isaacbilyea@gmail.com';
+        $subject = 'Message from your Portfolio site!';
 
-$message = "You have received a new contact form submission:\n\n";
-$message .= "Name: ".$name."\n";
-$message .= "Email: ".$email."\n\n";
-$message .= $msg;
+        $message = "You have received a new contact form submission:\n\n";
+        $message .= "Name: ".$name."\n";
+        $message .= "Email: ".$email."\n\n";
+        $message .= $msg;
 
-mail($to,$subject,$message);
+        mail($to,$subject,$message);
 
-header('Location: contact.php?submitted=true');
+        header('Location: contact.php?submitted=true');
 
-}else{
-    for($i=0; $i < count($errors); $i++) {
-        echo $errors[$i].'<br>';
+    }
+
+} else {
+    //The for loop wasn't working since $errors is an associative array because we assigned it keys above. So I used a foreach loop instead.
+    foreach($errors as $error) { 
+        echo $error.'<br>';
     }
 }
-
-}
-
 
 ?>
