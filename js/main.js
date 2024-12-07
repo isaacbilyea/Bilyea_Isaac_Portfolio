@@ -153,41 +153,41 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     const sliderContainer = document.querySelector('.dot-hue-slider');
     const savedHue = localStorage.getItem('dynamicHue');
 
-    slider.disabled = true;
+    if (slider) {
+      if (savedHue) {
+          slider.value = savedHue;
+          
+          //Updates the CSS variable with the saved hue
+          let hue = savedHue;
+          if (hue === '0') {
+              hue = 38.55;
+          }
+          root.style.setProperty('--dynamic-hue', hue);
+      }
 
-    if (savedHue) {
-        slider.value = savedHue;
+      //EVENT LISTENERS 
+      slider.addEventListener('input', () => {
+        let hue = slider.value;
         
-        //Updates the CSS variable with the saved hue
-        let hue = savedHue;
         if (hue === '0') {
             hue = 38.55;
         }
+
+        localStorage.setItem('dynamicHue', hue);
         root.style.setProperty('--dynamic-hue', hue);
+      })
+
+      sliderContainer.addEventListener('click', () => {
+        if (window.innerWidth < 1200) {
+        sliderContainer.classList.toggle('expanded');
+        slider.disabled = false;
+        }
+      });
+
+      sliderContainer.addEventListener('mouseenter', () => {
+        slider.disabled = false;
+      });
     }
-
-    //EVENT LISTENERS 
-    slider.addEventListener('input', () => {
-      let hue = slider.value;
-      
-      if (hue === '0') {
-          hue = 38.55;
-      }
-
-      localStorage.setItem('dynamicHue', hue);
-      root.style.setProperty('--dynamic-hue', hue);
-    })
-
-    sliderContainer.addEventListener('click', () => {
-      if (window.innerWidth < 1200) {
-      sliderContainer.classList.toggle('expanded');
-      slider.disabled = false;
-      }
-    });
-
-    sliderContainer.addEventListener('mouseenter', () => {
-      slider.disabled = false;
-    });
 })();
 
 
@@ -312,7 +312,7 @@ const interactiveSelectors = [
   'input', 
   'select', 
   'textarea', 
-  '[data-cursor-interact]'
+  '[data-cursor-interact]',
 ];
 
 const cursorSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 42.01">
@@ -328,6 +328,7 @@ interactiveSelectors.forEach(selector => {
       dotCursor.querySelector('#inner-cursor').setAttribute('fill', 'var(--dot-color)');
       dotCursor.style.width = '1rem';
       dotCursor.style.height = '1rem';
+      dotCursor.style.transform = 'translate(-50%, 0)';
     }
   });
 
@@ -337,6 +338,7 @@ interactiveSelectors.forEach(selector => {
       dotCursor.style.backgroundColor = 'var(--dot-color)';
       dotCursor.style.width = '1rem';
       dotCursor.style.height = '1rem';
+      dotCursor.style.transform = 'translate(0, 0)';
     }
   });
 });
