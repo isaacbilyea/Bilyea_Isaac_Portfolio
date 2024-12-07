@@ -185,16 +185,16 @@
             d="M45.97,22.36c5.36,0,9.98,1.88,13.84,5.63,3.86,3.75,5.8,8.71,5.8,14.86s-1.91,11.54-5.72,15.66-8.42,6.18-13.84,6.18c-4.97,0-8.97-1.78-12.02-5.34l.09,3.05c0,1.07-.56,1.61-1.69,1.61l-9.14-.17c-1.02,0-1.52-.39-1.52-1.18v-.25c0-.45.53-1.2,1.61-2.24s1.61-2.19,1.61-3.43V12.28c0-1.02-.3-1.87-.89-2.58s-1.21-1.28-1.83-1.74-.93-.93-.93-1.44v-.25c0-.62.56-1.18,1.69-1.69L31.75.43c.9-.45,1.63-.55,2.2-.3.56.25.85.83.85,1.73v24.97c2.71-2.99,6.43-4.48,11.17-4.48ZM44.86,61.47c3.39,0,6.03-1.35,7.92-4.06,1.89-2.71,2.84-6.52,2.84-11.43,0-6.09-1.12-11.02-3.35-14.77-2.23-3.75-5.15-5.63-8.76-5.63-2.37,0-4.42.92-6.14,2.75-1.72,1.84-2.58,4.11-2.58,6.82v14.31c0,3.1,1.03,5.88,3.09,8.34,2.05,2.46,4.38,3.68,6.98,3.68Z" />
         </g>
       </svg>
-      <p id="footer-info">Isaac Bilyea<br><a href="mailto:isaacbilyea@gmail.com">isaacbilyea@gmail.com</a></p>
+      <p id="footer-info">Isaac Bilyea<br><a href="mailto:isaacbilyea@gmail.com" target="_blank">isaacbilyea@gmail.com</a></p>
       <p>London,<br class="desktop-break"> ON Canada</p>
       <div id="sm-links">
-        <a href="mailto:isaacbilyea@gmail.com">
+        <a href="mailto:isaacbilyea@gmail.com" target="_blank">
           <img src="images/email.svg" alt="email icon">
         </a>
-        <a href="https://www.linkedin.com/in/isaac-bilyea-1751b315b/">
+        <a href="https://www.linkedin.com/in/isaac-bilyea-1751b315b/" target="_blank">
           <img src="images/linkedin.svg" alt="linkedin icon">
         </a>
-        <a href="https://github.com/isaacbilyea">
+        <a href="https://github.com/isaacbilyea" target="_blank">
           <img src="images/github.svg" alt="github icon">
         </a>
       </div>
