@@ -161,7 +161,7 @@ $results = mysqli_query($connect,$query);
     <?php
 
     while($row = mysqli_fetch_array($results)) {
-    echo'<div class="project-card" style="background-color:'.$row['colour'].'">
+    echo'<div class="project-card col-span-full" style="background-color:'.$row['colour'].'">
       <div class="project-image">
         <a href="details.php?id='.$row['project'].'"><img src="images/'.$row['image'].'" alt=""></a>
       </div>
