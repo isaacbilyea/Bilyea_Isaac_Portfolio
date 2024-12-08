@@ -64,6 +64,7 @@ body.menu-open {
     pointer-events: none;
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    will-change: auto;
     z-index: 1000;
 }
 

@@ -108,11 +108,11 @@ hamburgerMenu.addEventListener('click', toggleMenu);
   const scrollBall = document.querySelector("#seperator-ball");
   const welcomeSpans = document.querySelectorAll("#welcome span");
 
+  if(welcomeSpans) {
   //FUNCTIONS
   function changeTextColour() {
     const progress = this.progress();
 
-    if(welcomeSpans) {
     //Swaps colours of welcome text based on balls progress
     if (progress === 0) {
       //top = 0%
@@ -122,7 +122,6 @@ hamburgerMenu.addEventListener('click', toggleMenu);
       //top = 100%
       welcomeSpans[0].style.color = "#2D2D2D";
       welcomeSpans[1].style.color = "var(--dot-color)";
-    }
     }
   }
 
@@ -138,7 +137,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
         scrub: true,
       },
     });
-
+  }
 })();
 
 
@@ -241,22 +240,17 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 
    //VARIABLES
     const form = document.querySelector('form');
-    const urlParams = new URLSearchParams(window.location.search);
+    const footerBall = document.querySelector('#ball')
     const popup = document.querySelector('#thank-you-popup');
     const closeBtn = document.querySelector('#close-popup');
+    const urlParams = new URLSearchParams(window.location.search);
 
     gsap.registerPlugin(MotionPathPlugin);
-
-    gsap.set("#ball", {
-        x: 0,
-        y: 0,
-    });
 
     //FUNCTIONS
     function animateBall() {
 
-
-        gsap.to("#ball", {
+        gsap.to(footerBall, {
             duration: 2,
             ease: "power1.inOut",
             motionPath: {
@@ -271,6 +265,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
         });
     }
 
+    //Shows popup if form is submitted
     if (urlParams.get('submitted') === 'true') {
       popup.classList.remove('hidden');
     }
@@ -366,6 +361,7 @@ else {
 });
 }
 
+//Moves cursor with mouse
 document.addEventListener('mousemove', (e) => {
   dotCursor.style.top = `${e.clientY}px`;
   dotCursor.style.left = `${e.clientX}px`;
@@ -380,32 +376,32 @@ document.addEventListener('mousemove', (e) => {
 
 //Case Study Scroll
 (() => {
-if (document.querySelector('#overview')) {
+
+  //VARIABLES
   const firstCard = document.querySelector('#overview');
   const lastCard = document.querySelector('#reflection');
+  const cards = document.querySelectorAll('.study-card');
+  const studyColor = firstCard.getAttribute('data-color');
   const scrollLine = document.querySelector('#scroll-line-container');
   const scrollBall = document.querySelector('#scroll-ball');
-  const cards = document.querySelectorAll('.study-card');
 
-  // Add grayscale to all cards except first one
-  cards.forEach(card => {
-    card.dataset.originalBackgroundColor = getComputedStyle(card).backgroundColor;
-  });
+  if (cards) {
 
-  function adjustLinePosition() {
+  //Creates line from top to bottom card
+  function updateScrollLineDimensions() {
     const startTop = firstCard.getBoundingClientRect().top + window.scrollY;
     const endTop = lastCard.getBoundingClientRect().top + window.scrollY;
     const lineHeight = endTop - startTop;
 
+    scrollLine.style.opacity = 1;
     scrollLine.style.top = `${startTop}px`;
     scrollLine.style.height = `${lineHeight}px`;
   }
 
-  adjustLinePosition();
-  window.addEventListener('resize', adjustLinePosition);
+  updateScrollLineDimensions();
 
-  // Create ScrollTrigger for ball movement
-  const ballAnimation = gsap.to(scrollBall, {
+  //Scroll ball animation and interactions
+  gsap.to(scrollBall, {
     scrollTrigger: {
       trigger: '#case-study-text',
       start: 'top 50%',
@@ -414,14 +410,13 @@ if (document.querySelector('#overview')) {
       onUpdate: (self) => {
         const ballRect = scrollBall.getBoundingClientRect();
 
-        // Check each card's position relative to ball
         cards.forEach(card => {
           const cardRect = card.getBoundingClientRect();
           const cardTop = cardRect.top;
           const cardBottom = cardRect.bottom;
-
+          //Checks if the ball is in between the top and bottom of the card
           if (ballRect.bottom >= cardTop && ballRect.top <= cardBottom) {
-            card.style.backgroundColor = card.dataset.originalBackgroundColor;
+            card.style.backgroundColor = studyColor;
             card.style.filter = 'grayscale(0%)';
             card.style.transform = 'scale(1.05)';
           } else {
@@ -436,6 +431,9 @@ if (document.querySelector('#overview')) {
     ease: 'none'
   });
 }
+
+  window.addEventListener('resize', updateScrollLineDimensions);
+  
 })();
 
 
