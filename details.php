@@ -132,6 +132,7 @@ $link_results = mysqli_query($connect, $link_query);
 
   <section id="case-study-con">
 
+  <!--Case Study-->
     <div id="case-study-title">
         <h2><?php echo $row['title']; ?></h2>
         <p><?php echo $row['description']; ?></p>
@@ -229,6 +230,7 @@ $link_results = mysqli_query($connect, $link_query);
     </div>
   </section>
 
+  <!--Other Projects-->
   <section id="other-projects" class="grid-con">
     <h3 class="hidden">Other Projects</h3>
     <ul class="col-span-full">
