@@ -374,7 +374,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     scrollTrigger: {
       trigger: '#case-study-text',
       start: 'top 50%',
-      end: 'bottom 50%',
+      end: 'bottom 80%',
       scrub: true,
       onUpdate: (self) => {
         const ballRect = scrollBall.getBoundingClientRect();
