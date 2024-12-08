@@ -126,7 +126,7 @@ $results = mysqli_query($connect,$query);
   <!--Hue Slider-->
   <div class="dot-hue-slider">
     <div class="slider-con">
-      <input id="hue-range" type="range" value="38.55" min="38.55" max="360" step="0.1" />
+      <input id="hue-range" type="range" value="38.55" min="38.55" max="360" step="0.1">
     </div>
   </div>
 
@@ -163,7 +163,7 @@ $results = mysqli_query($connect,$query);
     while($row = mysqli_fetch_array($results)) {
     echo'<div class="project-card col-span-full" style="background-color:'.$row['colour'].'">
       <div class="project-image">
-        <a href="details.php?id='.$row['project'].'"><img src="images/'.$row['image'].'" alt=""></a>
+        <a href="details.php?id='.$row['project'].'"><img src="images/'.$row['image'].'" alt="logo"></a>
       </div>
       <div class="project-text">
         <h3>'.$row['title'].'</h3>
@@ -174,7 +174,6 @@ $results = mysqli_query($connect,$query);
     ?>
 
   </section>
-
 
   <!--Footer-->
   <footer>
