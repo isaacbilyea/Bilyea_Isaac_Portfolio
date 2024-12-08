@@ -31,7 +31,6 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 (() => {
   
   //VARIABLES
-
   const logoContainer = document.querySelector(".logo-container");
   const initials = document.querySelector("#b-initial path");
   //Puts paths in an array for reverse method
@@ -108,7 +107,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
   const scrollBall = document.querySelector("#seperator-ball");
   const welcomeSpans = document.querySelectorAll("#welcome span");
 
-  if(welcomeSpans) {
+  if(welcomeSpans.length > 0) {
   //FUNCTIONS
   function changeTextColour() {
     const progress = this.progress();
@@ -329,13 +328,14 @@ hamburgerMenu.addEventListener('click', toggleMenu);
       });
     });
 
-  //Moves cursor with mouse
-  document.addEventListener('mousemove', (e) => {
-    dotCursor.style.top = `${e.clientY}px`;
-    dotCursor.style.left = `${e.clientX}px`;
-    pointerCursor.style.top = `${e.clientY}px`;
-    pointerCursor.style.left = `${e.clientX}px`;
-  });
+    document.addEventListener('mousemove', (e) => {
+      requestAnimationFrame(() => { //Had to add this method to reduce lag on browsers other than firefox
+        dotCursor.style.top = `${e.clientY}px`; 
+        dotCursor.style.left = `${e.clientX}px`; 
+        pointerCursor.style.top = `${e.clientY}px`; 
+        pointerCursor.style.left = `${e.clientX}px`; 
+      }); 
+    });
 })();
 
 
@@ -349,11 +349,12 @@ hamburgerMenu.addEventListener('click', toggleMenu);
   const firstCard = document.querySelector('#overview');
   const lastCard = document.querySelector('#reflection');
   const cards = document.querySelectorAll('.study-card');
-  const studyColor = firstCard.getAttribute('data-color');
   const scrollLine = document.querySelector('#scroll-line-container');
   const scrollBall = document.querySelector('#scroll-ball');
 
-  if (cards) {
+  if (firstCard) {
+
+  const studyColor = firstCard.getAttribute('data-color');
 
   //Creates line from top to bottom card
   function updateScrollLineDimensions() {
@@ -398,10 +399,10 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     y: () => scrollLine.offsetHeight - scrollBall.offsetHeight,
     ease: 'none'
   });
-}
 
-  window.addEventListener('resize', updateScrollLineDimensions);
-  
+    window.addEventListener('resize', updateScrollLineDimensions);
+
+  }
 })();
 
 
@@ -519,6 +520,7 @@ hamburgerMenu.addEventListener('click', toggleMenu);
   .from(caseStudyText, {
     duration: animationDuration,
     y: 50,
+    opacity: 0,
     ease: animationEase
   }, animationOffset)
   .from(scrollLineCon, {
