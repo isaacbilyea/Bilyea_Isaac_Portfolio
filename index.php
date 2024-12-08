@@ -36,7 +36,7 @@ $results = mysqli_query($connect,$query);
 
 <body>
   <!--Header-->
-  <h1 class=" hidden">Isaac Bilyea's Portfolio</h1>
+  <h1 class="hidden">Isaac Bilyea's Portfolio</h1>
   <header id="main-header">
   <a href="index.php">
       <div class="logo-container">
