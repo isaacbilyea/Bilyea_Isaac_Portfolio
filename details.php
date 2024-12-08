@@ -138,7 +138,7 @@ $link_results = mysqli_query($connect, $link_query);
     </div>
 
     <div id="case-study-text" class="grid-con">
-    <div id="overview" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
+    <div id="overview" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
     <img 
         sizes="(max-width: 1000px) 100vw, 1000px"
         srcset="
