@@ -247,7 +247,9 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     gsap.registerPlugin(MotionPathPlugin);
 
     //FUNCTIONS
-    function animateBall() {
+    function animateBall(e) {
+
+      e.preventDefault();
 
         gsap.to(footerBall, {
             duration: 2,
@@ -261,6 +263,10 @@ hamburgerMenu.addEventListener('click', toggleMenu);
                 curviness: 2,
                 autoRotate: true
             },
+            onComplete: () => {
+              //Submits form after animation
+              HTMLFormElement.prototype.submit.call(form);
+          }
         });
     }
 
