@@ -161,15 +161,15 @@ $results = mysqli_query($connect,$query);
     <?php
 
     while($row = mysqli_fetch_array($results)) {
-    echo'<div class="project-card col-span-full" style="background-color:'.$row['colour'].'">
+    echo'<a href="details.php?id='.$row['project'].'" class="project-card col-span-full" style="background-color:'.$row['colour'].'">
       <div class="project-image">
-        <a href="details.php?id='.$row['project'].'"><img src="images/'.$row['image'].'" alt="logo"></a>
+       <img src="images/'.$row['image'].'" alt="logo">
       </div>
       <div class="project-text">
         <h3>'.$row['title'].'</h3>
         <p>'.$row['description'].'</p>
       </div>
-    </div>';
+    </a>';
     }
     ?>
 
