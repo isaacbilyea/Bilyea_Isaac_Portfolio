@@ -26,7 +26,7 @@ This portfolio was created to showcase my development skills and growth in front
 
 Here's what you'll find showcased in this portfolio:
 
-- **Languages**: HTML5, CSS3, JavaScript
+- **Languages**: HTML5, CSS3, JavaScript, PHP
 - **Preprocessors**: Sass (SCSS)
 - **Frameworks and Libraries**: GreenSock (GSAP)
 - **Tools**: Git, VS Code
@@ -39,7 +39,7 @@ To explore the portfolio locally:
 
 1. Clone this repository.  
 2. Navigate into the project folder.  
-3. Open `index.html` in your browser, or serve it locally using a development server.  
+3. Open `index.php` in your browser, or serve it locally using a development server.  
 
 
 
