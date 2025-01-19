@@ -5,14 +5,27 @@
 
 require_once('includes/connect.php');
 
-$query = 'SELECT * FROM projects, media_files WHERE project_id = projects.id AND projects.id ='.$_GET['id'];
+$query = 'SELECT * FROM projects, media_files WHERE project_id = projects.id AND projects.id = :projectid';
 
-$results = mysqli_query($connect,$query);
+$stmt = $connect->prepare($query);
 
-$row = mysqli_fetch_assoc($results);
+$projectid = $_GET['id'];
 
-$link_query = 'SELECT id, title FROM projects WHERE id !='.$_GET['id'];
-$link_results = mysqli_query($connect, $link_query);
+$stmt->bindParam(':projectid', $projectid, PDO::PARAM_INT);
+
+$stmt->execute();
+
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$stmt = null;
+
+// $link_query = 'SELECT id, title FROM projects WHERE id !='.$_GET['id'];
+// $link_results = mysqli_query($connect, $link_query);
+
+// $results = mysqli_query($connect,$query);
+
+// $row = mysqli_fetch_assoc($results);
+
 ?>
 
 <head>

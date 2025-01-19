@@ -7,11 +7,12 @@ require_once('includes/connect.php');
 
 
 //create a query to run in SQL
-$query = 'SELECT projects.id AS project, title, description, cover_image AS image, colour FROM projects';
+$stmt = $connect->prepare('SELECT projects.id AS project, title, description, cover_image AS image, colour FROM projects');
 
+$stmt->execute();
 
 //run the query to get back the content
-$results = mysqli_query($connect,$query);
+//$results = mysqli_query($connect,$query);
 
 ?>
 
@@ -163,7 +164,7 @@ $results = mysqli_query($connect,$query);
 
     <?php
 
-    while($row = mysqli_fetch_array($results)) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo'<a href="details.php?id='.$row['project'].'" class="project-card col-span-full" style="background-color:'.$row['colour'].'">
       <div class="project-image">
        <img src="images/'.$row['image'].'" alt="logo">
