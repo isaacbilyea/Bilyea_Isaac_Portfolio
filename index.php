@@ -2,17 +2,10 @@
 <html lang="en">
 
 <?php
-//connect to the running database server and the specific database
 require_once('includes/connect.php');
 
-
-//create a query to run in SQL
 $stmt = $connect->prepare('SELECT projects.id AS project, title, description, cover_image AS image, colour FROM projects');
-
 $stmt->execute();
-
-//run the query to get back the content
-//$results = mysqli_query($connect,$query);
 
 ?>
 

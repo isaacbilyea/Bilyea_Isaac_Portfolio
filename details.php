@@ -6,28 +6,24 @@
 require_once('includes/connect.php');
 
 $query = 'SELECT * FROM projects, media_files WHERE project_id = projects.id AND projects.id = :projectid';
-
 $stmt = $connect->prepare($query);
 
 $projectid = $_GET['id'];
-
 $stmt->bindParam(':projectid', $projectid, PDO::PARAM_INT);
-
 $stmt->execute();
 
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 $stmt = null;
 
-// $link_query = 'SELECT id, title FROM projects WHERE id !='.$_GET['id'];
-// $link_results = mysqli_query($connect, $link_query);
+//Links
+$link_query = 'SELECT id, title FROM projects WHERE projects.id != :projectid';
+$link_results = $connect->prepare($link_query);
+$link_results->bindParam(':projectid', $projectid, PDO::PARAM_INT);
+$link_results->execute();
 
-// $results = mysqli_query($connect,$query);
-
-// $row = mysqli_fetch_assoc($results);
 
 ?>
-
+ 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -252,7 +248,7 @@ $stmt = null;
     <ul class="col-span-full">
       <li><a href="index.php">All</a> 
       <?php
-      while ($links = mysqli_fetch_assoc($link_results)) {
+      while ($links = $link_results->fetch(PDO::FETCH_ASSOC)) {
           echo '<li><a href="details.php?id='.$links['id'].'">'.$links['title'].'</a></li>';
       }
       ?>
