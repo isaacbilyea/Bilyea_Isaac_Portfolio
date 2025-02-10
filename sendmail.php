@@ -33,9 +33,15 @@ if(empty($errors)) {
 
     //insert these values as a new row in the contacts table
 
-    $query = "INSERT INTO contacts (name, email, message) VALUES('$name','$email','$msg')";
+    $query = "INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)";
 
-    if(mysqli_query($connect, $query)) {
+    $stmt = $connect->prepare($query);
+    
+    $stmt->bindParam(1, $name, PDO::PARAM_STR);
+    $stmt->bindParam(2, $email, PDO::PARAM_STR);
+    $stmt->bindParam(3, $msg, PDO::PARAM_STR);
+
+    if($stmt->execute()) {
 
         //format and send these values in an email
 
@@ -52,6 +58,8 @@ if(empty($errors)) {
         header('Location: contact.php?submitted=true');
 
     }
+    
+    $stmt = null;
 
 } else {
     //The for loop wasn't working since $errors is an associative array because we assigned it keys above. So I used a foreach loop instead.
