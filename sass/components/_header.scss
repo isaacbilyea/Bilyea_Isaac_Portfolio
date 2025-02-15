@@ -100,6 +100,8 @@
     &.show {
       @include a.center;
       text-align: center;
+      flex-direction: column;
+      gap: 2rem;
 
       .menu-item {
         animation: fadeIn 0.5s ease-in-out forwards;
@@ -151,6 +153,27 @@
       font-size: 3rem;
     }
 
+    #resume-button {
+      position: absolute;
+      left: 7.5%;
+      top: 5.5%;
+      width: 4rem;
+      height: 4rem;
+
+      svg {
+        padding: 0.75rem;
+        background-color: a.$dot-color;
+        border-radius: 5rem;
+        border: none;
+        font-size: 2.5rem;
+        color: white;
+        font-family: a.$heading-font-family;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
     @keyframes slideIn {
 
       0% {
@@ -193,12 +216,13 @@
     }
 
     #main-nav {
-      display: block;
+      @include a.center;
       position: relative;
       height: auto;
       background-color: transparent;
       border-left: none;
       animation: none;
+      gap: 3rem;
 
       &.show {
         display: block;
@@ -206,6 +230,7 @@
 
       ul {
         flex-direction: row;
+        margin: 0;
       }
 
       ul li.active::before {
@@ -230,7 +255,7 @@
 
       #menu-dot {
         position: absolute;
-        bottom: -1.1rem;
+        bottom: -0.5rem;
         width: 0.75rem;
         height: 0.75rem;
         background-color: a.$dot-color;
@@ -241,27 +266,71 @@
       }
 
       ul li.active ~ #menu-dot {
-        left: calc(16.66% + 1.75rem);
+        left: calc(16.66% + 0.5rem);
       }
 
       ul li:nth-child(2).active ~ #menu-dot {
-        left: calc(50% + 1.3rem);
+        left: calc(40% + 1rem);
       }
 
       ul li:nth-child(3).active ~ #menu-dot {
-        left: calc(83.33% + 1.6rem);
+        left: calc(83.33% + 1rem);
       }
 
       ul li:nth-child(1):hover ~ #menu-dot {
-        left: calc(16.66% + 1.75rem);
+        left: calc(16.66% + 0.5rem);
       }
 
       ul li:nth-child(2):hover ~ #menu-dot {
-        left: calc(50% + 1.3rem);
+        left: calc(40% + 1rem);
       }
 
       ul li:nth-child(3):hover ~ #menu-dot {
-        left: calc(83.33% + 1.6rem);
+        left: calc(65% + 1.4rem);
+      }
+
+      #resume-button {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-left: 1rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        
+        &::before {
+          content: '';
+          width: 3.5rem;
+          height: 3.5rem;
+          position: absolute;
+          inset: 0;
+          background-color: a.$dot-color;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+        }
+      
+        svg {
+          position: relative;
+          background-color: transparent;
+          width: 100%;
+          height: 100%;
+          padding: 0.75rem;
+          fill: white;
+          z-index: 1;
+          transition: fill 0.3s ease;
+        }
+      
+        &:hover {
+          &::before {
+            width: 0.75rem;
+            height: 0.75rem;
+            left: -0.5rem;
+            top: 39%;
+          }
+          
+          svg {
+            fill: a.$secondary-color;
+          }
+        }
       }
     }
   }
