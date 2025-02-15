@@ -274,7 +274,7 @@
       }
 
       ul li:nth-child(3).active ~ #menu-dot {
-        left: calc(83.33% + 1rem);
+        left: calc(65% + 1.7rem);
       }
 
       ul li:nth-child(1):hover ~ #menu-dot {
@@ -286,7 +286,7 @@
       }
 
       ul li:nth-child(3):hover ~ #menu-dot {
-        left: calc(65% + 1.4rem);
+        left: calc(65% + 1.7rem);
       }
 
       #resume-button {
