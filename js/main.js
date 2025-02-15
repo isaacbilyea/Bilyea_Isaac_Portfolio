@@ -234,58 +234,58 @@ hamburgerMenu.addEventListener('click', toggleMenu);
 //----------------------------------------------------------------------------------//
 
 
-//Contact Form Ball and Popup
-(() => {
+// //Contact Form Ball and Popup
+// (() => {
 
-   //VARIABLES
-    const form = document.querySelector('form');
-    const footerBall = document.querySelector('#ball')
-    const popup = document.querySelector('#thank-you-popup');
-    const closeBtn = document.querySelector('#close-popup');
-    const urlParams = new URLSearchParams(window.location.search);
+//    //VARIABLES
+//     const form = document.querySelector('form');
+//     const footerBall = document.querySelector('#ball')
+//     const popup = document.querySelector('#thank-you-popup');
+//     const closeBtn = document.querySelector('#close-popup');
+//     const urlParams = new URLSearchParams(window.location.search);
 
-    gsap.registerPlugin(MotionPathPlugin);
+//     gsap.registerPlugin(MotionPathPlugin);
 
-    //FUNCTIONS
-    function animateBall(e) {
+//     //FUNCTIONS
+//     function animateBall(e) {
 
-      e.preventDefault();
+//       e.preventDefault();
 
-        gsap.to(footerBall, {
-            duration: 2,
-            ease: "power1.inOut",
-            motionPath: {
-                path: "#path",
-                align: "#path",
-                alignOrigin: [0, 0],
-                start: 1,
-                end: 0,
-                curviness: 2,
-                autoRotate: true
-            },
-            onComplete: () => {
-              //Submits form after animation
-              HTMLFormElement.prototype.submit.call(form);
-          }
-        });
-    }
+//         gsap.to(footerBall, {
+//             duration: 2,
+//             ease: "power1.inOut",
+//             motionPath: {
+//                 path: "#path",
+//                 align: "#path",
+//                 alignOrigin: [0, 0],
+//                 start: 1,
+//                 end: 0,
+//                 curviness: 2,
+//                 autoRotate: true
+//             },
+//             onComplete: () => {
+//               //Submits form after animation
+//               HTMLFormElement.prototype.submit.call(form);
+//           }
+//         });
+//     }
 
-    //Shows popup if form is submitted, checks using link set by sendmail.php
-    if (urlParams.get('submitted') === 'true') {
-      popup.classList.remove('hidden');
-    }
+//     //Shows popup if form is submitted, checks using link set by sendmail.php
+//     if (urlParams.get('submitted') === 'true') {
+//       popup.classList.remove('hidden');
+//     }
 
-    //EVENT LISTENERS
-    if (form) {
-      form.addEventListener('submit', animateBall);
-    }
+//     //EVENT LISTENERS
+//     if (form) {
+//       form.addEventListener('submit', animateBall);
+//     }
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        popup.classList.add('hidden');
-    })};
+//     if (closeBtn) {
+//       closeBtn.addEventListener('click', () => {
+//         popup.classList.add('hidden');
+//     })};
 
-})();
+// })();
 
 
 //----------------------------------------------------------------------------------//
@@ -604,5 +604,62 @@ hamburgerMenu.addEventListener('click', toggleMenu);
     opacity: 0,
     ease: animationEase
   }, animationOffset)
+
+})();
+
+
+//----------------------------------------------------------------------------------//
+
+
+//Ajax Form
+(()=>{
+	
+  const form = document.querySelector('#form');
+  const feedback = document.querySelector('#feedback');
+
+  function regForm(e) {
+      e.preventDefault();
+
+      const thisForm = e.currentTarget;
+      const url = "sendmail.php";
+      console.log(thisForm.elements);
+      const formData = 
+      "name="+thisForm.elements.name.value+
+      "&email="+thisForm.elements.email.value+
+      "&message="+thisForm.elements.message.value;
+
+      fetch(url, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: formData
+      })
+      .then(response => response.json())
+      .then(response => {
+          feedback.innerHTML = '';
+          if(response.errors) {
+              response.errors.forEach(error => {
+                  const errorElement = document.createElement('p');
+                  errorElement.textContent = error;
+                  feedback.appendChild(errorElement);
+  
+              })
+          } else {
+              form.reset();
+              const messageElement = document.createElement('p');
+              messageElement.textContent = response.message;
+              feedback.appendChild(messageElement);
+          }
+          feedback.scrollIntoView({behavior: 'smooth', block: 'end'})
+      })
+      .catch(error => {
+          console.log(error);
+          feedback.innerHTML = '';
+          feedback.innerHTML = `<p>Sorry there seems to be an issue. Either you're using an older browser or javascript is disabled.</p>`
+      });
+  }
+
+  form.addEventListener('submit', regForm);
 
 })();
