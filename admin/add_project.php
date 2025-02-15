@@ -51,13 +51,13 @@ if(move_uploaded_file($_FILES['img']['tmp_name'], $target_file)) {  //moves the 
 // PDO database insert
 
 $query = "INSERT INTO projects (title,description,image_url) VALUES (?,?,?)";
-$stmt = $connection->prepare($query);
+$stmt = $connect->prepare($query);
 $stmt->bindParam(1, $_POST['title'], PDO::PARAM_STR);
 $stmt->bindParam(2, $_POST['desc'], PDO::PARAM_STR);
 $stmt->bindParam(3, $newname, PDO::PARAM_STR);  //note the $newname used here!
 $stmt->execute();
 
-$last_id = $connection->lastInsertId();
+$last_id = $connect->lastInsertId();
 
 
 $stmt = null;
