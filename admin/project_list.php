@@ -9,7 +9,7 @@ if(!isset($_SESSION['username'])) {
 }
 
 require_once('../includes/connect.php');
-$stmt = $connect->prepare('SELECT id,title,cover_image FROM projects ORDER BY title ASC');
+$stmt = $connect->prepare('SELECT id,title,cover_image FROM projects ORDER BY id ASC');
 $stmt->execute();
 ?>
 
@@ -44,7 +44,6 @@ $stmt->execute();
 
     ?>
   </div>
-  <br><br><br>
 
   <div id="add-project">
     <h3>Add a New Project</h3>
@@ -58,8 +57,7 @@ $stmt->execute();
         <input name="submit" type="submit" value="Add">
     </form>
   </div>
-  <br><br><br>
-<a id="log-out" href="logout.php">Log Out</a>
+  <a id="log-out" href="logout.php">Log Out</a>
 </div>
 </body>
 </html>
