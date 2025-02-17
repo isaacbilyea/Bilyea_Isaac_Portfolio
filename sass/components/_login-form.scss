@@ -8,6 +8,10 @@
     font-size: 1.25rem;
     flex-direction: column;
     gap: 3rem;
+
+    * {
+        cursor: default;
+    }
     
     img {
         width: 5rem;
@@ -29,11 +33,12 @@
             padding: 0.25rem;
             margin: 0.25rem 0;
             width: 100%;
-            border: a.$accent-color 2px solid;
+            border: a.$secondary-color 2px solid;
+            cursor: pointer;
 
             &:focus {
                 outline: none;
-                border: a.$accent-color 2px solid;
+                border: a.$secondary-color 2px solid;
             }
 
             &[type='submit'] {

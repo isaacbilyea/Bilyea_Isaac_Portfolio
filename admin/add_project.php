@@ -50,7 +50,7 @@ if(move_uploaded_file($_FILES['img']['tmp_name'], $target_file)) {  //moves the 
 
 // PDO database insert
 
-$query = "INSERT INTO projects (title,description,image_url) VALUES (?,?,?)";
+$query = "INSERT INTO projects (title,description,cover_image) VALUES (?,?,?)";
 $stmt = $connect->prepare($query);
 $stmt->bindParam(1, $_POST['title'], PDO::PARAM_STR);
 $stmt->bindParam(2, $_POST['desc'], PDO::PARAM_STR);
@@ -66,7 +66,7 @@ $stmt = null;
 
 //new INSERT query for media table, with the filename and the foreign key
 
-$mediaquery = "INSERT INTO media (type,caption,image_url, project_id) VALUES (?,?,?)";
+$mediaquery = "INSERT INTO media (type,caption,cover_image, project_id) VALUES (?,?,?)";
 
 //project_id = $last_id;
 
