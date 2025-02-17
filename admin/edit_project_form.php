@@ -19,7 +19,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Page</title>
+    <title>Edit Project</title>
     <link rel="stylesheet" href="../css/main.css" type="text/css">
 
 </head>
@@ -36,7 +36,26 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
           <input name="thumb" type="text" required value="<?php echo $row['cover_image']; ?>"><br><br>
           <label for="desc">Project Description: </label>
           <textarea name="desc" required><?php echo $row['description']; ?></textarea><br><br>
-          <input name="submit" type="submit" value="Edit">
+          <label for="colour">Project Colour: </label>
+          <input name="colour" type="text" required value="<?php echo $row['colour']; ?>">
+          <h3>Case Study Content</h3>
+          <label for="overview">Project Overview: </label>
+          <textarea name="overview" required><?php echo $row['overview']; ?></textarea><br><br>
+          <label for="summary">Project Summary: </label>
+          <textarea name="summary" required><?php echo $row['summary']; ?></textarea><br><br>
+          <label for="problems">Project Problems: </label>
+          <textarea name="problems" required><?php echo $row['problems']; ?></textarea><br><br>
+          <label for="resarch">Project Research: </label>
+          <textarea name="research" required><?php echo $row['research']; ?></textarea><br><br>
+          <label for="process">Project Process: </label>
+          <textarea name="process" required><?php echo $row['process']; ?></textarea><br><br>
+          <label for="final_product">Project Final Product: </label>
+          <textarea name="final_product" required><?php echo $row['final_product']; ?></textarea><br><br>
+          <label for="reflection">Project Reflection: </label>
+          <textarea name="reflection" required><?php echo $row['reflection']; ?></textarea><br><br>
+          <label for="link">Project Link: </label>
+          <input name="link" type="text" required value="<?php echo $row['link']; ?>"><br><br>
+          <input name="submit" type="submit" value="Save">
       </form>
   </div>
 </div>
