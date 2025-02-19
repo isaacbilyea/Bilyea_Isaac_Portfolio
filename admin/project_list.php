@@ -54,6 +54,8 @@ $stmt->execute();
         <input name="img" type="file" required><br><br>
         <label for="desc">Project Description: </label>
         <textarea name="desc" required></textarea><br><br>
+        <label for="desc">Project Colour: </label>
+        <input name="colour" required></input><br><br>
         <input name="submit" type="submit" value="Add">
     </form>
   </div>
