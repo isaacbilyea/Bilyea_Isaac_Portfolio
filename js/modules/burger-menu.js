@@ -9,11 +9,10 @@ export function burgerMenu() {
     //FUNCTIONS
 
     function toggleMenu() {
-    hamburgerMenu.classList.toggle('activate');
-    mainNav.classList.toggle('show');
-    body.classList.toggle('menu-open'); //Used to set body to hide overflow when menu is open
+        hamburgerMenu.classList.toggle('activate');
+        mainNav.classList.toggle('show');
+        body.classList.toggle('menu-open'); //Used to set body to hide overflow when menu is open
     };
-
 
     //EVENT LISTENERS
 

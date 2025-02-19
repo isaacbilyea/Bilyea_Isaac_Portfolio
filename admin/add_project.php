@@ -50,11 +50,12 @@ if(move_uploaded_file($_FILES['img']['tmp_name'], $target_file)) {  //moves the 
 
 // PDO database insert
 
-$query = "INSERT INTO projects (title,description,cover_image) VALUES (?,?,?)";
+$query = "INSERT INTO projects (title,description,colour,cover_image) VALUES (?,?,?,?)";
 $stmt = $connect->prepare($query);
 $stmt->bindParam(1, $_POST['title'], PDO::PARAM_STR);
 $stmt->bindParam(2, $_POST['desc'], PDO::PARAM_STR);
-$stmt->bindParam(3, $newname, PDO::PARAM_STR);  //note the $newname used here!
+$stmt->bindParam(3, $_POST['colour'], PDO::PARAM_STR);
+$stmt->bindParam(4, $newname, PDO::PARAM_STR);  //note the $newname used here!
 $stmt->execute();
 
 $last_id = $connect->lastInsertId();
