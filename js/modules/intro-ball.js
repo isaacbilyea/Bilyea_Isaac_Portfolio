@@ -1,12 +1,11 @@
 export function introBall() {
-    
+
     gsap.registerPlugin(ScrollTrigger);
 
     //VARIABLES
     const scrollBall = document.querySelector("#seperator-ball");
     const welcomeSpans = document.querySelectorAll("#welcome span");
   
-    if(welcomeSpans.length > 0) {
     //FUNCTIONS
     function changeTextColour() {
       const progress = this.progress();
@@ -35,5 +34,4 @@ export function introBall() {
           scrub: true,
         },
       });
-    }
 }
