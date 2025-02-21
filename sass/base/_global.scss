@@ -50,6 +50,7 @@ body::before {
 
 body.menu-open {
     overflow: hidden;
+    padding-right: var(--scrollbar-width);
 }
 
 .logo-dot {
