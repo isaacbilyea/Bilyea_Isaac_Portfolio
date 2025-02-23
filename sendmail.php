@@ -2,12 +2,13 @@
 header("Content-Type: application/json; charset=UTF-8");
 require_once('includes/connect.php');
 
+
 ///gather the form content
 $name = $_POST['name'];
 $email = $_POST['email'];
 $msg = $_POST['message'];
 
-$errors = ();
+$errors = array();
 
 //validate and clean these values
 
@@ -55,14 +56,13 @@ if(empty($errors)) {
 
         mail($to,$subject,$message);
 
-        // header('Location: contact.php?submitted=true');
         echo json_encode(array("message" => "Thank you for your message!"));
     }
     
     $stmt = null;
 
     } else {
-        // echo $error.'<br>';
         echo json_encode(array("errors" => array_values($errors)));
     }
+exit;
 ?>
