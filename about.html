@@ -12,10 +12,9 @@
   <link rel="icon" href="images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="images/background.jpg" as="image">
-  <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/TextPlugin.min.js"></script>
   <script type="module" src="js/about.js"></script>
   <title>About | Isaac Bilyea</title>
 </head>
@@ -142,7 +141,10 @@
 
     <div id="about-me-image" class="col-span-full m-col-start-2 m-col-end-7 l-col-start-2 l-col-end-6">
       <img src="images/isaac-eatsfood.jpg" alt="image of Isaac">
-      <p>ISAAC EATS FOOD</p>
+      <p>
+        <span id="static-about">ISAAC </span>
+        <span id="dynamic-about">EATS FOOD</span>
+      </p>
       <svg version="1.1" id="speech-bubble" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 443.541 443.541">
         <g transform="scale(-1, 1) translate(-443.541, 0)">
@@ -158,7 +160,7 @@
     </div>
 
     <div id="about-me-text" class="col-span-full m-col-start-7 m-col-end-12 l-col-start-6 l-col-end-12">
-      <h3>Salutations!</h3>
+      <h3 id="about-me-heading">Salutations!</h3>
       <p>I'm Isaac, a problem solver who likes to make things look nice. I am currently a student at Fanshawe College in
         the Interactive Media Design program. I have spent my whole life in this lovely city known as London, Ontario,
         yet I can only name 3 streets (counting the one I live on).</p>
