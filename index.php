@@ -20,7 +20,6 @@ $stmt->execute();
   <link rel="icon" href="images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="images/background.jpg" as="image">
-  <script src="https://cdn.tiny.cloud/1/zx6qk7ta8vs8xv4q6994p5e7rb4fxqh2zdefqs6j6k1ydmug/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
   <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>

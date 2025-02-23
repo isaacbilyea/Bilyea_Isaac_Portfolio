@@ -12,7 +12,6 @@
   <link rel="icon" href="images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="images/background.jpg" as="image">
-  <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
