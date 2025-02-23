@@ -9,7 +9,7 @@ export function ajaxForm() {
         e.preventDefault();
 
         const thisForm = e.currentTarget;
-        const url = "sendmail.php";
+        const url = "/Bilyea_Isaac_Portfolio/sendmail.php";
         console.log(thisForm.elements);
         const formData = 
         "name="+thisForm.elements.name.value+
