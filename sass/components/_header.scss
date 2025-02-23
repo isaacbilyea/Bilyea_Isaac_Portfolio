@@ -6,12 +6,20 @@
   max-width: 1200px;
   position: relative;
   
+  > a {
+    display: block;
+    width: 3rem;
+    margin-right: auto;
+  }
+
   .logo-container {
     position: relative;
-    display: inline-block;
+    width: 100%;
     
     .logo {
       height: 4rem;
+      display: block;
+      position: relative;
 
       .logo-letter {
         fill: a.$secondary-color;
@@ -25,7 +33,6 @@
         opacity: 0;
       }
     }
-
   }
 
   #hamburger-menu {
@@ -219,6 +226,10 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+
+    > a {
+      width: 100%;
+    }
 
     #hamburger-menu {
       display: none;
