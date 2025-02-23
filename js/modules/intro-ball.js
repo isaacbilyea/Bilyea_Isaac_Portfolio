@@ -9,7 +9,6 @@ export function introBall() {
   function changeTextColour() {
     const progress = this.progress();
     
-    // Use threshold values for quicker color changes
     if (progress <= 0.05) {
       welcomeSpans[0].style.color = "var(--dot-color)";
       welcomeSpans[1].style.color = "#2D2D2D";
