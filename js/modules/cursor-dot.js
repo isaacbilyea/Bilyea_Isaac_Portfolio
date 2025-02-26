@@ -15,6 +15,7 @@ export function cursorDot() {
     'textarea', 
     '#about-me-image',
     '.dot-hue-slider',
+    '.study-card',
     ];
 
     //Sets colour of mobile menu dot

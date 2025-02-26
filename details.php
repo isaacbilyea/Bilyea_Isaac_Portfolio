@@ -122,8 +122,8 @@ $link_results->execute();
     <nav id="main-nav">
       <h2 class="hidden">Main Navigation</h2>
       <ul>
-        <li class="menu-item"><a href="index.php">Home</a></li>
-        <li class="active menu-item"><a href="about.html">About</a></li>
+        <li class="active menu-item"><a href="index.php">Home</a></li>
+        <li class="menu-item"><a href="about.html">About</a></li>
         <li class="menu-item"><a href="contact.php">Contact</a></li>
         <li id="menu-dot" style="background-color: <?php echo $row['colour']; ?>"></li>
       </ul>

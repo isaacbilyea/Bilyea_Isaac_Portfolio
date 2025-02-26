@@ -22,28 +22,6 @@ $stmt->execute();
 <body>
 
 <div id="cms-main">
-  <div id="edit-project">
-    <h3>Edit an Existing Project</h3>
-    <?php
-
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-      echo '<div class="project-item">
-      <img src="../images/'.$row['cover_image'].'" alt="'.$row['title'].'" class="project-thumbnail">
-      <div class="project-info">
-        <p class="project-title">'.$row['title'].'</p>
-        <div class="project-actions">
-          <a href="edit_project_form.php?id='.$row['id'].'" class="edit-btn">Edit</a>
-          <a href="delete_project.php?id='.$row['id'].'" class="delete-btn">Delete</a>
-        </div>
-      </div>
-    </div>';
-    }
-
-    $stmt = null;
-
-    ?>
-  </div>
 
   <div id="add-project">
     <h3>Add a New Project</h3>
@@ -53,12 +31,36 @@ $stmt->execute();
         <label for="img">Project Image: </label>
         <input name="img" type="file" required><br><br>
         <label for="desc">Project Description: </label>
-        <textarea name="desc" required></textarea><br><br>
-        <label for="desc">Project Colour: </label>
-        <input name="colour" required></input><br><br>
+        <textarea name="desc" required placeholder="Web Development | Design"></textarea><br><br>
+        <label for="colour">Project Colour: </label>
+        <input name="colour" required placeholder="#FFFFFF"></input><br><br>
         <input name="submit" type="submit" value="Add">
     </form>
   </div>
+
+  <div id="edit-project">
+  <h3>Edit an Existing Project</h3>
+  <?php
+
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+    echo '<div class="project-item">
+    <img src="../images/'.$row['cover_image'].'" alt="'.$row['title'].'" class="project-thumbnail">
+    <div class="project-info">
+      <p class="project-title">'.$row['title'].'</p>
+      <div class="project-actions">
+        <a href="edit_project_form.php?id='.$row['id'].'" class="edit-btn">Edit</a>
+        <a href="delete_project.php?id='.$row['id'].'" class="delete-btn">Delete</a>
+      </div>
+    </div>
+  </div>';
+  }
+
+  $stmt = null;
+
+  ?>
+  </div>
+
   <a id="log-out" href="logout.php">Log Out</a>
 </div>
 </body>
