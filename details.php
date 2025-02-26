@@ -163,7 +163,7 @@ $link_results->execute();
             images/<?php echo $row['filename']; ?>-overview_600.png 600w,
             images/<?php echo $row['filename']; ?>-overview_800.png 800w,
             images/<?php echo $row['filename']; ?>-overview_1000.png 1000w"
-        src="images/<?php echo $row['filename']; ?>-overview_1000.png" 
+        src="images/<?php echo $row['filename']; ?>-overview.png" 
         alt="<?php echo $row['alt']; ?> overview">
         <h3>Overview</h3>
         <p><?php echo $row['overview']; ?></p>
@@ -177,12 +177,6 @@ $link_results->execute();
     <div id="problems" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
     <img 
         sizes="(max-width: 1000px) 100vw, 1000px"
-        srcset="
-            images/<?php echo $row['filename']; ?>-problems_300.png 300w,
-            images/<?php echo $row['filename']; ?>-problems_450.png 450w,
-            images/<?php echo $row['filename']; ?>-problems_600.png 600w,
-            images/<?php echo $row['filename']; ?>-problems_800.png 800w,
-            images/<?php echo $row['filename']; ?>-problems_1000.png 1000w"
         src="images/<?php echo $row['filename']; ?>-problems.png" 
         alt="<?php echo $row['alt']; ?> problems">
         <h3>Problems</h3>
