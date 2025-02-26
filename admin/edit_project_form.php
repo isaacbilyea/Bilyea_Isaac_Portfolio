@@ -111,7 +111,7 @@ function validateForm() {
 
             <label for="final_product">Project Final Product: </label><br><br>
             <label for="finalproduct_img">Final Product Image: </label>
-            <input name="finalproduct_img" type="file" accept="image/*"><br><br>
+            <input name="finalproduct_img" type="file"><br><br>
             <textarea class="textarea" name="final_product"><?php echo $row['final_product']; ?></textarea><br><br>
             
             <label for="reflection">Project Reflection: </label><br><br>
