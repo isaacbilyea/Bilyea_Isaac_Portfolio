@@ -5,7 +5,9 @@
 
 require_once('includes/connect.php');
 
-$query = 'SELECT * FROM projects, media_files WHERE project_id = projects.id AND projects.id = :projectid';
+$query = 'SELECT p.*, m.* FROM projects p 
+          LEFT JOIN media_files m ON m.project_id = p.id 
+          WHERE p.id = :projectid';
 $stmt = $connect->prepare($query);
 
 $projectid = $_GET['id'];
@@ -155,16 +157,7 @@ $link_results->execute();
 
     <div id="case-study-text" class="grid-con">
     <div id="overview" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
-    <img 
-        sizes="(max-width: 1000px) 100vw, 1000px"
-        srcset="
-            images/<?php echo $row['filename']; ?>-overview_300.png 300w,
-            images/<?php echo $row['filename']; ?>-overview_450.png 450w,
-            images/<?php echo $row['filename']; ?>-overview_600.png 600w,
-            images/<?php echo $row['filename']; ?>-overview_800.png 800w,
-            images/<?php echo $row['filename']; ?>-overview_1000.png 1000w"
-        src="images/<?php echo $row['filename']; ?>-overview.png" 
-        alt="<?php echo $row['alt']; ?> overview">
+    <img src="images/<?php echo $row['filename']; ?>-overview.png" alt="<?php echo $row['alt']; ?> overview">
         <h3>Overview</h3>
         <p><?php echo $row['overview']; ?></p>
     </div>
@@ -175,56 +168,25 @@ $link_results->execute();
     </div>
 
     <div id="problems" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img 
-        sizes="(max-width: 1000px) 100vw, 1000px"
-        src="images/<?php echo $row['filename']; ?>-problems.png" 
-        alt="<?php echo $row['alt']; ?> problems">
+    <img src="images/<?php echo $row['filename']; ?>-problems.png" alt="<?php echo $row['alt']; ?> problems">
         <h3>Problems</h3>
         <p><?php echo $row['problems']; ?></p>
     </div>
 
     <div id="research" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img 
-        sizes="(max-width: 1000px) 100vw, 1000px"
-        srcset="
-            images/<?php echo $row['filename']; ?>-research_300.png 300w,
-            images/<?php echo $row['filename']; ?>-research_450.png 450w,
-            images/<?php echo $row['filename']; ?>-research_600.png 600w,
-            images/<?php echo $row['filename']; ?>-research_800.png 800w,
-            images/<?php echo $row['filename']; ?>-research_1000.png 1000w"
-        src="images/<?php echo $row['filename']; ?>-research.png" 
-        alt="<?php echo $row['alt']; ?> research">
+    <img src="images/<?php echo $row['filename']; ?>-research.png" alt="<?php echo $row['alt']; ?> research">
         <h3>Research</h3>   
         <p><?php echo $row['research']; ?></p>
     </div>
 
     <div id="process" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img 
-      
-        sizes="(max-width: 1000px) 100vw, 1000px"
-        srcset="
-            images/<?php echo $row['filename']; ?>-process_300.png 300w,
-            images/<?php echo $row['filename']; ?>-process_450.png 450w,
-            images/<?php echo $row['filename']; ?>-process_600.png 600w,
-            images/<?php echo $row['filename']; ?>-process_800.png 800w,
-            images/<?php echo $row['filename']; ?>-process_1000.png 1000w"
-        src="images/<?php echo $row['filename']; ?>-process.png" 
-        alt="<?php echo $row['alt']; ?> process">
+    <img src="images/<?php echo $row['filename']; ?>-process.png" alt="<?php echo $row['alt']; ?> process">
         <h3>Process</h3>
         <p><?php echo $row['process']; ?></p>
     </div>
 
     <div id="final-product" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img 
-        sizes="(max-width: 1000px) 100vw, 1000px"
-        srcset="
-            images/<?php echo $row['filename']; ?>-finalproduct_300.png 300w,
-            images/<?php echo $row['filename']; ?>-finalproduct_450.png 450w,
-            images/<?php echo $row['filename']; ?>-finalproduct_600.png 600w,
-            images/<?php echo $row['filename']; ?>-finalproduct_800.png 800w,
-            images/<?php echo $row['filename']; ?>-finalproduct_1000.png 1000w"
-            src="images/<?php echo $row['filename']; ?>-finalproduct.png" 
-        alt="<?php echo $row['alt']; ?> final product">
+    <img src="images/<?php echo $row['filename']; ?>-finalproduct.png" alt="<?php echo $row['alt']; ?> final product">
         <div id="final-product-heading">
           <h3>Final Product</h3>
           <a href="<?php echo $row['link']; ?>" target="_blank">View on Github</a>

@@ -150,7 +150,7 @@
   </section>
 
   <!--Thank You-->
-  <div id="thank-you-popup" class="hidden">
+  <div id="thank-you-popup" class="hidden grid-con">
     <div id="popup-heading">
       <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
