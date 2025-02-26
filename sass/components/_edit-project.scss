@@ -2,9 +2,11 @@
 
 #edit-project-form {
     cursor: default;
-    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
     @include a.center;
     position: relative;
+
 
     * {
         cursor: default;
@@ -32,7 +34,7 @@
             }
 
             input[type='submit'] {
-                width: 30%;
+                width: 20%;
                 border-radius: 0.25rem;
                 color: white;
                 padding: 0.5rem 1rem;
@@ -41,10 +43,15 @@
                 background-color: a.$secondary-color;
             }
 
+            input[type='text'] {
+                width: 50%;
+            }
+
             h3 {
-                text-align: center;
+                text-align: left;
                 margin: 5rem 0 3rem 0;
                 position: relative;
+                font-size: 1.5rem;
 
                 &::before {
                     content: '';

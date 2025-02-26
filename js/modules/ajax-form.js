@@ -39,7 +39,7 @@ export function ajaxForm() {
                 messageElement.textContent = response.message;
                 feedback.appendChild(messageElement);
             }
-            feedback.scrollIntoView({behavior: 'smooth', block: 'end'})
+            feedback.scrollIntoView({behavior: 'smooth', block: 'center'})
         })
         .catch(error => {
             console.log(error);

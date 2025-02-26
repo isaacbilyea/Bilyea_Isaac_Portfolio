@@ -20,14 +20,14 @@ if(empty($name)) {
     $errors['name'] = 'Name input is required. You wouldn’t leave a title tag blank, would you?';
 }
 
-if(empty($msg)) {
-    $errors['message'] = 'A blank message? Bold strategy. Let’s see if it works out.';
-}
-
 if(empty($email)) {
     $errors['email'] = 'An email address is kind of important. Unless you want me to send your message via carrier pigeon?';
 } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors['legit_email'] = 'Invalid email format. Did you miss a closing tag?';
+}
+
+if(empty($msg)) {
+    $errors['message'] = 'A blank message? Bold strategy. Let’s see if it works out.';
 }
 
 if(empty($errors)) {
