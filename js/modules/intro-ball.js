@@ -4,6 +4,7 @@ export function introBall() {
   //VARIABLES
   const scrollBall = document.querySelector("#seperator-ball");
   const welcomeSpans = document.querySelectorAll("#welcome span");
+  const root = document.documentElement;
 
   //FUNCTIONS
   function changeTextColour() {
@@ -12,9 +13,11 @@ export function introBall() {
     if (progress <= 0.05) {
       welcomeSpans[0].style.color = "var(--dot-color)";
       welcomeSpans[1].style.color = "#2D2D2D";
+      root.style.setProperty('--current-color', 'var(--dot-color)');
     } else if (progress >= 0.95) {
       welcomeSpans[0].style.color = "#2D2D2D";
       welcomeSpans[1].style.color = "var(--dot-color)";
+      root.style.setProperty('--current-color', '#2D2D2D');
     }
   }
 
