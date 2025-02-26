@@ -2,7 +2,9 @@
 require_once('../includes/connect.php');
 
 // First update the text content
-$query = "UPDATE projects SET title = ?, cover_image = ?, description= ?, colour = ?, overview = ?, summary = ?, problems = ?, research = ?, process = ?, final_product = ?, reflection = ?, link = ? WHERE id = ?";
+$query = "UPDATE projects SET title = ?, cover_image = ?, description = ?, colour = ?, 
+         overview = ?, summary = ?, problems = ?, research = ?, process = ?, 
+         final_product = ?, reflection = ?, link = ? WHERE id = ?";
 
 $stmt = $connect->prepare($query);
 
@@ -20,105 +22,54 @@ $stmt->bindParam(11, $_POST['reflection'], PDO::PARAM_STR);
 $stmt->bindParam(12, $_POST['link'], PDO::PARAM_STR);
 $stmt->bindParam(13, $_POST['pk'], PDO::PARAM_INT);
 
+// Generate a unique random number for each section
+$random = rand(10000, 99999);
+$baseFilename = 'image' . $random;
+
 $stmt->execute();
 
-// Get project info to use for image naming - using the correct project ID
+// Get project ID for reference
 $projectId = $_POST['pk'];
-$query = "SELECT filename FROM media_files WHERE project_id = ?";
-$stmt = $connect->prepare($query);
-$stmt->bindParam(1, $projectId, PDO::PARAM_INT);
-$stmt->execute();
-$fileInfo = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// If no filename exists for this project, create one
-if (!$fileInfo) {
-    // Create a base filename for new projects
-    $baseFilename = 'project_' . $projectId;
-    
-    // Insert record into media_files table
-    $query = "INSERT INTO media_files (project_id, filename, type, alt) VALUES (?, ?, 'image', ?)";
-    $stmt = $connect->prepare($query);
-    $stmt->bindParam(1, $projectId, PDO::PARAM_INT);
-    $stmt->bindParam(2, $baseFilename, PDO::PARAM_STR);
-    $stmt->bindParam(3, $_POST['title'], PDO::PARAM_STR);
-    $stmt->execute();
-} else {
-    $baseFilename = $fileInfo['filename'];
-}
 
 // Process each section image if uploaded
 $sections = ['overview', 'problems', 'research', 'process', 'finalproduct'];
 
 foreach($sections as $section) {
-    $inputName = $section.'_img';
+    $inputName = $section . '_img';
     
     // Check if file was uploaded
     if(isset($_FILES[$inputName]) && $_FILES[$inputName]['size'] > 0) {
-        // Get file details
+
+        // Get file extension and make it lowercase
         $filetype = strtolower(pathinfo($_FILES[$inputName]['name'], PATHINFO_EXTENSION));
         
-        // Validate file type
         if($filetype == 'jpeg') {
             $filetype = 'jpg';
         }
         
-        // Only allow certain file types
-        $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
-        if(!in_array($filetype, $allowed_types)) {
-            continue; // Skip invalid files
+        if($filetype != 'jpg' && $filetype != 'png' && $filetype != 'gif' && $filetype != 'svg') {
+            continue; // Skip invalid file types
         }
         
-        // Create the original high-quality file
+        // Always use png extension for consistency
+        $filetype = 'png';
+        
+        // Set target file path
         $target_file = "../images/{$baseFilename}-{$section}.{$filetype}";
         
-        // Move uploaded file
+        // Move uploaded file to target destination
         if(move_uploaded_file($_FILES[$inputName]['tmp_name'], $target_file)) {
-            // Create different sized versions for responsive images
-            $sizes = [300, 450, 600, 800, 1000];
+            // Update the media_files table with the new filename
+            $query = "UPDATE media_files SET filename = ? WHERE project_id = ?";
+            $stmt = $connect->prepare($query);
             
-            // Load source image
-            if ($filetype == 'jpg' || $filetype == 'jpeg') {
-                $source = imagecreatefromjpeg($target_file);
-            } elseif ($filetype == 'png') {
-                $source = imagecreatefrompng($target_file);
-            } elseif ($filetype == 'gif') {
-                $source = imagecreatefromgif($target_file);
-            }
-            
-            if ($source) {
-                $width = imagesx($source);
-                $height = imagesy($source);
-                
-                foreach($sizes as $size) {
-                    // Skip if source is smaller than target size
-                    if($width < $size) continue;
-                    
-                    // Calculate new height to maintain aspect ratio
-                    $new_height = floor($height * ($size / $width));
-                    
-                    // Create a new image with the new dimensions
-                    $destination = imagecreatetruecolor($size, $new_height);
-                    
-                    // For PNG, preserve transparency
-                    if($filetype == 'png') {
-                        imagealphablending($destination, false);
-                        imagesavealpha($destination, true);
-                        $transparent = imagecolorallocatealpha($destination, 255, 255, 255, 127);
-                        imagefilledrectangle($destination, 0, 0, $size, $new_height, $transparent);
-                    }
-                    
-                    // Copy and resize the source image to the destination image
-                    imagecopyresampled($destination, $source, 0, 0, 0, 0, $size, $new_height, $width, $height);
-                    
-                    // Save the resized image
-                    $resized_file = "../images/{$baseFilename}-{$section}_{$size}.png";
-                    imagepng($destination, $resized_file);
-                    
-                    // Clean up
-                    imagedestroy($destination);
-                }
-                
-                imagedestroy($source);
+            if($stmt) {
+                $stmt->bindParam(1, $baseFilename, PDO::PARAM_STR);
+                $stmt->bindParam(2, $projectId, PDO::PARAM_INT);
+                $stmt->execute();
+            } else {
+                // Log error
+                error_log("Failed to prepare statement for section {$section}");
             }
         }
     }

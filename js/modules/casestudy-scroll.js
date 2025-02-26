@@ -29,7 +29,7 @@ export function caseStudyScroll() {
         start: 'top 50%',
         end: 'bottom 80%',
         scrub: true,
-        onUpdate: (self) => {
+        onUpdate: () => {
         const ballRect = scrollBall.getBoundingClientRect();
 
         cards.forEach(card => {
