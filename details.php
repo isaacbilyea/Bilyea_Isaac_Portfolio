@@ -5,9 +5,7 @@
 
 require_once('includes/connect.php');
 
-$query = 'SELECT p.*, m.* FROM projects p 
-          LEFT JOIN media_files m ON m.project_id = p.id 
-          WHERE p.id = :projectid';
+$query = 'SELECT * FROM projects LEFT JOIN media_files ON media_files.project_id = projects.id WHERE projects.id = :projectid';
 $stmt = $connect->prepare($query);
 
 $projectid = $_GET['id'];
