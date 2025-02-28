@@ -67,7 +67,7 @@ $stmt = null;
 
 //new INSERT query for media table, with the filename and the foreign key
 
-$mediaquery = "INSERT INTO media (type,caption,cover_image, project_id) VALUES (?,?,?)";
+//$mediaquery = "INSERT INTO media (type,caption,cover_image, project_id) VALUES (?,?,?)";
 
 //project_id = $last_id;
 
