@@ -2,9 +2,6 @@
 header("Content-Type: application/json; charset=UTF-8");
 require_once('includes/connect.php');
 
-error_reporting(0);
-ini_set('display_errors', 0);
-
 ///gather the form content
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -56,8 +53,9 @@ if(empty($errors)) {
         $message .= "Email: ".$email."\n\n";
         $message .= $msg;
 
-        mail($to,$subject,$message);
+        // mail($to,$subject,$message);
 
+        // ob_clean();
         echo json_encode(array("message" => "Thank you for your message!"));
     }
     
