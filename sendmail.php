@@ -55,7 +55,6 @@ if(empty($errors)) {
 
         // mail($to,$subject,$message);
 
-        // ob_clean();
         echo json_encode(array("message" => "Thank you for your message!"));
     }
     

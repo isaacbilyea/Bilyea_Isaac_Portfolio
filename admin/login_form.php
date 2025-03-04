@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="login-form">
-        <img src="../images/logo.svg" alt="logo">
+        <img src="../images/Logo.svg" alt="logo">
         <form action="login.php" method="post">
         <label for="username">Username: </label>
         <input type="text" name="username" id="username"><br>
