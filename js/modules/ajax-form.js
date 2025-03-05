@@ -74,13 +74,11 @@ export function ajaxForm() {
     }
 
     //EVENT LISTENERS
-    if (form) {
-        form.addEventListener('submit', regForm);
-    }
+    form.addEventListener('submit', regForm);
 
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            popup.classList.add('hidden');
-        });
-    }
+    closeBtn.addEventListener('click', () => {
+        popup.classList.add('hidden');
+        feedback.innerHTML = '';
+    });
+
 }

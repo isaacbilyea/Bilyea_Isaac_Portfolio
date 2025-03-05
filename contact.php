@@ -165,7 +165,7 @@
     </div>
     <p>Trust is the most important part of a relationship, followed
       by communication and we have just established both!!</p>
-    <p>I’ll get back to you soon - just giving the ball
+    <p>I’ll get back to you soon - just giving the ball<br>
       a chance to gather some momentum first!</p>
     <button id="close-popup">&times;</button>
   </div>
