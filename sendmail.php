@@ -26,7 +26,7 @@ if(empty($email)) {
 }
 
 if(empty($msg)) {
-    $errors['message'] = 'A blank message? Bold strategy. Let’s see if it works out.';
+    $errors['message'] = 'You almost sent a message! So close! Try adding words next time.';
 }
 
 if(empty($errors)) {
@@ -45,17 +45,18 @@ if(empty($errors)) {
 
         //format and send these values in an email
 
-        $to = 'isaacbilyea@gmail.com';
-        $subject = 'Message from your Portfolio site!';
+        $to = 'me@isaacbilyea.com';
+        $subject = 'Who knew? Your form actually works.';
 
-        $message = "You have received a new contact form submission:\n\n";
+        $message = "Someone actually filled out your form. I’m as shocked as you are.\n\n";
         $message .= "Name: ".$name."\n";
         $message .= "Email: ".$email."\n\n";
-        $message .= $msg;
+        $message .= "Prepare yourself for the most profound message you’ve ever read: \n".$msg;
+
 
         // mail($to,$subject,$message);
 
-        echo json_encode(array("message" => "Thank you for your message!"));
+        echo json_encode(array("message" => "Look at that ball go!"));
     }
     
     $stmt = null;
