@@ -45,16 +45,16 @@ if(empty($errors)) {
 
         //format and send these values in an email
 
-        $to = 'me@isaacbilyea.com';
+        $to = 'isaacbil28@isaacbilyea.com';
         $subject = 'Who knew? Your form actually works.';
 
-        $message = "Someone actually filled out your form. I’m as shocked as you are.\n\n";
+        $message = "Someone actually filled out your form. I am as shocked as you are.\n\n";
         $message .= "Name: ".$name."\n";
         $message .= "Email: ".$email."\n\n";
-        $message .= "Prepare yourself for the most profound message you’ve ever read: \n".$msg;
+        $message .= "Prepare yourself for the most profound message you have ever read: \n".$msg;
 
 
-        // mail($to,$subject,$message);
+        //mail($to,$subject,$message);
 
         echo json_encode(array("message" => "Look at that ball go!"));
     }
