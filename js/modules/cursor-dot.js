@@ -1,11 +1,16 @@
 export function cursorDot() {
-
     //Checks if its a mobile device so it can disable the cursor
     if ('ontouchstart' in window) {
-        const dotCursor = document.querySelector('.dot-cursor');
-        const pointerCursor = document.querySelector('.pointer-cursor');
-        if (dotCursor) dotCursor.style.display = 'none';
-        if (pointerCursor) pointerCursor.style.display = 'none';
+        let dotCursor = document.querySelector('.dot-cursor');
+        let pointerCursor = document.querySelector('.pointer-cursor');
+        
+        if (dotCursor !== null) {
+            dotCursor.style.display = 'none';
+        }
+        if (pointerCursor !== null) {
+            pointerCursor.style.display = 'none';
+        }
+        
         return;
     }
 
