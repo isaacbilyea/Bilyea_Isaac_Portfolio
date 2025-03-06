@@ -31,7 +31,7 @@ $stmt->execute();
   <!--Header-->
   <h1 class="hidden">Isaac Bilyea's Portfolio</h1>
   <header id="main-header">
-  <a href="index.php">
+    <a href="index.php" id="logo-link">
       <div class="logo-container">
         <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 415.19 79">
           <g id="initials">

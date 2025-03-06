@@ -5,13 +5,11 @@
   padding: 0 4rem;
   max-width: 1200px;
   position: relative;
-  
-  > a {
-    display: block;
-    width: 3rem;
-    margin-right: auto;
-  }
 
+  #logo-link {
+    pointer-events: none;
+  }
+  
   .logo-container {
     position: relative;
     width: 100%;
@@ -227,8 +225,8 @@
     align-items: center;
     margin-bottom: 2rem;
 
-    > a {
-      width: 100%;
+    #logo-link {
+      pointer-events: all;
     }
 
     #hamburger-menu {
