@@ -40,6 +40,9 @@
             padding: .5rem 0rem .25rem 0rem;
             border: none;
             border-bottom: 1px solid a.$secondary-color;
+            border-radius: 0;
+            -webkit-appearance: none; 
+            appearance: none;
             font-family: a.$body-font-family;
             color: a.$secondary-color;
             max-width: 100%;
