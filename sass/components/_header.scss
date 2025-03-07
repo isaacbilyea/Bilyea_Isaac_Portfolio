@@ -8,14 +8,17 @@
 
   #logo-link {
     pointer-events: none;
+    touch-action: none;
   }
 
   #initials {
     pointer-events: auto;
+    touch-action: auto;
   }
 
   #full-name {
     pointer-events: none;
+    touch-action: none;
   }
   
   .logo-container {
