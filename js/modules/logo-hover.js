@@ -27,7 +27,7 @@ export function logoHover() {
     }
 
     //EVENT LISTENERS
-    if(window.innerWidth >= 1024) {
+    if(window.innerWidth >= 1200) {
     logoContainer.addEventListener("mouseenter", typeFullName);
     logoContainer.addEventListener("mouseleave", untypeFullName);
     }
