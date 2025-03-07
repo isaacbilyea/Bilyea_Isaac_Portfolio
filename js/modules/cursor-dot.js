@@ -1,5 +1,17 @@
 export function cursorDot() {
     
+    //Removes cursor for touch devices
+    if ('ontouchstart' in window) {
+        let dotCursor = document.querySelector('.dot-cursor');
+        let pointerCursor = document.querySelector('.pointer-cursor');
+        
+        dotCursor.style.display = 'none';
+        pointerCursor.style.display = 'none';
+    
+        return;
+    }
+
+    
     //VARIABLES
     const dotCursor = document.querySelector('.dot-cursor');
     const pointerCursor = document.querySelector('.pointer-cursor');
