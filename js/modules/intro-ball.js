@@ -21,7 +21,6 @@ export function introBall() {
     }
   }
 
-  // Ball animation with scrub
   gsap.to(scrollBall, {
       top: "100%", 
       ease: "linear",
@@ -32,7 +31,6 @@ export function introBall() {
         start: "top 40%",
         end: "bottom 50%",
         scrub: 1,
-        markers: false
       },
   });
 }
