@@ -14,6 +14,13 @@ $projectId = $_GET['id'];
 $stmt->bindParam(':projectId', $projectId, PDO::PARAM_INT);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$mediaQuery = 'SELECT filename, type, alt FROM media_files WHERE project_id = :projectId';
+$mediaStmt = $connect->prepare($mediaQuery);
+$mediaStmt->bindParam(':projectId', $projectId, PDO::PARAM_INT);
+$mediaStmt->execute();
+$mediaFiles = $mediaStmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <head>
@@ -26,14 +33,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 tinymce.init({
     selector: '.textarea',
     plugins: [
-        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 
-        'searchreplace', 'table', 'visualblocks', 'wordcount',
-        'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 
-        'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 
-        'advcode', 'editimage', 'advtemplate', 'mentions', 
-        'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 
-        'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
-    ],
+    'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 
+    'searchreplace', 'table', 'visualblocks', 'wordcount',
+],
     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
     setup: function(editor) {
         editor.on('change', function() {
