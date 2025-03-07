@@ -9,6 +9,14 @@
   #logo-link {
     pointer-events: none;
   }
+
+  #initials {
+    pointer-events: auto;
+  }
+
+  #full-name {
+    pointer-events: none;
+  }
   
   .logo-container {
     position: relative;
