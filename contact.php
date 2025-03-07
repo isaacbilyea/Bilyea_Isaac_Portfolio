@@ -142,6 +142,7 @@
         <textarea name="message" placeholder="Message*"></textarea>
         <input name="submit" type="submit" value="Submit" id="submit-button">
         <section id="feedback">
+          <h2 class="hidden">Form Feedback</h2>
           <p>*Please fill out all required sections</p>
         </section>
       </form>

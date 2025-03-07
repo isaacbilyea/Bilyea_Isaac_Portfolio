@@ -54,14 +54,14 @@ body.menu-open {
 }
 
 .logo-dot {
-    fill: v.$dot-color;
+    fill: var(--dot-color, #DA5C31); 
 }
 
 .dot-cursor {
     position: fixed;
     width: 1rem;
     height: 1rem;
-    background-color: v.$dot-color;
+    background-color: var(--dot-color, #DA5C31); 
     pointer-events: none;
     border-radius: 50%;
     z-index: 1000;

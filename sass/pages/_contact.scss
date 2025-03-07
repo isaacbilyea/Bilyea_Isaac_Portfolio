@@ -159,7 +159,7 @@
         position: absolute;
         width: 5rem;
         height: 5rem;
-        background: a.$dot-color;
+        background-color: var(--dot-color, #DA5C31); 
         border-radius: 50%;
         top: -4.5rem;
         right: 0;
