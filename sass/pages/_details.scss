@@ -130,7 +130,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: a.$dot-color;
+    background-color: var(--dot-color, #DA5C31); 
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
