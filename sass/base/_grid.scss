@@ -10,8 +10,8 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-column-gap: 20px;
     margin: 0 auto;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     max-width: 412px;
 }
  
@@ -95,7 +95,7 @@
     .grid-con { 
        display: grid; 
        grid-template-columns: repeat(12, minmax(0, 1fr));
-       grid-column-gap: 40px;
+       grid-column-gap: 1.25rem;
        padding-left: 60px;
        padding-right: 60px;
        max-width: 1200px;

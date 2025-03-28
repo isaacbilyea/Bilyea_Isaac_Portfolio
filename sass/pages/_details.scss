@@ -1,54 +1,96 @@
 @use '../abstracts' as a;
 
 #case-study-con {
-
+    margin: 0 auto;
     margin-bottom: 3rem;
     position: relative;
+    max-width: 1200px;
 
     #case-study-title {
-
-        margin-bottom: 2rem;
+        margin-bottom: 5rem;
         text-align: center;
-        padding: 0 2rem;
+        margin-left: 0;
 
         h2 {
-            font-size: 5rem;
+            font-size: 3rem;
             margin: 0;
             margin-top: 6rem;
+            margin-bottom: 1rem;
+            line-height: 1;
         }
 
         p {
             font-size: 1.5rem;
             margin: 0;
             font-weight: a.$base-font-weight;
+            margin-top: -0.5rem;
         }
     }
 
     #case-study-text {
-
         max-width: none;
         margin-top: -1rem;
+        margin-left: 0rem;
+        padding: 0 2rem;
+        margin-right: 1rem;
 
-        .study-card {
-            color: white;
-            padding: 1.5rem;
-            border-radius: 1.25rem;
-            margin-top: 5rem;
-            text-align: left;
-            position: relative;
-            z-index: 1;
-            background-color: #2d2d2d;
-            transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+        .study-card-image {
+            width: 100%;
+            margin-top: 3rem;
+            background: transparent !important;
+            transition: all 300ms ease-in-out;
+            transform: scale(1);
+            filter: grayscale(100%);
+
+            &.active {
+                transform: scale(1.05);
+                filter: grayscale(0%);
+            }
 
             img {
                 width: 100%;
-                border-radius: .75rem;
-                margin-bottom: 1rem;
+                border-radius: 1.25rem;
+                border-width: 2px;
+                border-style: solid;
+                border-color: inherit;
+                min-height: 15rem;
+            }
+        }
+
+        .study-card {
+            color: #2d2d2d;
+            background-color: rgba(#fff, 0.3);
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+            margin-top: 3rem;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+            border: 2px solid #2d2d2d;
+            transition: all 300ms ease-in-out;
+            transform: scale(1);
+            filter: grayscale(100%);
+
+            &.active {
+                transform: scale(1.05);
+                filter: grayscale(0%);
+                border-color: var(--dot-color, #DA5C31);
+
+                h3, a {
+                    color: var(--dot-color, #DA5C31);
+
+                    &::after {
+                        background-color: var(--dot-color, #DA5C31);
+                    }
+                }
+
             }
 
             h3 {
                 font-size: 2rem;
                 margin: -0.5rem 0 .25rem 0;
+                color: #2d2d2d;
+                transition: color 0.3s ease-in-out;
             }
 
             p {
@@ -56,14 +98,20 @@
                 margin-top: .25rem;
                 font-weight: 300;
                 width: 95%;
+                color: #2d2d2d;
+                transition: color 0.3s ease-in-out;
 
                 b {
                     font-weight: 500;
                 }
             }
         }
-
     }
+}
+
+#case-study-text, #case-study-title {
+    margin-left: 5rem;
+    flex: 1;
 }
 
 #final-product-heading {
@@ -76,13 +124,13 @@
         all: unset;
         text-decoration: underline;
         position: relative;
+        color: a.$secondary-color;
     }
 
     a[href=""] {
         display: none;
     }
 }
-
 
 #other-projects {
     margin: 3rem auto;
@@ -112,168 +160,198 @@
     }
 }
 
-
 #scroll-line-container {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
     width: 2px;
-    transform: translateX(-50%);
+    height: 100%;
     background-color: a.$secondary-color;
-    z-index: 0;
-    opacity: 0;
+    position: relative;
+    opacity: 1;
+
+    #scroll-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+    }
 }
 
 #scroll-ball {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 1.15rem;
+    height: 1.15rem;
     border-radius: 50%;
-    background-color: var(--dot-color, #DA5C31); 
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
 }
 
-@media screen and (min-width: 768px) {
+.timeline-layout {
+    display: flex;
+    position: relative;
+}
+
+.timeline-container {
+    width: 2rem;
+    position: sticky;
+    top: 22.5vh;
+    left: 1.65rem;
+    height: 70vh; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 8.5vh;
+}
+
+#current-section {
+    position: absolute;
+    left: 0;
+    top: -7%;
+    transform-origin: left center;
+    transform: rotate(-90deg);
+    color: var(--dot-color, #DA5C31);
+    font-size: 1.25rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: left;
     
+    &.visible {
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 768px) {
     #case-study-con {
-
         #case-study-title {
-
-            margin-bottom: 3rem;
+            padding: 0 3rem;
+            margin: 0 3rem;
+            margin-left: 4rem;
+            margin-bottom: 5rem;
 
             h2 {
-                font-size: 5.5rem;
                 margin-top: 7rem;
+                font-size: 4rem;
             }
-    
+
             p {
                 font-size: 1.75rem;
             }
         }
-    
+
         #case-study-text {
-    
             padding: 0 3rem;
 
             .study-card {
-
                 padding: 1.75rem;
-    
+
                 h3 {
                     font-size: 2.25rem;
                 }
-    
+
                 p {
                     font-size: 1.15rem;
                 }
             }
-    
         }
     }
 
     #other-projects {
         margin: 5rem auto;
+
         ul {
             li {
                 font-size: 2rem;
             }
         }
+    }
+
+    .timeline-container {
+        left: 1.8rem;
     }
 }
 
 @media screen and (min-width: 1200px) {
-
     #case-study-con {
-
         #case-study-title {
-
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
+            margin-left: 1.5rem;
 
             h2 {
-                font-size: 6rem;
+                font-size: 4.5rem;
                 margin-top: 8rem;
             }
-    
+
             p {
                 font-size: 2rem;
             }
         }
-    
-    
+        
         #case-study-text {
-    
             max-width: 1200px;
 
             .study-card {
-
                 padding: 1.75rem;
-    
+
                 h3 {
                     font-size: 2.4rem;
                 }
-    
+
                 p {
                     font-size: 1.25rem;
                 }
             }
-    
+
         }
     }
 
     #final-product-heading {
-    
         a {
             text-decoration: none;
 
             &::after {
-                content: ''; 
+                content: '';
                 position: absolute;
                 left: 0;
                 bottom: 10%;
                 width: 100%;
-                height: 1.5px; 
-                background-color: #fff;
+                height: 1.5px;
+                background-color: a.$secondary-color;
                 transition: width 0.15s ease-in-out;
             }
-            
+
             &:hover::after {
                 width: 0%;
             }
         }
-    
     }
 
     #other-projects {
-
         max-width: 1200px;
 
         ul {
             margin: 0;
+
             li {
                 font-size: 2rem;
-                margin: 0;
+                position: relative;
+     
+                &::after {
+                    content: '';
+                    margin: 0;
+                    left: 0;
+                    bottom: 3px;
+                    width: 0;
+                    height: 2px;
+                    position: absolute;
+                    background-color: a.$secondary-color;
+                    transition: width 0.3s ease-in-out;
+                }
 
-                a {
-
-                    &::after {
-                        content: ''; 
-                        position: absolute;
-                        left: 0;
-                        bottom: 0%;
-                        width: 0;
-                        height: 2px; 
-                        background-color: a.$secondary-color;
-                        transition: width 0.3s ease-in-out;
-                    }
-                    
-                    &:hover::after {
-                        width: 100%;
-                    }
+                &:hover::after {
+                    width: 100%;
                 }
             }
+
         }
     }
 }

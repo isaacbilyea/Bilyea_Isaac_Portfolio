@@ -140,61 +140,80 @@ $link_results->execute();
     <path fill="#2d2d2d" d="M29.42,22.68L5.69.27c-.08-.08-.18-.13-.28-.18-.03-.01-.05-.02-.08-.03-.09-.03-.18-.05-.28-.06-.02,0-.04-.01-.06-.01H1C.73,0,.48.1.29.29c-.19.19-.29.44-.29.71v33c0,.55.45,1,1,1h4s.04-.01.06-.01c.09,0,.18-.02.27-.05.03-.01.06-.02.09-.03.1-.05.2-.11.28-.19h0s0-.01,0-.01l4.36-4.24,4.56,10.92c.16.37.52.61.92.61h3.83s.03,0,.05,0c.01,0,.03,0,.04,0h.07c.24,0,.46-.09.63-.23l4.06-1.86c.5-.23.72-.82.49-1.33l-6.09-13.3,10.19-.88c.39-.03.73-.29.86-.67.13-.37.03-.79-.26-1.06ZM17.04,23.41c-.32.03-.61.21-.78.49-.16.28-.18.62-.05.92l6.26,13.68-2.46,1.13-6.08-13.78-.02-.04s0,0,0,0h0s-.01-.02-.02-.03c-.03-.07-.07-.13-.11-.19-.02-.02-.04-.04-.06-.07-.04-.04-.07-.08-.11-.11-.03-.02-.06-.04-.09-.06-.04-.02-.08-.05-.13-.07-.03-.01-.07-.02-.1-.03-.03-.01-.07-.03-.1-.03-.02,0-.03,0-.05,0-.01,0-.02,0-.03,0-.01,0-.03,0-.04,0-.02,0-.05,0-.07,0-.01,0-.03,0-.04,0-.11,0-.22.02-.33.06,0,0,0,0,0,0-.11.04-.2.11-.29.19-.01,0-.02.01-.03.02l-6.32,6.15V3.32l20.42,19.29-9.38.81Z"/>
   </svg>
 
-  <div id="scroll-line-container">
-        <div id="scroll-ball" style="background-color: <?php echo $row['colour']; ?>"></div>
-  </div>
-
   <section id="case-study-con">
-
-  <!--Case Study-->
     <div id="case-study-title">
-        <h2><?php echo $row['title']; ?></h2>
-        <p><?php echo $row['description']; ?></p>
+      <h2><?php echo $row['title']; ?></h2>
+      <p><?php echo $row['description']; ?></p>
     </div>
 
-    <div id="case-study-text" class="grid-con">
-    <div id="overview" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
-    <img src="images/<?php echo $row['filename']; ?>-overview.png" alt="<?php echo $row['alt']; ?> overview">
-        <h3>Overview</h3>
-        <p><?php echo $row['overview']; ?></p>
-    </div>
-
-    <div id="summary" class="study-card col-span-full scroll-animation" style="background-color: <?php echo $row['colour']; ?>">
-        <h3>Summary</h3>
-        <p><?php echo $row['summary']; ?></p>
-    </div>
-
-    <div id="problems" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img src="images/<?php echo $row['filename']; ?>-problems.png" alt="<?php echo $row['alt']; ?> problems">
-        <h3>Problems</h3>
-        <p><?php echo $row['problems']; ?></p>
-    </div>
-
-    <div id="research" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img src="images/<?php echo $row['filename']; ?>-research.png" alt="<?php echo $row['alt']; ?> research">
-        <h3>Research</h3>   
-        <p><?php echo $row['research']; ?></p>
-    </div>
-
-    <div id="process" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img src="images/<?php echo $row['filename']; ?>-process.png" alt="<?php echo $row['alt']; ?> process">
-        <h3>Process</h3>
-        <p><?php echo $row['process']; ?></p>
-    </div>
-
-    <div id="final-product" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-    <img src="images/<?php echo $row['filename']; ?>-finalproduct.png" alt="<?php echo $row['alt']; ?> final product">
-        <div id="final-product-heading">
-          <h3>Final Product</h3>
-          <a href="<?php echo $row['link']; ?>" target="_blank">View on Github</a>
+    <div class="timeline-layout">
+      <div class="timeline-container">
+        <div id="scroll-line-container">
+          <div id="scroll-progress" style="background-color: <?php echo $row['colour']; ?>"></div>
+          <div id="scroll-ball" style="background-color: <?php echo $row['colour']; ?>"></div>
         </div>
-        <p><?php echo $row['final_product']; ?></p>
-    </div>
+        <div id="current-section"></div>
+      </div>
 
-    <div id="reflection" class="study-card col-span-full" style="background-color: <?php echo $row['colour']; ?>">
-        <h3>Reflection</h3>
-        <p><?php echo $row['reflection']; ?></p>
-    </div>
+      <div id="case-study-text">
+        <div class="study-card-image col-span-full" data-section="Overview" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+          <img src="images/<?php echo $row['filename']; ?>-overview.png" alt="<?php echo $row['alt']; ?> overview">
+        </div>
+
+        <div id="overview" class="study-card col-span-full" data-section="Overview" data-color="<?php echo $row['colour']; ?>">
+            <h3>Overview</h3>
+            <p><?php echo $row['overview']; ?></p>
+        </div>
+
+        <div id="summary" class="study-card col-span-full scroll-animation" data-section="Summary">
+            <h3>Summary</h3>
+            <p><?php echo $row['summary']; ?></p>
+        </div>
+
+        <div class="study-card-image col-span-full" data-section="Problems" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+          <img src="images/<?php echo $row['filename']; ?>-problems.png" alt="<?php echo $row['alt']; ?> problems">
+        </div>
+
+        <div id="problems" class="study-card col-span-full" data-section="Problems">
+            <h3>Problems</h3>
+            <p><?php echo $row['problems']; ?></p>
+        </div>
+
+        <div class="study-card-image col-span-full" data-section="Research" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+          <img src="images/<?php echo $row['filename']; ?>-research.png" alt="<?php echo $row['alt']; ?> research">
+        </div>
+
+        <div id="research" class="study-card col-span-full" data-section="Research">
+            <h3>Research</h3>   
+            <p><?php echo $row['research']; ?></p>
+        </div>
+
+        <div class="study-card-image col-span-full" data-section="Process" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+          <img src="images/<?php echo $row['filename']; ?>-process.png" alt="<?php echo $row['alt']; ?> process">
+        </div>
+
+        <div id="process" class="study-card col-span-full" data-section="Process">
+            <h3>Process</h3>
+            <p><?php echo $row['process']; ?></p>
+        </div>
+
+        <div class="study-card-image col-span-full" data-section="Final Product" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+          <img src="images/<?php echo $row['filename']; ?>-finalproduct.png" alt="<?php echo $row['alt']; ?> final product">
+        </div>
+
+        <div id="final-product" class="study-card col-span-full" data-section="Final Product">
+            <div id="final-product-heading">
+              <h3>Final Product</h3>
+              <a href="<?php echo $row['link']; ?>" target="_blank">View on Github</a>
+            </div>
+            <p><?php echo $row['final_product']; ?></p>
+        </div>
+
+        <div id="reflection" class="study-card col-span-full" data-section="Reflection">
+            <h3>Reflection</h3>
+            <p><?php echo $row['reflection']; ?></p>
+        </div>
+      </div>
     </div>
   </section>
 

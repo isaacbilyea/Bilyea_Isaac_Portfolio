@@ -20,12 +20,8 @@ html, body {
     position: relative;
     line-height: 1.5;
     z-index: 0;
-    cursor: none;
 }
 
-body * {
-    cursor: none;
-}
 
 body::before {
     content: "";
@@ -104,5 +100,4 @@ html, body {
         display: block;
     }
     
-    
-    }
+}

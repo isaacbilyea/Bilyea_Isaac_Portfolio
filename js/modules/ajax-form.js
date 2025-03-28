@@ -7,7 +7,7 @@ export function ajaxForm() {
     const popup = document.querySelector('#thank-you-popup');
     const closeBtn = document.querySelector('#close-popup');
 
-    gsap.registerPlugin(MotionPathPlugin);
+    gsap.registerPlugin(MotionPathPlugin, ScrollToPlugin);
 
     //FUNCTIONS
     function animateBall() {
@@ -25,10 +25,25 @@ export function ajaxForm() {
             },
             onComplete: function() {
                 popup.classList.remove('hidden');
-                popup.scrollIntoView({behavior: 'smooth', block: 'center'});
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: popup,
+                        offsetY: 100,
+                        autoKill: false
+                    },
+                    ease: "power2.inOut"
+                });
             }
         });
     }
+
+    function resetBall() {
+        gsap.set(footerBall, {
+            clearProps: "all"
+        });
+    }
+
 
     function regForm(e) {
         e.preventDefault();
@@ -64,7 +79,15 @@ export function ajaxForm() {
                 feedback.appendChild(messageElement);
                 animateBall();
             }
-            feedback.scrollIntoView({behavior: 'smooth', block: 'center'})
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: {
+                    y: feedback,
+                    offsetY: 200,
+                    autoKill: false
+                },
+                ease: "power2.inOut"
+            });
         })
         .catch(error => {
             console.log(error);
@@ -79,6 +102,7 @@ export function ajaxForm() {
     closeBtn.addEventListener('click', () => {
         popup.classList.add('hidden');
         feedback.innerHTML = '';
+        resetBall();
     });
 
 }

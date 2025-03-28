@@ -1,14 +1,13 @@
 export function imageSwitcher() {
-
     gsap.registerPlugin(TextPlugin);
-
-    //VARIABLES
+    
     let currentIndex = 0;
-
+    
     const aboutMeCon = document.querySelector('#about-me-image'),
           aboutMeImage = document.querySelector('#about-me-image img'),
           dynamicText = document.querySelector('#dynamic-about'),
-          speechBubble = document.querySelector('#speech-bubble');
+          speechBubble = document.querySelector('#speech-bubble'),
+          highlights = document.querySelectorAll('.highlight-word');
 
     const aboutMeContent = [
         {image: 'images/isaac-eatsfood.jpg', caption: 'EATS FOOD'},
@@ -17,14 +16,21 @@ export function imageSwitcher() {
         {image: 'images/isaac-jumps.jpeg', caption: 'JUMPS'},
         {image: 'images/isaac-getsstuck.jpeg', caption: 'GETS STUCK'},
         {image: 'images/isaac-smiles.jpeg', caption: 'SMILES'},
-        {image: 'images/isaac-what.jpeg', caption: '?'},
+        {image: 'images/isaac-what.jpeg', caption: '?'}
     ];
 
-    //FUNCTIONS
-    function changeAboutMe() {
+    function updateHighlight() {
+        highlights.forEach(highlight => highlight.classList.remove('active'));
+        const activeHighlight = document.querySelectorAll(`.highlight-${currentIndex}`)
+        activeHighlight.forEach(highlight => {
+            highlight.classList.add('active');
+        });
+    }
 
+    function changeAboutMe() {
         currentIndex = (currentIndex + 1) % aboutMeContent.length;
         aboutMeImage.src = aboutMeContent[currentIndex].image;
+        updateHighlight();
 
         const currentText = dynamicText.textContent;
         const tl = gsap.timeline();
@@ -46,6 +52,6 @@ export function imageSwitcher() {
         speechBubble.classList.add('hidden');
     }
 
-    //EVENT LISTENERS
     aboutMeCon.addEventListener('click', changeAboutMe);
+    updateHighlight();
 }

@@ -28,6 +28,7 @@ export function cursorDot() {
     '#about-me-image',
     '.dot-hue-slider',
     '.study-card',
+    '#thank-you-popup'
     ];
 
     //Sets colour of mobile menu dot

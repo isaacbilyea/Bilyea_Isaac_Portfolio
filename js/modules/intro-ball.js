@@ -8,13 +8,14 @@ export function introBall() {
 
   //FUNCTIONS
   function changeTextColour() {
-    const progress = this.progress();
+
+    const yPercent = gsap.getProperty(scrollBall, "yPercent");
     
-    if (progress <= 0.05) {
+    if (yPercent <= 100) {
       welcomeSpans[0].style.color = "var(--dot-color)";
       welcomeSpans[1].style.color = "#2D2D2D";
       root.style.setProperty('--current-color', 'var(--dot-color)');
-    } else if (progress >= 0.95) {
+    } else if (yPercent >= 900) {
       welcomeSpans[0].style.color = "#2D2D2D";
       welcomeSpans[1].style.color = "var(--dot-color)";
       root.style.setProperty('--current-color', '#2D2D2D');
@@ -22,15 +23,11 @@ export function introBall() {
   }
 
   gsap.to(scrollBall, {
-      top: "100%", 
-      ease: "linear",
-      duration: 0.1,
-      onUpdate: changeTextColour,
-      scrollTrigger: {
-        trigger: "#line-seperator",
-        start: "top 40%",
-        end: "bottom 50%",
-        scrub: 1,
-      },
+    yPercent: 1000,
+    duration: 2,
+    repeat: -1,
+    yoyo: true,
+    onUpdate: changeTextColour,
+    ease: "bounce.out"
   });
 }
