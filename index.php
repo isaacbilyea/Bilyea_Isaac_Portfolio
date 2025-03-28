@@ -19,7 +19,6 @@ $stmt->execute();
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" href="images/favicon-light.ico" media="(prefers-color-scheme: light)">
   <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
-  <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -137,27 +136,17 @@ $stmt->execute();
   <!--Intro-->
   <section id="intro-con" class="grid-con">
     <h2 class="hidden">Introduction</h2>
-    <div id="warning-intro" class="col-span-full">
-      <img src="images/warning.svg" alt="warning symbol">
-      <p>WARNING</p>
-      <p>You are now entering a bug free zone<br>(at least until the next browser update) </p>
+    <div id="intro-flex" class="col-span-full">
+      <div id="line-seperator">
+        <div id="seperator-ball"></div>
+      </div>
+      <p id="welcome">I'm <span><a href="about.html">Isaac</a></span>,<br> a <span>Front-End Developer.</span></p>
     </div>
-    <div id="line-seperator" class="col-span-full">
-      <div id="seperator-ball"></div>
-    </div>
-    <p id="welcome" class="col-span-full">I’m <span><a href="about.html">Isaac</a></span>, a <span>Front-End Developer.</span></p>
-    <div class="col-span-full m-col-start-2 m-col-end-12" id="video-con">
-      <video class="player" preload="metadata" poster="images/video-poster.png">
-        <source src="videos/demo-reel.webm" type="video/webm">
-        <p>Oops, something went wrong. You may be using an outdated browser or have javascript disabled.</p>
-      </video>
-    </div>
-
   </section>
 
   <!--Projects-->
   <section id="projects-con" class="grid-con">
-    <h2 id="project-header" class="col-span-full">Projects</h2>
+    <h2 id="project-header" class="col-span-full">Stuff I Made</h2>
 
     <?php
 

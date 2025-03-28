@@ -45,58 +45,59 @@
   }
 
   #hamburger-menu {
-    width: 1.75rem;
+    width: 2.25rem;
     height: 1.5rem;
     position: absolute;
     top: 1rem;
     right: 4rem;
     z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
     div {
-      width: 100%;
-      height: 0.25rem;
+      height: 0.15rem;
       background-color: a.$secondary-color;
-      position: absolute;
-      transition: 0.3s ease;
+      position: relative;
+      transition: all 0.3s ease;
       border-radius: 1rem;
     }
 
     #line1 {
-      margin: 0;
-      left: 25%;
+      width: 1.75rem; 
     }
 
     #line2 {
       width: 2.5rem;
-      margin-top: 0.625rem;
-      transform-origin: center;
-      transform: scaleX(1);
     }
 
     #line3 {
-      margin-top: 1.25rem;
-      left: 25%;
+      width: 1.75rem;
     }
 
-    &.activate #line1 {
-      transform: rotate(45deg) translate(0.4375rem, 0.4375rem);
-      left: 2%;
-      width: 2.5rem;
-      background-color: white;
-    }
+    &.activate {
+      #line1, #line2, #line3 {
+        position: absolute;
+        width: 2.25rem;
+        top: 50%;
+        left: 0;
+        margin: 0;
+        background-color: white;
+      }
+      
+      #line1 {
+        transform: translateY(-50%) rotate(45deg);
+      }
 
-    &.activate #line2 {
-      transform: scaleX(0);
-      opacity: 0;
-      transition: 0.2s ease-in-out;
-      background-color: white;
-    }
+      #line2 {
+        transform: translateY(-50%) scaleX(0);
+        opacity: 0;
+      }
 
-    &.activate #line3 {
-      transform: rotate(-45deg) translate(0.4375rem, -0.4375rem);
-      left: 2%;
-      width: 2.5rem;
-      background-color: white;
+      #line3 {
+        transform: translateY(-50%) rotate(-45deg);
+      }
     }
   }
 
@@ -118,6 +119,12 @@
       text-align: center;
       flex-direction: column;
       gap: 2rem;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
 
       .menu-item {
         animation: fadeIn 0.5s ease-in-out forwards;
@@ -335,7 +342,7 @@
           inset: 0;
           background-color: var(--dot-color, #DA5C31); 
           border-radius: 50%;
-          transition: all 0.3s ease;
+          transition: width 0.3s ease,height 0.3s ease, left 0.3s ease, top 0.3s ease;
         }
       
         svg {
@@ -346,7 +353,7 @@
           padding: 0.75rem;
           fill: white;
           z-index: 1;
-          transition: fill 0.3s ease;
+          transition: all 0.3s ease;
         }
       
         &:hover {
