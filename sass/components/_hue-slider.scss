@@ -21,7 +21,6 @@
         transform-style: preserve-3d;
         backface-visibility: hidden;
 
- 
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
@@ -49,8 +48,8 @@
             height: 1.15rem;
             width: 1.15rem;
             border: none;
-            position: absolute;
-            top: 50%;
+            position: relative;
+            margin-top: -0.5rem;
             z-index: 2;
         }
 
@@ -66,8 +65,7 @@
             height: 1.15rem;
             width: 1.15rem;
             border: none;
-            position: absolute;
-            top: 50%; 
+            position: relative;
             z-index: 2;
         }
     }
