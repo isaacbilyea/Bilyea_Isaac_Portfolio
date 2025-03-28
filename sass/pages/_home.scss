@@ -133,12 +133,12 @@
             align-items: center;
             justify-content: center;
             filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
-            -webkit-transition: 250ms -webkit-filter linear;
-            -moz-transition: 250ms -moz-filter linear;
-            -moz-transition: 250ms filter linear;
-            -ms-transition: 250ms -ms-filter linear;
-            -o-transition: 250ms -o-filter linear;
-            transition: 250ms filter linear, 250ms -webkit-filter linear;
+            -webkit-transition: 300ms -webkit-filter linear;
+            -moz-transition: 300ms -moz-filter linear;
+            -moz-transition: 300ms filter linear;
+            -ms-transition: 300ms -ms-filter linear;
+            -o-transition: 300ms -o-filter linear;
+            transition: 300ms filter linear, 300ms -webkit-filter linear;
         
             img {
                 width: 100%;
@@ -146,7 +146,7 @@
                 object-fit: contain;
                 position: relative;
                 filter: brightness(0) invert(1);
-                transition: all 250ms ease-in-out;
+                transition: all 300ms ease-in-out;
                 transform: scale(1);
             }
         }
@@ -174,7 +174,13 @@
                 transform: scale(0.95);
             }
         }
-        
+
+        // &:hover {
+        //     .project-text h3, .project-text p {
+        //         opacity: 0;
+        //     }
+        // }
+
         .project-text {
             position: absolute;
             bottom: 1rem;
