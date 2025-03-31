@@ -16,7 +16,6 @@ html, body {
     font-weight: v.$base-font-weight;
     box-sizing: border-box; 
     background-color: v.$primary-color;
-    scroll-behavior: smooth;
     position: relative;
     line-height: 1.5;
     z-index: 0;
@@ -101,3 +100,21 @@ html, body {
     }
     
 }
+
+// @media screen and (min-width: 1440px) {
+
+//     html, body {
+//         font-size: 19px;
+//     }
+    
+// }
+
+// @media screen and (min-width: 1920px) {
+
+//     html, body {
+//         font-size: 20px;
+//     }
+    
+// }
+
+

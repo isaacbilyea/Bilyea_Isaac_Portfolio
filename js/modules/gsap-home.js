@@ -32,7 +32,7 @@ export function gsapHome() {
         scrollTrigger: {
             trigger: projectHeader,
             start: "top center",
-            end: "+=300",
+            end: "+=100",
             toggleActions: "play none none reverse",
             scrub: 1
         },
@@ -48,7 +48,7 @@ export function gsapHome() {
         start: "top 90%",
         end: "bottom 90%",
         toggleActions: "play none none reverse",
-        scrub: 0.1,
+        scrub: 1,
         },
         duration: animationDuration,
         y: 50,

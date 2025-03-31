@@ -21,7 +21,8 @@ $link_results = $connect->prepare($link_query);
 $link_results->bindParam(':projectid', $projectid, PDO::PARAM_INT);
 $link_results->execute();
 
-
+// Update the project color assignment to handle CSS variable properly
+$projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5C31)' : $row['colour'];
 ?>
  
 <head>
@@ -52,7 +53,7 @@ $link_results->execute();
             <g id="i-initial-con">
               <path class="logo-letter" id="i-initial"
                 d="M1.72,61.6c-1.14,0-1.72-.41-1.72-1.23v-.33c0-.49.5-1.2,1.51-2.12,1.01-.92,1.51-1.99,1.51-3.19v-21.4c0-1.25-.5-2.42-1.51-3.51-1.01-1.09-1.51-1.8-1.51-2.12v-.24c0-.44.49-.93,1.47-1.47l8.17-4.08c.93-.38,1.65-.42,2.16-.12.52.3.78.8.78,1.51v31.45c0,1.2.56,2.26,1.67,3.19,1.12.93,1.67,1.63,1.67,2.12v.33c0,.82-.6,1.23-1.8,1.23H1.72Z" />
-              <path class="logo-dot" id="i-initial-dot" style="fill: <?php echo $row['colour']; ?>"
+              <path class="logo-dot" id="i-initial-dot" style="fill: <?php echo $projectColor; ?>"
                 d="M7.76,15.61c-2.02,0-3.65-.57-4.9-1.71-1.25-1.14-1.88-2.61-1.88-4.41s.63-3.27,1.88-4.41c1.25-1.14,2.89-1.72,4.9-1.72s3.55.57,4.78,1.72,1.84,2.61,1.84,4.41-.61,3.27-1.84,4.41-2.82,1.71-4.78,1.71Z" />
             </g>
             <g id="b-initial" class="logo-letter" transform="translate(-182, 0)">
@@ -64,7 +65,7 @@ $link_results->execute();
             <g id="i-full">
               <path class="logo-letter"
                 d="M1.72,61.6c-1.14,0-1.72-.41-1.72-1.23v-.33c0-.49.5-1.2,1.51-2.12,1.01-.92,1.51-1.99,1.51-3.19v-21.4c0-1.25-.5-2.42-1.51-3.51-1.01-1.09-1.51-1.8-1.51-2.12v-.24c0-.44.49-.93,1.47-1.47l8.17-4.08c.93-.38,1.65-.42,2.16-.12.52.3.78.8.78,1.51v31.45c0,1.2.56,2.26,1.67,3.19,1.12.93,1.67,1.63,1.67,2.12v.33c0,.82-.6,1.23-1.8,1.23H1.72Z" />
-              <path class="logo-dot" style="fill: <?php echo $row['colour']; ?>"
+              <path class="logo-dot" style="fill: <?php echo $projectColor; ?>"
                 d="M7.76,15.61c-2.02,0-3.65-.57-4.9-1.71-1.25-1.14-1.88-2.61-1.88-4.41s.63-3.27,1.88-4.41c1.25-1.14,2.89-1.72,4.9-1.72s3.55.57,4.78,1.72,1.84,2.61,1.84,4.41-.61,3.27-1.84,4.41-2.82,1.71-4.78,1.71Z" />
             </g>
             <g id="s-full">
@@ -124,19 +125,26 @@ $link_results->execute();
         <li class="active menu-item"><a href="index.php">Home</a></li>
         <li class="menu-item"><a href="about.html">About</a></li>
         <li class="menu-item"><a href="contact.php">Contact</a></li>
-        <li id="menu-dot" style="background-color: <?php echo $row['colour']; ?>"></li>
+        <li id="menu-dot"></li>
       </ul>
-      <a id="resume-button" href="files/Bilyea_Isaac_Resume.pdf" target="_blank" style="--dot-color: <?php echo $row['colour']; ?>">
+      <a id="resume-button" href="files/Bilyea_Isaac_Resume.pdf" target="_blank">
         <svg fill="#fff" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M334.336 616.3456c0 11.5712 9.5232 21.0944 21.0944 21.0944h315.4944c11.5712 0 21.0944-9.5232 21.0944-21.0944s-9.5232-21.0944-21.0944-21.0944H355.4304c-11.6736 0-21.0944 9.5232-21.0944 21.0944zM670.9248 702.0544H355.4304c-11.5712 0-21.0944 9.5232-21.0944 21.0944s9.5232 21.0944 21.0944 21.0944h315.4944c11.5712 0 21.0944-9.5232 21.0944-21.0944s-9.5232-21.0944-21.0944-21.0944z"  /><path d="M586.9568 165.888H272.4864c-23.2448 0-42.1888 18.944-42.1888 42.1888v607.8464c0 23.2448 18.944 42.1888 42.1888 42.1888H751.616c23.2448 0 42.1888-18.944 42.1888-42.1888V372.736l-206.848-206.848z m27.4432 87.1424l97.1776 97.1776h-89.9072c-3.8912 0-7.2704-3.3792-7.2704-7.2704v-89.9072z m137.1136 562.7904s0 0.1024 0 0l-479.0272 0.1024s-0.1024 0-0.1024-0.1024V208.1792s0-0.1024 0.1024-0.1024h297.984l1.6384 1.6384v133.12c0 27.2384 22.3232 49.4592 49.4592 49.4592h129.9456v423.5264z"  /><path d="M428.8512 388.7104c37.1712 0 67.2768-30.1056 67.2768-67.2768 0-37.1712-30.1056-67.2768-67.2768-67.2768S361.472 284.16 361.472 321.4336c0 37.1712 30.1056 67.2768 67.3792 67.2768z m0-97.6896c16.7936 0 30.4128 13.6192 30.4128 30.4128s-13.6192 30.4128-30.4128 30.4128-30.4128-13.6192-30.4128-30.4128 13.6192-30.4128 30.4128-30.4128zM355.4304 504.7296c11.6736 0 21.0944-9.4208 21.0944-21.0944 0-22.8352 23.9616-42.1888 52.3264-42.1888s52.3264 19.2512 52.3264 42.1888c0 11.6736 9.4208 21.0944 21.0944 21.0944s21.0944-9.4208 21.0944-21.0944c0-46.4896-42.3936-84.3776-94.5152-84.3776s-94.5152 37.888-94.5152 84.3776c0 11.6736 9.4208 21.0944 21.0944 21.0944z"  /></svg>
       </a>
     </nav>
 
   </header>
+
+  <!--Hue Slider-->
+  <div class="dot-hue-slider hidden">
+    <div class="slider-con">
+      <input id="hue-range" type="range" value="38.55" min="38.55" max="360" step="0.1">
+    </div>
+  </div>
   
   <!--Cursor-->
-  <div class="dot-cursor" style="background-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>"></div>
+  <div class="dot-cursor" style="background-color: <?php echo $projectColor; ?>" data-color="<?php echo $projectColor; ?>"></div>
   <svg class="pointer-cursor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.73 42.01">
-    <path id="inner-cursor" fill="<?php echo $row['colour']; ?>" d="M6,31.63l6.32-6.15s.02-.01.03-.02c.09-.08.18-.14.29-.19,0,0,0,0,0,0,.1-.04.21-.06.33-.06.01,0,.03,0,.04,0,.02,0,.05,0,.07,0,.02,0,.03,0,.04,0,.01,0,.02,0,.03,0,.02,0,.03,0,.05,0,.04,0,.07.02.1.03.03.01.07.02.1.03.04.02.09.04.13.07.03.02.06.03.09.06.04.03.08.07.11.11.02.02.05.04.06.07.04.06.08.12.11.19,0,0,.01.02.02.03h0s0,0,0,0l.02.04,6.08,13.78,2.46-1.13-6.26-13.68c-.14-.3-.12-.64.05-.92.16-.28.45-.46.78-.49l9.38-.81L6,3.32v28.32Z"/>
+    <path id="inner-cursor" fill="<?php echo $projectColor; ?>" d="M6,31.63l6.32-6.15s.02-.01.03-.02c.09-.08.18-.14.29-.19,0,0,0,0,0,0,.1-.04.21-.06.33-.06.01,0,.03,0,.04,0,.02,0,.05,0,.07,0,.02,0,.03,0,.04,0,.01,0,.02,0,.03,0,.02,0,.03,0,.05,0,.04,0,.07.02.1.03.03.01.07.02.1.03.04.02.09.04.13.07.03.02.06.03.09.06.04.03.08.07.11.11.02.02.05.04.06.07.04.06.08.12.11.19,0,0,.01.02.02.03h0s0,0,0,0l.02.04,6.08,13.78,2.46-1.13-6.26-13.68c-.14-.3-.12-.64.05-.92.16-.28.45-.46.78-.49l9.38-.81L6,3.32v28.32Z"/>
     <path fill="#2d2d2d" d="M29.42,22.68L5.69.27c-.08-.08-.18-.13-.28-.18-.03-.01-.05-.02-.08-.03-.09-.03-.18-.05-.28-.06-.02,0-.04-.01-.06-.01H1C.73,0,.48.1.29.29c-.19.19-.29.44-.29.71v33c0,.55.45,1,1,1h4s.04-.01.06-.01c.09,0,.18-.02.27-.05.03-.01.06-.02.09-.03.1-.05.2-.11.28-.19h0s0-.01,0-.01l4.36-4.24,4.56,10.92c.16.37.52.61.92.61h3.83s.03,0,.05,0c.01,0,.03,0,.04,0h.07c.24,0,.46-.09.63-.23l4.06-1.86c.5-.23.72-.82.49-1.33l-6.09-13.3,10.19-.88c.39-.03.73-.29.86-.67.13-.37.03-.79-.26-1.06ZM17.04,23.41c-.32.03-.61.21-.78.49-.16.28-.18.62-.05.92l6.26,13.68-2.46,1.13-6.08-13.78-.02-.04s0,0,0,0h0s-.01-.02-.02-.03c-.03-.07-.07-.13-.11-.19-.02-.02-.04-.04-.06-.07-.04-.04-.07-.08-.11-.11-.03-.02-.06-.04-.09-.06-.04-.02-.08-.05-.13-.07-.03-.01-.07-.02-.1-.03-.03-.01-.07-.03-.1-.03-.02,0-.03,0-.05,0-.01,0-.02,0-.03,0-.01,0-.03,0-.04,0-.02,0-.05,0-.07,0-.01,0-.03,0-.04,0-.11,0-.22.02-.33.06,0,0,0,0,0,0-.11.04-.2.11-.29.19-.01,0-.02.01-.03.02l-6.32,6.15V3.32l20.42,19.29-9.38.81Z"/>
   </svg>
 
@@ -149,18 +157,18 @@ $link_results->execute();
     <div class="timeline-layout">
       <div class="timeline-container">
         <div id="scroll-line-container">
-          <div id="scroll-progress" style="background-color: <?php echo $row['colour']; ?>"></div>
-          <div id="scroll-ball" style="background-color: <?php echo $row['colour']; ?>"></div>
+          <div id="scroll-progress" style="background-color: <?php echo $projectColor; ?>"></div>
+          <div id="scroll-ball" style="background-color: <?php echo $projectColor; ?>"></div>
         </div>
         <div id="current-section"></div>
       </div>
 
       <div id="case-study-text">
-        <div class="study-card-image col-span-full" data-section="Overview" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+        <div class="study-card-image col-span-full" data-section="Overview" style="border-color: <?php echo $projectColor; ?>" data-color="<?php echo $projectColor; ?>">
           <img src="images/<?php echo $row['filename']; ?>-overview.png" alt="<?php echo $row['alt']; ?> overview">
         </div>
 
-        <div id="overview" class="study-card col-span-full" data-section="Overview" data-color="<?php echo $row['colour']; ?>">
+        <div id="overview" class="study-card col-span-full" data-section="Overview" data-color="<?php echo $projectColor; ?>">
             <h3>Overview</h3>
             <p><?php echo $row['overview']; ?></p>
         </div>
@@ -170,7 +178,7 @@ $link_results->execute();
             <p><?php echo $row['summary']; ?></p>
         </div>
 
-        <div class="study-card-image col-span-full" data-section="Problems" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+        <div class="study-card-image col-span-full" data-section="Problems" style="border-color: <?php echo $projectColor; ?>" data-color="<?php echo $projectColor; ?>">
           <img src="images/<?php echo $row['filename']; ?>-problems.png" alt="<?php echo $row['alt']; ?> problems">
         </div>
 
@@ -179,7 +187,7 @@ $link_results->execute();
             <p><?php echo $row['problems']; ?></p>
         </div>
 
-        <div class="study-card-image col-span-full" data-section="Research" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+        <div class="study-card-image col-span-full" data-section="Research" style="border-color: <?php echo $projectColor; ?>" data-color="<?php echo $projectColor; ?>">
           <img src="images/<?php echo $row['filename']; ?>-research.png" alt="<?php echo $row['alt']; ?> research">
         </div>
 
@@ -188,7 +196,7 @@ $link_results->execute();
             <p><?php echo $row['research']; ?></p>
         </div>
 
-        <div class="study-card-image col-span-full" data-section="Process" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+        <div class="study-card-image col-span-full" data-section="Process" style="border-color: <?php echo $projectColor; ?>" data-color="<?php echo $projectColor; ?>">
           <img src="images/<?php echo $row['filename']; ?>-process.png" alt="<?php echo $row['alt']; ?> process">
         </div>
 
@@ -197,7 +205,7 @@ $link_results->execute();
             <p><?php echo $row['process']; ?></p>
         </div>
 
-        <div class="study-card-image col-span-full" data-section="Final Product" style="border-color: <?php echo $row['colour']; ?>" data-color="<?php echo $row['colour']; ?>">
+        <div class="study-card-image col-span-full" data-section="Final Product" style="border-color: <?php echo $projectColor; ?>" data-color="<?php echo $projectColor; ?>">
           <img src="images/<?php echo $row['filename']; ?>-finalproduct.png" alt="<?php echo $row['alt']; ?> final product">
         </div>
 
@@ -240,7 +248,7 @@ $link_results->execute();
         <g class="logo-elements" data-name="logo-shapes">
           <path class="logo-letter"
             d="M1.78,63.84c-1.18,0-1.78-.42-1.78-1.27v-.34c0-.51.52-1.24,1.57-2.2,1.04-.96,1.56-2.06,1.56-3.3v-22.18c0-1.3-.52-2.51-1.56-3.64-1.05-1.13-1.57-1.86-1.57-2.2v-.25c0-.45.51-.96,1.52-1.52l8.47-4.23c.96-.39,1.71-.44,2.25-.13.53.31.8.83.8,1.57v32.59c0,1.24.58,2.34,1.74,3.3,1.16.96,1.74,1.69,1.74,2.2v.34c0,.85-.62,1.27-1.86,1.27H1.78Z" />
-          <path class="logo-dot" style="fill: <?php echo $row['colour']; ?>"
+          <path class="logo-dot" style="fill: <?php echo $projectColor; ?>"
             d="M8.04,16.18c-2.09,0-3.78-.59-5.08-1.78s-1.95-2.71-1.95-4.57.65-3.39,1.95-4.57,2.99-1.78,5.08-1.78,3.68.59,4.95,1.78,1.91,2.71,1.91,4.57-.64,3.39-1.91,4.57-2.92,1.78-4.95,1.78Z" />
           <path class="logo-letter"
             d="M45.97,22.36c5.36,0,9.98,1.88,13.84,5.63,3.86,3.75,5.8,8.71,5.8,14.86s-1.91,11.54-5.72,15.66-8.42,6.18-13.84,6.18c-4.97,0-8.97-1.78-12.02-5.34l.09,3.05c0,1.07-.56,1.61-1.69,1.61l-9.14-.17c-1.02,0-1.52-.39-1.52-1.18v-.25c0-.45.53-1.2,1.61-2.24s1.61-2.19,1.61-3.43V12.28c0-1.02-.3-1.87-.89-2.58s-1.21-1.28-1.83-1.74-.93-.93-.93-1.44v-.25c0-.62.56-1.18,1.69-1.69L31.75.43c.9-.45,1.63-.55,2.2-.3.56.25.85.83.85,1.73v24.97c2.71-2.99,6.43-4.48,11.17-4.48ZM44.86,61.47c3.39,0,6.03-1.35,7.92-4.06,1.89-2.71,2.84-6.52,2.84-11.43,0-6.09-1.12-11.02-3.35-14.77-2.23-3.75-5.15-5.63-8.76-5.63-2.37,0-4.42.92-6.14,2.75-1.72,1.84-2.58,4.11-2.58,6.82v14.31c0,3.1,1.03,5.88,3.09,8.34,2.05,2.46,4.38,3.68,6.98,3.68Z" />
