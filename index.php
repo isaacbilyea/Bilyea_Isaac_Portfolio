@@ -4,7 +4,18 @@
 <?php
 require_once('includes/connect.php');
 
-$stmt = $connect->prepare('SELECT projects.id AS project, title, description, cover_image AS image, colour FROM projects');
+$stmt = $connect->prepare('
+SELECT 
+    projects.id AS project, 
+    title, 
+    description, 
+    cover_image AS image, 
+    colour
+FROM projects 
+ORDER BY 
+    IF(projects.id <= 4, 2, 1) ASC,
+    IF(projects.id <= 4, projects.id, -projects.id) ASC
+');
 $stmt->execute();
 
 ?>

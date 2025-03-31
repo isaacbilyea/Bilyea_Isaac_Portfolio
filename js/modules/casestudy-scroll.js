@@ -6,9 +6,11 @@ export function caseStudyScroll() {
     const progressLine = document.querySelector('#scroll-progress');
     const currentSection = document.querySelector('#current-section');
     const studyColor = document.querySelector('.study-card').getAttribute('data-color');
-
     const root = document.documentElement;
-    root.style.setProperty('--dot-color', studyColor);
+    
+    if (studyColor !== 'var(--dot-color, #DA5C31)') {
+        root.style.setProperty('--dot-color', studyColor);
+    }
 
     //FUNCTIONS
     function updateCurrentSection(title) {

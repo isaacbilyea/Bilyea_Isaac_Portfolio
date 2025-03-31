@@ -29,7 +29,7 @@ export function ajaxForm() {
                     duration: 1,
                     scrollTo: {
                         y: popup,
-                        offsetY: 100,
+                        offsetY: window.innerHeight/2 - popup.offsetHeight/2,
                         autoKill: false
                     },
                     ease: "power2.inOut"
@@ -83,7 +83,7 @@ export function ajaxForm() {
                 duration: 1,
                 scrollTo: {
                     y: feedback,
-                    offsetY: 200,
+                    offsetY: window.innerHeight/2 - feedback.offsetHeight/2,
                     autoKill: false
                 },
                 ease: "power2.inOut"

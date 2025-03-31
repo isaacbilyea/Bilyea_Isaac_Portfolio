@@ -159,7 +159,7 @@
       left: 50%;
       width: 4rem;
       height: 4rem;
-      background-color: var(--dot-color, #DA5C31); 
+      background-color: inherit;
       border-radius: 50%;
       transform: translate(-50%, -50%);
       z-index: -1;
@@ -216,6 +216,32 @@
       }
       100% {
         opacity: 1;
+      }
+    }
+
+    #menu-dot {
+      background-color: var(--dot-color, #DA5C31) !important;
+    }
+
+    #resume-button {
+      position: absolute;
+      left: 7.5%;
+      top: 6%;
+      width: 4rem;
+      height: 4rem;
+      animation: fadeIn 0.5s ease-in;
+
+      svg {
+        padding: 0.75rem;
+        background-color: var(--dot-color, #DA5C31); 
+        border-radius: 5rem;
+        border: none;
+        font-size: 2.5rem;
+        color: white;
+        font-family: a.$heading-font-family;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     }
   }
