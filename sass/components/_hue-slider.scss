@@ -53,8 +53,10 @@
             width: 1.15rem;
             border: none;
             position: relative;
-            margin-top: -0.54rem;
+            margin-top: -0.555rem;
             z-index: 2;
+            box-shadow: none;
+            -webkit-box-shadow: none; 
         }
 
         input[type="range"]::-moz-range-track {
@@ -71,6 +73,8 @@
             border: none;
             position: relative;
             z-index: 2;
+            box-shadow: none; 
+            -webkit-box-shadow: none; 
         }
     }
 

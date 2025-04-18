@@ -16,7 +16,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmt = null;
 
 //Links
-$link_query = 'SELECT id, title FROM projects WHERE projects.id != :projectid';
+$link_query = 'SELECT id, title FROM projects WHERE projects.id != :projectid AND visible = 1 ORDER BY project_order ASC';
 $link_results = $connect->prepare($link_query);
 $link_results->bindParam(':projectid', $projectid, PDO::PARAM_INT);
 $link_results->execute();
@@ -28,8 +28,12 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    const savedHue = localStorage.getItem('dynamicHue');
+    document.documentElement.style.setProperty('--dynamic-hue', savedHue);
+  </script>
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-  <link href="css/main.css" rel="stylesheet">
+  <link href="css/main.css?v=041325" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -38,14 +42,14 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script type="module" src="js/details.js"></script>
+  <script type="module" src="js/details.js?v=041325"></script>
   <title><?php echo $row['title']; ?> | Isaac Bilyea</title>
 </head>
 
 <body>
   <!--Header-->
   <h1 class="hidden"><?php echo $row['title']; ?></h1>
-  <header id="main-header">
+  <header id="main-header" class="grid-con">
     <a href="index.php" id="logo-link">
       <div class="logo-container">
         <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 415.19 79">
@@ -152,6 +156,7 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
     <div id="case-study-title">
       <h2><?php echo $row['title']; ?></h2>
       <p><?php echo $row['description']; ?></p>
+      <a class="site-link" href="<?php echo $row['link']; ?>" target="_blank" style="background-color: <?php echo $projectColor; ?>;border-color: <?php echo $projectColor; ?>;color: <?php echo $projectColor; ?>">View Site</a>
     </div>
 
     <div class="timeline-layout">
@@ -212,7 +217,7 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
         <div id="final-product" class="study-card col-span-full" data-section="Final Product">
             <div id="final-product-heading">
               <h3>Final Product</h3>
-              <a href="<?php echo $row['link']; ?>" target="_blank">View on Github</a>
+              <a href="<?php echo $row['github_link']; ?>" target="_blank">View on Github</a>
             </div>
             <p><?php echo $row['final_product']; ?></p>
         </div>
@@ -260,7 +265,7 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
         <a href="mailto:isaacbilyea@gmail.com" target="_blank">
           <img src="images/email.svg" alt="email icon">
         </a>
-        <a href="https://www.linkedin.com/in/isaac-bilyea-1751b315b/" target="_blank">
+        <a href="https://www.linkedin.com/in/isaacbilyea/" target="_blank">
           <img src="images/linkedin.svg" alt="linkedin icon">
         </a>
         <a href="https://github.com/isaacbilyea" target="_blank">

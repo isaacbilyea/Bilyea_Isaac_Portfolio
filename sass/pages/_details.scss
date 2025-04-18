@@ -25,6 +25,46 @@
             font-weight: a.$base-font-weight;
             margin-top: -0.5rem;
         }
+
+        .site-link {
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid;
+            box-sizing: border-box;
+            transition: all 150ms ease;
+            background-color: transparent !important;
+            width: fit-content;
+            position: relative;
+            overflow: hidden;
+            background-color: color-mix(in oklch, var(--dot-color) 5%, transparent) !important;
+
+            &[href=""] {
+                display: none;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 0%;
+                top: 0;
+                z-index: -1;
+                height: 100%;
+                background-color: var(--dot-color, #DA5C31) !important; 
+                transition: width 0.15s ease-in-out;
+            }
+
+            &:hover {
+                color: white !important;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
     }
 
     #case-study-text {
@@ -59,7 +99,7 @@
 
         .study-card {
             color: #2d2d2d;
-            background-color: rgba(#fff, 0.3);
+            background-color: color-mix(in oklch, var(--dot-color) 5%, transparent);
             padding: 1.5rem;
             border-radius: 1.25rem;
             margin-top: 3rem;

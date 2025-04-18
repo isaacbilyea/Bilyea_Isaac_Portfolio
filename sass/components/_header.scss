@@ -1,8 +1,7 @@
 @use "../abstracts" as a;
 
 #main-header {
-  margin: 4rem auto 1rem auto;
-  padding: 0 4rem;
+  margin: 3rem auto 1rem auto;
   max-width: 1200px;
   position: relative;
 
@@ -23,11 +22,12 @@
   
   .logo-container {
     position: relative;
-    width: 100%;
+    width: 10rem;
     
     .logo {
       height: 4rem;
       display: block;
+      width: fit-content;
       position: relative;
 
       .logo-letter {
@@ -49,7 +49,7 @@
     height: 1.5rem;
     position: absolute;
     top: 1rem;
-    right: 4rem;
+    right: 2rem;
     z-index: 5;
     display: flex;
     flex-direction: column;
@@ -159,7 +159,7 @@
       left: 50%;
       width: 4rem;
       height: 4rem;
-      background-color: inherit;
+      background-color: var(--dot-color, #DA5C31); 
       border-radius: 50%;
       transform: translate(-50%, -50%);
       z-index: -1;
@@ -248,11 +248,14 @@
 }
 
 @media screen and (min-width: 768px) {
-  #main-header {
-    margin-bottom: 1.5rem;
-  }
 
   #main-header {
+    margin-bottom: 1.5rem;
+
+    #hamburger-menu {
+      right: 3rem;
+    }
+
     #main-nav {
       #resume-button {
         top: 7%;
@@ -267,7 +270,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin: 4rem auto 2rem auto;
 
     #logo-link {
       pointer-events: all;
@@ -275,6 +278,10 @@
 
     #hamburger-menu {
       display: none;
+    }
+
+    .logo-container {
+      width: 100%;  // Restore full width on desktop
     }
 
     #main-nav {

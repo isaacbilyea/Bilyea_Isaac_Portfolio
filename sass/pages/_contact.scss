@@ -58,6 +58,7 @@
             color: white;
             border-color: a.$secondary-color;
             font-family: a.$body-font-family;
+            border-radius: 0;
             padding: .4rem 1.5rem;
             border: none;
             font-size: .75rem;
@@ -78,6 +79,7 @@
 
 #feedback {
     margin-bottom: 5rem;
+
 }
 
 #thank-you-popup {
