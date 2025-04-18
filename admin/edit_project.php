@@ -3,7 +3,7 @@ require_once('../includes/connect.php');
 
 $query = "UPDATE projects SET title = ?, cover_image = ?, description = ?, colour = ?, 
          overview = ?, summary = ?, problems = ?, research = ?, process = ?, 
-         final_product = ?, reflection = ?, link = ? WHERE id = ?";
+         final_product = ?, reflection = ?, link = ?, github_link = ?, project_order = ?, visible = ? WHERE id = ?";
 
 $stmt = $connect->prepare($query);
 
@@ -19,7 +19,10 @@ $stmt->bindParam(9, $_POST['process'], PDO::PARAM_STR);
 $stmt->bindParam(10, $_POST['final_product'], PDO::PARAM_STR);
 $stmt->bindParam(11, $_POST['reflection'], PDO::PARAM_STR);
 $stmt->bindParam(12, $_POST['link'], PDO::PARAM_STR);
-$stmt->bindParam(13, $_POST['pk'], PDO::PARAM_INT);
+$stmt->bindParam(13, $_POST['github_link'], PDO::PARAM_STR);
+$stmt->bindParam(14, $_POST['project_order'], PDO::PARAM_STR);
+$stmt->bindParam(15, $_POST['visible'], PDO::PARAM_STR);
+$stmt->bindParam(16, $_POST['pk'], PDO::PARAM_INT);
 
 $stmt->execute();
 

@@ -5,10 +5,9 @@ import { hueSlider } from './modules/hue-slider.js';
 import { introBall } from './modules/intro-ball.js';
 import { gsapHome } from './modules/gsap-home.js';
 
-
 cursorDot();
+hueSlider();
 burgerMenu();
 logoHover();
-hueSlider();
 introBall();
 gsapHome();

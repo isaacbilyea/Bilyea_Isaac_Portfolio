@@ -4,7 +4,6 @@
 
     margin-top: 4rem;
     max-width: 1200px;
-    padding: 0 4rem;
  
     #intro-flex {
         width: 100%;
@@ -81,7 +80,6 @@
 
     margin-bottom: 5rem;
     max-width: 1200px;
-    padding: 0 4rem;
 
     h2 {
         font-size: 2.5rem;
@@ -106,9 +104,9 @@
 
             .project-image {
                 height: 75vw;
-                top: -30%;
-                right: -8rem;
-                max-height: 24rem;
+                top: -10%;
+                right: -30%;
+                max-height: 20rem;
             }
         }
 
@@ -117,24 +115,42 @@
 
             .project-image {
                 height: 80vw;
-                top: -30%;
+                top: -10%;
                 right: -30%;
-                max-height: 30rem;
+                max-height: 23rem;
             }
         }
 
+        &:nth-child(4) {
+
+            .project-image {
+                top: -15%;
+                right: -5%;
+            }
+        }
+
+        
         &:nth-child(5) {
 
             .project-image {
+                top: -15%;
+                right: -5%;
+            }
+        }
+
+
+        &:nth-child(7) {
+
+            .project-image {
                 top: -30%;
-                right: -20%;
+                right: -10%;
             }
         }
         
         .project-image {
-            position: absolute;
+            position: fixed;
             transform-origin: center;
-            top: -30%;
+            top: -20%;
             right: -10%;
             display: flex;
             height: 35vw;
@@ -219,9 +235,10 @@
         .project-card {
             
             &:nth-child(2) {
- 
+
                 .project-image {
-                    max-height: 26rem;
+                    right: -20%;
+                    max-height: 30rem;
                 }
             }
     
@@ -229,7 +246,7 @@
 
                 .project-image {
                     right: -20%;
-                    max-height: 26rem;
+                    max-height: 30rem;
                 }
             }
 
@@ -237,7 +254,7 @@
 
                 .project-image {
                     top: -30%;
-                    right: -10%;
+                    right: -5%;
                 }
             }
         }
@@ -277,9 +294,9 @@
             .project-image {
                 height: min(25vw, 1200px);
                 border-radius: 1rem;
-                top: -20%;
-                right: -2rem;
-                max-height: 15rem;
+                top: -40%;
+                right: -4rem;
+                max-height: 19rem;
             }
 
             .project-text {
@@ -324,7 +341,7 @@
                 transition: all 0.25s ease-in-out;
                 height: 15rem;
                 top: -40%;
-                right: 0%;
+                right: -20%;
             }
 
             &:nth-child(2) {
@@ -349,6 +366,23 @@
                 .project-image {
                     top: -30%;
                     right: -5%;
+                }
+            }
+
+            
+            &:nth-child(5) {
+
+                .project-image {
+                    top: -40%;
+                    right: -5%;
+                }
+            }
+
+            &:nth-child(7) {
+
+                .project-image {
+                    top: -30%;
+                    right: -15%;
                 }
             }
 

@@ -48,6 +48,14 @@ export function ajaxForm() {
     function regForm(e) {
         e.preventDefault();
 
+        const viewport = document.querySelector('meta[name="viewport"]');
+        const originalContent = viewport.getAttribute('content');
+        viewport.setAttribute('content', originalContent + ', initial-scale=1');
+        
+        setTimeout(() => {
+            viewport.setAttribute('content', originalContent);
+        }, 1000);
+
         const thisForm = e.currentTarget;
         const url = "sendmail.php";
         console.log(thisForm.elements);

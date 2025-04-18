@@ -119,8 +119,17 @@ function validateForm() {
             <label for="reflection">Project Reflection: </label><br><br>
             <textarea class="textarea" name="reflection"><?php echo $row['reflection']; ?></textarea><br><br>
 
-            <label for="link">Project Link: </label><br><br>
+            <label for="link">Site Link: </label><br><br>
             <input name="link" type="text" value="<?php echo $row['link']; ?>"><br><br>
+            
+            <label for="github_link">GitHub Link: </label><br><br>
+            <input name="github_link" type="text" value="<?php echo $row['github_link']; ?>"><br><br>
+
+            <label for="project_order">Project Order: </label><br><br>
+            <input name="project_order" type="text" value="<?php echo $row['project_order']; ?>"><br><br>
+
+            <label for="visible">Project Visibility: </label><br><br>
+            <input name="visible" type="text" value="<?php echo $row['visible']; ?>"><br><br>
 
             <input name="submit" type="submit" value="Save">
         </form>
