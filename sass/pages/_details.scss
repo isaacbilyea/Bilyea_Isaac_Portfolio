@@ -94,6 +94,7 @@
                 border-style: solid;
                 border-color: inherit;
                 min-height: 15rem;
+                object-fit: cover;
             }
         }
 
@@ -165,6 +166,7 @@
         text-decoration: underline;
         position: relative;
         color: a.$secondary-color;
+        text-align: right;
     }
 
     a[href=""] {

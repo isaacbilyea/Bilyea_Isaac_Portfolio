@@ -28,7 +28,7 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
+  <script defer>
     const savedHue = localStorage.getItem('dynamicHue');
     document.documentElement.style.setProperty('--dynamic-hue', savedHue);
   </script>
