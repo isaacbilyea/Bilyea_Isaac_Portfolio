@@ -45,7 +45,7 @@ if(empty($errors)) {
 
         //format and send these values in an email
 
-        $to = 'isaacbil28@isaacbilyea.com';
+        $to = 'portfolio@isaacbilyea.com';
         $subject = 'Who knew? Your form actually works.';
 
         $message = "Someone actually filled out your form. I am as shocked as you are.\n\n";
@@ -54,7 +54,7 @@ if(empty($errors)) {
         $message .= "Prepare yourself for the most profound message you have ever read: \n".$msg;
 
 
-        //mail($to,$subject,$message);
+        // mail($to,$subject,$message);
 
         echo json_encode(array("message" => "Look at that ball go!"));
     }

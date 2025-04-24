@@ -33,7 +33,7 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
     document.documentElement.style.setProperty('--dynamic-hue', savedHue);
   </script>
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-  <link href="css/main.css?v=041325" rel="stylesheet">
+  <link href="css/main.css?v=042025" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@ $projectColor = ($row['colour'] === 'var(--dot-color)') ? 'var(--dot-color, #DA5
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script type="module" src="js/details.js?v=041325"></script>
+  <script type="module" src="js/details.js?v=042025"></script>
   <title><?php echo $row['title']; ?> | Isaac Bilyea</title>
 </head>
 

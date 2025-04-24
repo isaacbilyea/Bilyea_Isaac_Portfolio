@@ -99,63 +99,41 @@
         position: relative;
         text-decoration: none;
     
-        &:nth-child(2) {
-            height: 25rem;
+        &:nth-child(2), &:nth-child(3) {
+            height: 20rem;
 
             .project-image {
-                height: 75vw;
-                top: -10%;
-                right: -30%;
-                max-height: 20rem;
+                height: 60vw;
+                bottom: 40%;
+                right: -50%;
+                max-height: 30rem;
             }
         }
 
-        &:nth-child(3) {
-            height: 25rem;
-
-            .project-image {
-                height: 80vw;
-                top: -10%;
-                right: -30%;
-                max-height: 23rem;
-            }
-        }
-
-        &:nth-child(4) {
-
-            .project-image {
-                top: -15%;
-                right: -5%;
-            }
-        }
-
-        
         &:nth-child(5) {
 
             .project-image {
-                top: -15%;
-                right: -5%;
+                
+                img {
+                    object-fit: contain;
+                    object-position: center bottom;
+                }
             }
         }
 
 
-        &:nth-child(7) {
-
-            .project-image {
-                top: -30%;
-                right: -10%;
-            }
-        }
-        
         .project-image {
-            position: fixed;
-            transform-origin: center;
-            top: -20%;
-            right: -10%;
+            position: relative;
+            transform-origin: top left; 
+            bottom: 100%;
+            right: -60%;
+            width: auto;
+            aspect-ratio: 1 / 1;
             display: flex;
-            height: 35vw;
-            align-items: center;
-            justify-content: center;
+            height: 50vw;
+            max-height: 15rem;
+            align-items: flex-end;
+            justify-content: flex-start;
             filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));
             -webkit-transition: 300ms -webkit-filter linear;
             -moz-transition: 300ms -moz-filter linear;
@@ -167,11 +145,16 @@
             img {
                 width: 100%;
                 height: 100%;
+                position: absolute;
+                left: 0;
+                bottom: 0;
                 object-fit: contain;
-                position: relative;
+                object-position: left bottom;
                 filter: brightness(0) invert(1);
                 transition: all 300ms ease-in-out;
                 transform: scale(1);
+                display: flex;
+                align-items: flex-end;
             }
         }
 
@@ -199,16 +182,11 @@
             }
         }
 
-        // &:hover {
-        //     .project-text h3, .project-text p {
-        //         opacity: 0;
-        //     }
-        // }
-
         .project-text {
             position: absolute;
             bottom: 1rem;
             left: 2rem;
+            width: 90%;
             text-align: left;
             line-height: 2.75rem;
             z-index: 1;
@@ -217,6 +195,7 @@
                 font-size: 2.25rem;
                 margin: 0;
                 color: white;
+                width: 60%;
             }
 
             p {
@@ -228,34 +207,13 @@
     }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 520px) {
 
     #projects-con {
 
         .project-card {
-            
-            &:nth-child(2) {
-
-                .project-image {
-                    right: -20%;
-                    max-height: 30rem;
-                }
-            }
-    
-            &:nth-child(3) {
-
-                .project-image {
-                    right: -20%;
-                    max-height: 30rem;
-                }
-            }
-
-            &:nth-child(5) {
-
-                .project-image {
-                    top: -30%;
-                    right: -5%;
-                }
+            .project-image {
+                max-height: 30rem;
             }
         }
     }
@@ -284,19 +242,25 @@
                 height: 15rem;
 
                 .project-image {
-                    height: min(60vw, 1200px);
-                    top: -60%;
-                    right: -10rem;
+                    bottom: 40%;
+                    right: -60%;
                     max-height: 30rem;
                 }
             }
+
+            &:nth-child(2) {
+                .project-image {
+                    bottom: 30%;
+                }
+            }
+
             
             .project-image {
-                height: min(25vw, 1200px);
+                height: 30vw;
                 border-radius: 1rem;
-                top: -40%;
-                right: -4rem;
-                max-height: 19rem;
+                right: -45%;
+                bottom: 50%;
+                max-height: 20rem;
             }
 
             .project-text {
@@ -340,60 +304,21 @@
             .project-image {
                 transition: all 0.25s ease-in-out;
                 height: 15rem;
-                top: -40%;
-                right: -20%;
+                right: -65%;
+                bottom: 50%;
             }
 
-            &:nth-child(2) {
-
-                .project-image {
-                    height: 30rem;
-                    top: -50%;
-                    right: -10%;
-                }
-            }
-
-            &:nth-child(3) {
-                .project-image {
-                    height: 30rem;
-                    top: -65%;
-                    right: -10%;
-                }
-            }
-
-            &:nth-child(4) {
-
-                .project-image {
-                    top: -30%;
-                    right: -5%;
-                }
-            }
-
-            
-            &:nth-child(5) {
-
-                .project-image {
-                    top: -40%;
-                    right: -5%;
-                }
-            }
-
-            &:nth-child(7) {
-
-                .project-image {
-                    top: -30%;
-                    right: -15%;
-                }
-            }
 
             .project-text {
 
                 line-height: 3rem;
+                width: 100%;
 
 
                 h3 {
                     font-size: 2.5rem;
                     transition: opacity 0.3s ease-in-out;
+                    width: 100%;
                 }
         
                 p {
