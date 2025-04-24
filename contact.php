@@ -9,7 +9,7 @@
     document.documentElement.style.setProperty('--dynamic-hue', savedHue);
   </script>
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-  <link href="css/main.css?v=041325" rel="stylesheet">
+  <link href="css/main.css?v=042025" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
-  <script type="module" src="js/contact.js?v=041325"></script>
+  <script type="module" src="js/contact.js?v=042025"></script>
   <title>Contact | Isaac Bilyea</title>
 </head>
 
@@ -156,7 +156,7 @@
   </section>
 
   <!--Thank You-->
-  <div id="thank-you-popup" class="grid-con hidden">
+  <div id="thank-you-popup" class="grid-con">
     <div id="popup-heading">
       <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -172,7 +172,7 @@
     </div>
     <p>Trust is the most important part of a relationship, followed
       by communication and we have just established both!!</p>
-    <p>I’ll get back to you soon - just giving the ball<br>
+    <p>I’ll get back to you soon - just giving the ball<br class="tablet-break">
       a chance to gather some momentum first!</p>
     <button id="close-popup">&times;</button>
   </div>

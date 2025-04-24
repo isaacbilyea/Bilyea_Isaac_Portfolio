@@ -6,6 +6,7 @@ export function ajaxForm() {
     const footerBall = document.querySelector('#ball');
     const popup = document.querySelector('#thank-you-popup');
     const closeBtn = document.querySelector('#close-popup');
+    const contactForm = document.querySelector('#contact-form');
 
     gsap.registerPlugin(MotionPathPlugin, ScrollToPlugin);
 
@@ -23,18 +24,37 @@ export function ajaxForm() {
                 curviness: 2,
                 autoRotate: true
             },
-            onComplete: function() {
-                popup.classList.remove('hidden');
-                gsap.to(window, {
-                    duration: 1,
-                    scrollTo: {
-                        y: popup,
-                        offsetY: window.innerHeight/2 - popup.offsetHeight/2,
-                        autoKill: false
-                    },
-                    ease: "power2.inOut"
-                });
-            }
+            onComplete: showPopup
+        });
+    }
+
+    function showPopup() {
+        popup.classList.add('shown');
+        document.body.classList.add('popup-visible');
+    
+        gsap.set(popup, { 
+            scale: 0, 
+            opacity: 0, 
+            y: 0,
+            visibility: 'visible',
+            display: 'flex'
+        });
+    
+        gsap.to(window, {
+            duration: 0.8,
+            scrollTo: {
+                y: contactForm,
+                offsetY: window.innerHeight/2 - popup.offsetHeight/2,
+            },
+            ease: "power2.inOut"
+        });
+    
+        gsap.to(popup, {
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "back.out(1.7)"
         });
     }
 
@@ -44,17 +64,24 @@ export function ajaxForm() {
         });
     }
 
+    function closePopup() {
+        gsap.to(popup, {
+            scale: 0,
+            opacity: 0,
+            y: -50,
+            duration: 0.3,
+            ease: "back.in(1.7)",
+            onComplete: () => {
+                popup.classList.remove('shown');
+                document.body.classList.remove('popup-visible');
+                feedback.innerHTML = '';
+                resetBall();
+            }
+        });
+    }
 
     function regForm(e) {
         e.preventDefault();
-
-        const viewport = document.querySelector('meta[name="viewport"]');
-        const originalContent = viewport.getAttribute('content');
-        viewport.setAttribute('content', originalContent + ', initial-scale=1');
-        
-        setTimeout(() => {
-            viewport.setAttribute('content', originalContent);
-        }, 1000);
 
         const thisForm = e.currentTarget;
         const url = "sendmail.php";
@@ -107,10 +134,12 @@ export function ajaxForm() {
     //EVENT LISTENERS
     form.addEventListener('submit', regForm);
 
-    closeBtn.addEventListener('click', () => {
-        popup.classList.add('hidden');
-        feedback.innerHTML = '';
-        resetBall();
+    closeBtn.addEventListener('click', closePopup);
+
+    document.addEventListener('click', ()=> {
+        if (popup.classList.contains('shown')) {
+            closePopup();
+        }
     });
 
 }
